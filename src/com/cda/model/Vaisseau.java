@@ -1,6 +1,6 @@
 package com.cda.model;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -9,12 +9,11 @@ import javax.swing.JPanel;
 
 public class Vaisseau extends JPanel {
 	BufferedImage img;
-	public static final String img1 = "/avion-top.png";
-	public static int x = 250;
-	public static int y = 650;
+	public static final String img1 = "/images/avion-top.png";
+	public static int x = 0;
+	public static int y = 0;
 
 	public Vaisseau() {
-
 		chargerImag(img1);
 		setVisible(true);
 	}

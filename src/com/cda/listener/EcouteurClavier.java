@@ -1,9 +1,9 @@
 package com.cda.listener;
 
+import com.cda.model.Vaisseau;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import com.cda.model.Vaisseau;
 
 public class EcouteurClavier implements KeyListener {
 	int positionX = Vaisseau.x;
@@ -20,24 +20,24 @@ public static final int VITESSE = 30;
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
-		case KeyEvent.VK_DOWN:
-			int positionDown = (int) (positionY < 650 ? positionY += VITESSE : positionY);
-			Vaisseau.y = positionDown;
-			break;
-		case KeyEvent.VK_UP:
-			int positionUp = (int) (positionY > 20 ? positionY -= VITESSE : positionY);
-			Vaisseau.y = positionUp;
-			break;
-		case KeyEvent.VK_RIGHT:
-			int positionRight = (int) (positionX < 550 ? positionX += VITESSE : (positionX = -50));
-			vVaisseau.chargerImag(img3);
-			Vaisseau.x = positionRight;
-			break;
-		case KeyEvent.VK_LEFT:
-			int positionLeft = (int) (positionX > -50 ? positionX -= VITESSE : (positionX = 550));
-			vVaisseau.chargerImag(img2);
-			Vaisseau.x = positionLeft;
-			break;
+			case KeyEvent.VK_DOWN:
+				int positionDown = (int) (positionY < 650 ? positionY += VITESSE : positionY);
+				Vaisseau.y = positionDown;
+				break;
+			case KeyEvent.VK_UP:
+				int positionUp = (int) (positionY > 20 ? positionY -= VITESSE : positionY);
+				Vaisseau.y = positionUp;
+				break;
+			case KeyEvent.VK_RIGHT:
+				int positionRight = (int) (positionX < 550 ? positionX += VITESSE : (positionX = -50));
+				vVaisseau.chargerImag(img3);
+				Vaisseau.x = positionRight;
+				break;
+			case KeyEvent.VK_LEFT:
+				int positionLeft = (int) (positionX > -50 ? positionX -= VITESSE : (positionX = 550));
+				vVaisseau.chargerImag(img2);
+				Vaisseau.x = positionLeft;
+				break;
 		}
 		vVaisseau.repaint();
 	}

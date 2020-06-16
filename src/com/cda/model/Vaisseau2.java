@@ -81,22 +81,23 @@ public class Vaisseau2 {
         this.imgVaisseau = imgVaisseau;
     }
 
-    public void monte(){
+    public void monte() {
         dY += 2;
         this.y = this.y - dY;
     }
 
-    public void descend(){
-        dY -=2;
+    public void descend() {
+        dY -= 2;
         this.y = this.y + dY;
     }
-    public void droite(){
-        dX -=2;
-        this.x = this.x -dX;
+
+    public void droite() {
+        dX -= 2;
+        this.x = this.x - dX;
     }
 
-    public void gauche(){
-        dX +=2;
+    public void gauche() {
+        dX += 2;
         this.x = this.x + dX;
     }
 }

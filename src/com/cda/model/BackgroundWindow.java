@@ -1,33 +1,42 @@
 package com.cda.model;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class BackgroundWindow extends JPanel {
-    BufferedImage img;
-    public static final String img1 = "/imgs/pacOuvert.png";
+    private final int HAUTEUR = 400;
+    public int yFond;
+    private ImageIcon icoBandeFond;
+    private Image imgBandeFond;
+
 
     public BackgroundWindow(MaFenetre vMaFenetre) {
+        this.yFond = 400;
         setBounds(vMaFenetre.getX(), vMaFenetre.getY(), vMaFenetre.getWidth(), vMaFenetre.getHeight());
-        setBackground(Color.green);
-        setVisible(true);
+        this.icoBandeFond = new ImageIcon(getClass().getResource("/images/fond.jpg"));
+        this.imgBandeFond = this.icoBandeFond.getImage();
+        Thread chronoEcran = new Thread(new Chrono());
+        chronoEcran.start();
+
+
+    }
+
+    private void deplacementFond(Graphics g) {
+        if (yFond == 800) {
+            yFond = 400;
+        }
+        g.drawImage(this.imgBandeFond, 0, this.yFond, null);
+        g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR, null);
+        g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR * 2, null);
+        g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR * 3, null);
 
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
 
+        deplacementFond(g);
     }
 
-    public void chargerImag(String vImg) {
-        try {
-            img = ImageIO.read(BackgroundWindow.class.getResource(vImg));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

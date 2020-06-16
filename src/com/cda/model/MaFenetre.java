@@ -3,14 +3,18 @@ package com.cda.model;
 import javax.swing.*;
 
 public class MaFenetre extends JFrame {
+    public final static int FENETRE_WIDTH = 600;
+    public final static int FENETRE_HEIGHT = 800;
+    public static BackgroundWindow vBackgroundWindow;
+
     public MaFenetre() {
-        setSize(600, 800);
+        setSize(FENETRE_WIDTH, FENETRE_HEIGHT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Test");
-        setVisible(true);
         setResizable(false);
-        BackgroundWindow vBackgroundWindow = new BackgroundWindow(this);
+        vBackgroundWindow = new BackgroundWindow(this);
         this.getContentPane().add(vBackgroundWindow);
+        setVisible(true);
 
     }
 }

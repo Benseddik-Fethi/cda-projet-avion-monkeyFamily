@@ -30,12 +30,10 @@ public class BackgroundWindow extends JPanel {
 		g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR, null);
 		g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR * 2, null);
 		g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR * 3, null);
-
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
-
 		deplacementFond(g);
 	}
 }

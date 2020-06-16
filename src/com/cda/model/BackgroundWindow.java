@@ -22,7 +22,7 @@ public class BackgroundWindow extends JPanel {
     }
 
     private void deplacementFond(Graphics g) {
-        if (yFond == 800) {
+        if (yFond == MaFenetre.FENETRE_HEIGHT) {
             yFond = 400;
         }
         g.drawImage(this.imgBandeFond, 0, this.yFond, null);

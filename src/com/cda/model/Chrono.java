@@ -1,7 +1,7 @@
 package com.cda.model;
 
 public class Chrono implements Runnable {
-	private final int PAUSE = 5;
+	private final int PAUSE = 1;
 
 	@Override
 	public void run() {

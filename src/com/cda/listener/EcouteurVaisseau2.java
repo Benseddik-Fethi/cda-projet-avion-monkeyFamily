@@ -16,6 +16,7 @@ public class EcouteurVaisseau2 implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_DOWN:
                 MaFenetre.vBackgroundWindow.vaisseau.descend();
+
                 break;
             case KeyEvent.VK_UP:
                 MaFenetre.vBackgroundWindow.vaisseau.monte();
@@ -32,6 +33,19 @@ public class EcouteurVaisseau2 implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_DOWN:
 
+                break;
+            case KeyEvent.VK_UP:
+
+                break;
+            case KeyEvent.VK_RIGHT:
+
+                break;
+            case KeyEvent.VK_LEFT:
+
+                break;
+        }
     }
 }

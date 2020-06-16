@@ -11,6 +11,7 @@ public class Vaisseau2 {
     private String strImage;
     private ImageIcon icoVaisseau;
     private Image imgVaisseau;
+    private final int PAUSE = 10;
 
     public Vaisseau2(int x, int y, String strImage) {
         this.largeur = 10;
@@ -81,21 +82,33 @@ public class Vaisseau2 {
 
     public void monte() {
 
-        this.y -= 10;
+        this.y -= 20;
     }
 
     public void descend() {
 
-        this.y += 10;
+        this.y += 20;
     }
 
     public void droite() {
 
-        this.x += 10;
+        this.x += 20;
+        this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-right.png"));
+        this.imgVaisseau = this.icoVaisseau.getImage();
     }
 
     public void gauche() {
-
-        this.x -= 10;
+        this.x -= 20;
+        this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-left.png"));
+        this.imgVaisseau = this.icoVaisseau.getImage();
     }
-}
+
+    public void relachePlus(){
+        this.y -= 10;
+
+    }
+    public void relacheMoins(){
+        this.y += 10;
+    }
+    }
+

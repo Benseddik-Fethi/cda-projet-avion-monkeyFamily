@@ -8,9 +8,9 @@ import com.cda.model.Vaisseau;
 public class EcouteurClavier implements KeyListener {
 	int positionX = Vaisseau.x;
 	int positionY = Vaisseau.y;
-	public static final String img1 = "/avion-top.png";
-	public static final String img2 = "/avion-left.png";
-	public static final String img3 = "/avion-right.png";
+	public static final String img1 = "/images/avion-top.png";
+	public static final String img2 = "/images/avion-left.png";
+	public static final String img3 = "/images/avion-right.png";
 	Vaisseau vVaisseau;
 
 	public EcouteurClavier(Vaisseau vVaisseau) {

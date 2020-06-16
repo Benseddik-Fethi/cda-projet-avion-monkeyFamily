@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class Vaisseau extends JPanel {
 	BufferedImage img;
-	public static final String img1 = "/avion-top.png";
+	public static final String img1 = "/images/avion-top.png";
 	public static int x = 250;
 	public static int y = 650;
 

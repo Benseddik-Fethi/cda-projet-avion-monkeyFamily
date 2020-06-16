@@ -14,7 +14,6 @@ public class Vaisseau extends JPanel {
 	public static int y = 650;
 
 	public Vaisseau() {
-
 		chargerImag(img1);
 		setVisible(true);
 	}

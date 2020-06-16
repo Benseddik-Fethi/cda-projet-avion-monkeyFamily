@@ -8,8 +8,6 @@ public class Vaisseau2 {
     private int hauteur;
     private int x;
     private int y;
-    private int dY;
-    private int dX;
     private String strImage;
     private ImageIcon icoVaisseau;
     private Image imgVaisseau;
@@ -82,22 +80,22 @@ public class Vaisseau2 {
     }
 
     public void monte() {
-        dY += 2;
-        this.y = this.y - dY;
+
+        this.y -= 10;
     }
 
     public void descend() {
-        dY -= 2;
-        this.y = this.y + dY;
+
+        this.y += 10;
     }
 
     public void droite() {
-        dX -= 2;
-        this.x = this.x - dX;
+
+        this.x += 10;
     }
 
     public void gauche() {
-        dX += 2;
-        this.x = this.x + dX;
+
+        this.x -= 10;
     }
 }

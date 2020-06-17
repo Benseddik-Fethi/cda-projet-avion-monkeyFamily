@@ -3,7 +3,7 @@ package com.cda.model;
 import javax.swing.*;
 import java.awt.*;
 
-public class Vaisseau {
+public class Vaisseau extends Entite {
 	public static int dX = 0;
 	public static int dY = 0;
 	private int largeur;

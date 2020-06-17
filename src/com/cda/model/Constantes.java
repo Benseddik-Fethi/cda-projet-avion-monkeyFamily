@@ -1,5 +1,7 @@
 package com.cda.model;
 
+import com.cda.utils.Tools;
+
 /**
  * Constantes du projet
  */
@@ -64,15 +66,34 @@ public class Constantes {
     // Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
     protected static final String FOND = "/images/fond.jpg";
 
+
+    /*-----------------Constante Missile---------*/
+    protected static final int LARGEUR_MISSILE = 50;
+    protected static final int HAUTEUR_MISSILE = 50;
+    protected static final int POSITION_DEPART = 0;
+
+
+    /*============Constante Missile Feu==========*/
     // Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
     protected static final String MISSILE_FEU = "/images/missile-feu.png";
+    protected static final int VITESSE_CHUTE_FEU = 3;
 
+    /*============Constante Missile Glace==========*/
     // Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
     protected static final String MISSILE_GLACE = "/images/missile-glace.png";
+    protected static final int VITESSE_CHUTE_GLACE = 1;
 
+    /*============Constante Missile Normal==========*/
     // Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
     protected static final String MISSILE_NORMAL = "/images/missile-normal.png";
+    protected static final int VITESSE_CHUTE_NORMAL = 2;
 
+    /*============Constante Missile ZigZag==========*/
     // Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
     protected static final String MISSILE_ZIGZAG = "/images/missile-zigzag.png";
+    protected static final String MISSILE_ZIGZAG_DROITE = "/images/missile-zigzag-droite.png";
+    protected static final String MISSILE_ZIGZAG_GAUCHE = "/images/missile-zigzag-gauche.png";
+
+    protected static final int VITESSE_CHUTE_ZIGZAG = 1;
+
 }

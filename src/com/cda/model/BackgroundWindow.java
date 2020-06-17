@@ -5,17 +5,18 @@ import com.cda.utils.Tools;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class BackgroundWindow extends JPanel {
     public static Vaisseau vaisseau;
     public int yFond;
-    public MissileFeu vMissileFeu1;
-    public MissileFeu vMissileFeu2;
-    public MissileFeu vMissileFeu3;
+    public Entite vMissileFeu;
+    public Entite vMissileGlace;
+    public Entite vMissileNormal;
+    public Entite vMissileZigZag;
     private ImageIcon icoBandeFond;
     private Image imgBandeFond;
-    private int dYMissile;
-    private int yMissile;
+    private boolean init = true;
 
     public BackgroundWindow(MaFenetre vMaFenetre) {
         this.yFond = 400;
@@ -23,11 +24,7 @@ public class BackgroundWindow extends JPanel {
         this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
         this.imgBandeFond = this.icoBandeFond.getImage();
         vaisseau = new Vaisseau(250, 650, Constantes.AVION_TOP);
-        this.dYMissile = 0;
-        this.yMissile = 100;
-        this.vMissileFeu1 = new MissileFeu(300, Tools.genererInt(-150, -10), Constantes.MISSILE_FEU);
-        this.vMissileFeu2 = new MissileFeu(80, Tools.genererInt(-150, -10), Constantes.MISSILE_FEU);
-        this.vMissileFeu3 = new MissileFeu(400, Tools.genererInt(-150, -10), Constantes.MISSILE_FEU);
+
         this.setFocusable(true);
         this.requestFocusInWindow();
         this.addKeyListener(new EcouteurVaisseau());
@@ -35,27 +32,14 @@ public class BackgroundWindow extends JPanel {
         chronoEcran.start();
     }
 
-    public void deplacementMissile(Graphics g) {
-        /*
-         * this.vMissileFeu1.setY(this.vMissileFeu1.getY() + 1);
-         * this.vMissileFeu2.setY(this.vMissileFeu2.getY() + 1);
-         * this.vMissileFeu3.setY(this.vMissileFeu3.getY() + 1);
-         */
-        /*
-         * if (this.vMissileFeu1.getY() == 810 ) {
-         * this.vMissileFeu1.setY(Tools.genererInt(-150, -10));
-         * this.vMissileFeu1.setX(Tools.genererInt(10, 500)); }
-         * if(this.vMissileFeu2.getY()==810){
-         * this.vMissileFeu2.setY(Tools.genererInt(-150, -10));
-         * this.vMissileFeu2.setX(Tools.genererInt(10, 500)); } if
-         * (this.vMissileFeu3.getY()==810){
-         * this.vMissileFeu3.setY(Tools.genererInt(-150, -10));
-         * this.vMissileFeu3.setX(Tools.genererInt(10, 500)); }
-         */
-        g.drawImage(this.vMissileFeu1.getImgMissile(), this.vMissileFeu1.getX(), this.vMissileFeu1.getY(), null);
-        g.drawImage(this.vMissileFeu2.getImgMissile(), this.vMissileFeu2.getX(), this.vMissileFeu2.getY(), null);
-        g.drawImage(this.vMissileFeu3.getImgMissile(), this.vMissileFeu3.getX(), this.vMissileFeu3.getY(), null);
-
+    public void initMissile() {
+        if (init) {
+            vMissileFeu = new MissileFeu();
+            vMissileGlace = new MissileGlace();
+            vMissileNormal = new MissileNormal();
+            vMissileZigZag = new MissileZigZag();
+            init = false;
+        }
     }
 
     // Methode pour animation du fond d'ecran
@@ -73,14 +57,58 @@ public class BackgroundWindow extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         deplacementFond(g);
+        initMissile();
+
+        if(!vMissileFeu.detruit) {
+            g.drawImage(vMissileFeu.getImgMissile(), vMissileFeu.getxPos(), vMissileFeu.deplacementMissile(), vMissileFeu.hauteur, vMissileFeu.largeur, null);
+        }else {
+            vMissileFeu = missileDetruit();
+        }
+        if(!vMissileGlace.detruit) {
+            g.drawImage(vMissileGlace.getImgMissile(), vMissileGlace.getxPos(), vMissileGlace.deplacementMissile(), vMissileGlace.hauteur, vMissileGlace.largeur, null);
+        }else {
+            vMissileGlace = missileDetruit();
+        }
+        if(!vMissileNormal.detruit) {
+            g.drawImage(vMissileNormal.getImgMissile(), vMissileNormal.getxPos(), vMissileNormal.deplacementMissile(), vMissileNormal.hauteur, vMissileNormal.largeur, null);
+        }else {
+            vMissileNormal = missileDetruit();
+        }
         g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
                 vaisseau.deplacementVaisseauVertical(), 90, 90, null);
-        if (vMissileFeu1.getY() < 700) {
-            g.drawImage(vMissileFeu1.getImgMissile(), vMissileFeu1.getX(), vMissileFeu1.deplacementMissileFeu(), null);
-        } else if (vMissileFeu1.getY() > 700) {
-            vMissileFeu1.setY(0);
-            vMissileFeu1.setX(Tools.genererInt(70, 500));
+
+      /*  if (vMissileFeu1.getyPos() < 820) {
+            g.drawImage(vMissileFeu1.getImgMissile(), vMissileFeu1.getxPos(), vMissileFeu1.deplacementMissile(),vMissileFeu1.hauteur,vMissileFeu1.largeur, null);
+            g.drawImage(vMissileFeu2.getImgMissile(), vMissileFeu2.getxPos(), vMissileFeu2.deplacementMissile(),vMissileFeu2.hauteur,vMissileFeu2.largeur, null);
+            g.drawImage(vMissileFeu3.getImgMissile(), vMissileFeu3.getxPos(), vMissileFeu3.deplacementMissile(),vMissileFeu3.hauteur,vMissileFeu3.largeur, null);
+
+        } else if (vMissileFeu1.getyPos() > 700) {
+            vMissileFeu1.setyPos(0);
+            vMissileFeu1.setxPos(Tools.genererInt(70, 500));
+        }*/
+    }
+
+    public Entite missileDetruit(){
+        Entite sortie = null;
+        ArrayList <Entite> missiles = new ArrayList<>();
+        missiles.add(new MissileGlace());
+        missiles.add(new MissileFeu());
+        missiles.add(new MissileNormal());
+        missiles.add(new MissileZigZag());
+        missiles.add(new MissileGlace());
+        missiles.add(new MissileFeu());
+        missiles.add(new MissileNormal());
+        missiles.add(new MissileZigZag());
+        missiles.add(new MissileGlace());
+        missiles.add(new MissileFeu());
+        missiles.add(new MissileNormal());
+        missiles.add(new MissileZigZag());
+
+        if(vMissileFeu.detruit || vMissileGlace.detruit || vMissileNormal.detruit){
+            sortie = missiles.get(Tools.genererInt(0, missiles.size()));
         }
+
+        return sortie;
     }
 
 }

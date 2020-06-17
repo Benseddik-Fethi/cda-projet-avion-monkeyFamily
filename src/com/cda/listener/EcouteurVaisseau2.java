@@ -1,13 +1,12 @@
 package com.cda.listener;
 
-import com.cda.model.MaFenetre;
-import com.cda.model.Vaisseau;
 import com.cda.model.Vaisseau2;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class EcouteurVaisseau2 implements KeyListener {
+    private static final int VITESSE = 2;
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -17,23 +16,21 @@ public class EcouteurVaisseau2 implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_DOWN:
-                Vaisseau2.dY = 2;
-
+                Vaisseau2.dY = VITESSE;
                 break;
+
             case KeyEvent.VK_UP:
-                Vaisseau2.dY = -2;
+                Vaisseau2.dY = -VITESSE;
                 break;
-            case KeyEvent.VK_RIGHT:
 
-                Vaisseau2.dX = 2;
-               // MaFenetre.vBackgroundWindow.vaisseau.droite();
+            case KeyEvent.VK_RIGHT:
+                Vaisseau2.dX = VITESSE;
                 break;
+
             case KeyEvent.VK_LEFT:
-                Vaisseau2.dX = -2;
-               // MaFenetre.vBackgroundWindow.vaisseau.gauche();
+                Vaisseau2.dX = -VITESSE;
                 break;
         }
-
     }
 
     @Override

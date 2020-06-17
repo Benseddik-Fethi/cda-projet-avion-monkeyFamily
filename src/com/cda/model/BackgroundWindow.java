@@ -85,7 +85,7 @@ public class BackgroundWindow extends JPanel {
         super.paintComponent(g);
         deplacementFond(g);
         deplacementMissile(g);
-        g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(), vaisseau.deplacementVaisseauVertical(), 100, 100, null);
+        g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(), vaisseau.deplacementVaisseauVertical(), 90, 90, null);
     }
 
     public void chargerImag(String vImg) {

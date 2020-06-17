@@ -1,10 +1,7 @@
 package com.cda.model;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class Vaisseau2 {
     public static final String img1 = "/images/avion-top.png";

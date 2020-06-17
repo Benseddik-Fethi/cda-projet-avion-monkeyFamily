@@ -9,6 +9,7 @@ public class Chrono implements Runnable {
             MaFenetre.vBackgroundWindow.repaint();
             try {
                 Thread.sleep(Constantes.VITESSE_DEFILEMENT_FOND);
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -24,7 +24,7 @@ public class Constantes {
      * d�filement du fond en modifiant la
      * valeur.
      */
-    protected final static int VITESSE_DEFILEMENT_FOND = 5;
+    protected final static int VITESSE_DEFILEMENT_FOND = 50;
 
     /**
      * Utilis� dans la classe MaFenetre dans le package com.cda.listener.
@@ -68,6 +68,11 @@ public class Constantes {
     // Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
     protected static final String FOND = "/images/fond.jpg";
 
+/*========Constante Avion========*/
+    protected static final int HAUTEUR_AVION = 50;
+    protected static final int LARGEUR_AVION = 50;
+    protected static final int POSITIONX_DEPART_AVION =250;
+    protected static final int POSITIONY_DEPART_AVION =650;
 
     /*-----------------Constante Missile---------*/
     protected static final int LARGEUR_MISSILE = 50;
@@ -83,7 +88,7 @@ public class Constantes {
     /*============Constante Missile Glace==========*/
     // Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
     protected static final String MISSILE_GLACE = "/images/missile-glace.png";
-    protected static final int VITESSE_CHUTE_GLACE = 1;
+    protected static final int VITESSE_CHUTE_GLACE = 2;
 
     /*============Constante Missile Normal==========*/
     // Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
@@ -98,7 +103,7 @@ public class Constantes {
     protected static final int VITESSE_CHUTE_ZIGZAG = 1;
 
     /*=======Constante Tableau Missile========*/
-    protected static final int NOMBRE_MISSILE_INIT = 10;
+    protected static final int NOMBRE_MISSILE_INIT = 1;
     protected static final ArrayList<Entite> mesMissile = new ArrayList<>();
 
 

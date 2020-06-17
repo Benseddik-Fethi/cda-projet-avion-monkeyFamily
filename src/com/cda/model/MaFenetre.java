@@ -12,6 +12,9 @@ public class MaFenetre extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Test");
 		setResizable(false);
+//		Toolkit kit = Toolkit.getDefaultToolkit();
+//		Image img = kit.getImage("c:/logo.gif");
+//		setIconImage(img);
 		vBackgroundWindow = new TableauDeBord(this);
 		new Vaisseau(250, 650, Constantes.AVION_TOP);
 		this.getContentPane().add(vBackgroundWindow);

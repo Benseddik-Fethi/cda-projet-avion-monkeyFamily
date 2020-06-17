@@ -9,11 +9,8 @@ import java.util.ArrayList;
 
 public class BackgroundWindow extends JPanel {
     public static Vaisseau vaisseau;
+    public static boolean finDuJeu = false;
     public int yFond;
-    public Entite vMissileFeu;
-    public Entite vMissileGlace;
-    public Entite vMissileNormal;
-    public Entite vMissileZigZag;
     private ImageIcon icoBandeFond;
     private Image imgBandeFond;
     private boolean init = true;
@@ -34,10 +31,9 @@ public class BackgroundWindow extends JPanel {
 
     public void initMissile() {
         if (init) {
-            vMissileFeu = new MissileFeu();
-            vMissileGlace = new MissileGlace();
-            vMissileNormal = new MissileNormal();
-            vMissileZigZag = new MissileZigZag();
+            for (int i = 0; i <Constantes.NOMBRE_MISSILE_INIT ; i++) {
+                Constantes.mesMissile.add(missileDetruit());
+            }
             init = false;
         }
     }
@@ -58,39 +54,28 @@ public class BackgroundWindow extends JPanel {
         super.paintComponent(g);
         deplacementFond(g);
         initMissile();
-
-        if(!vMissileFeu.detruit) {
-            g.drawImage(vMissileFeu.getImgMissile(), vMissileFeu.getxPos(), vMissileFeu.deplacementMissile(), vMissileFeu.hauteur, vMissileFeu.largeur, null);
-        }else {
-            vMissileFeu = missileDetruit();
+        ArrayList<Entite> missileDetruit = new ArrayList<>();
+        for (Entite monMissile : Constantes.mesMissile) {
+            if (!monMissile.detruit) {
+                g.drawImage(monMissile.getImgMissile(), monMissile.getxPos(), monMissile.deplacementMissile(), monMissile.hauteur, monMissile.largeur, null);
+            } else {
+               missileDetruit.add(monMissile);
+            }
+            //monMissile = missileDetruit();
         }
-        if(!vMissileGlace.detruit) {
-            g.drawImage(vMissileGlace.getImgMissile(), vMissileGlace.getxPos(), vMissileGlace.deplacementMissile(), vMissileGlace.hauteur, vMissileGlace.largeur, null);
-        }else {
-            vMissileGlace = missileDetruit();
-        }
-        if(!vMissileNormal.detruit) {
-            g.drawImage(vMissileNormal.getImgMissile(), vMissileNormal.getxPos(), vMissileNormal.deplacementMissile(), vMissileNormal.hauteur, vMissileNormal.largeur, null);
-        }else {
-            vMissileNormal = missileDetruit();
+        Constantes.mesMissile.removeAll(missileDetruit);
+        for (int i = 0; i < missileDetruit.size() ; i++) {
+            Constantes.mesMissile.add(missileDetruit());
         }
         g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
                 vaisseau.deplacementVaisseauVertical(), 90, 90, null);
 
-      /*  if (vMissileFeu1.getyPos() < 820) {
-            g.drawImage(vMissileFeu1.getImgMissile(), vMissileFeu1.getxPos(), vMissileFeu1.deplacementMissile(),vMissileFeu1.hauteur,vMissileFeu1.largeur, null);
-            g.drawImage(vMissileFeu2.getImgMissile(), vMissileFeu2.getxPos(), vMissileFeu2.deplacementMissile(),vMissileFeu2.hauteur,vMissileFeu2.largeur, null);
-            g.drawImage(vMissileFeu3.getImgMissile(), vMissileFeu3.getxPos(), vMissileFeu3.deplacementMissile(),vMissileFeu3.hauteur,vMissileFeu3.largeur, null);
-
-        } else if (vMissileFeu1.getyPos() > 700) {
-            vMissileFeu1.setyPos(0);
-            vMissileFeu1.setxPos(Tools.genererInt(70, 500));
-        }*/
     }
 
-    public Entite missileDetruit(){
+
+    public Entite missileDetruit() {
         Entite sortie = null;
-        ArrayList <Entite> missiles = new ArrayList<>();
+        ArrayList<Entite> missiles = new ArrayList<>();
         missiles.add(new MissileGlace());
         missiles.add(new MissileFeu());
         missiles.add(new MissileNormal());
@@ -104,11 +89,7 @@ public class BackgroundWindow extends JPanel {
         missiles.add(new MissileNormal());
         missiles.add(new MissileZigZag());
 
-        if(vMissileFeu.detruit || vMissileGlace.detruit || vMissileNormal.detruit){
-            sortie = missiles.get(Tools.genererInt(0, missiles.size()));
-        }
+        return missiles.get(Tools.genererInt(0, missiles.size()));
 
-        return sortie;
     }
-
 }

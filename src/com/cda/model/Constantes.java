@@ -2,6 +2,8 @@ package com.cda.model;
 
 import com.cda.utils.Tools;
 
+import java.util.ArrayList;
+
 /**
  * Constantes du projet
  */
@@ -93,7 +95,11 @@ public class Constantes {
     protected static final String MISSILE_ZIGZAG = "/images/missile-zigzag.png";
     protected static final String MISSILE_ZIGZAG_DROITE = "/images/missile-zigzag-droite.png";
     protected static final String MISSILE_ZIGZAG_GAUCHE = "/images/missile-zigzag-gauche.png";
-
     protected static final int VITESSE_CHUTE_ZIGZAG = 1;
+
+    /*=======Constante Tableau Missile========*/
+    protected static final int NOMBRE_MISSILE_INIT = 10;
+    protected static final ArrayList<Entite> mesMissile = new ArrayList<>();
+
 
 }

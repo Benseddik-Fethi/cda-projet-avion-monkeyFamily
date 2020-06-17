@@ -1,17 +1,24 @@
 package com.cda.model;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Vaisseau2 {
+    public static final String img1 = "/images/avion-top.png";
+    public static int dX = 0;
+    public static int dY = 0;
+    private final int PAUSE = 10;
     private int largeur;
     private int hauteur;
     private int x;
     private int y;
+
     private String strImage;
     private ImageIcon icoVaisseau;
     private Image imgVaisseau;
-    private final int PAUSE = 10;
 
     public Vaisseau2(int x, int y, String strImage) {
         this.largeur = 10;
@@ -19,10 +26,11 @@ public class Vaisseau2 {
         this.x = x;
         this.y = y;
         this.strImage = strImage;
-        this.icoVaisseau = new ImageIcon(getClass().getResource(this.strImage));
+        this.icoVaisseau = new ImageIcon(getClass().getResource(strImage));
         this.imgVaisseau = this.icoVaisseau.getImage();
 
     }
+
 
     public int getLargeur() {
         return largeur;
@@ -80,35 +88,37 @@ public class Vaisseau2 {
         this.imgVaisseau = imgVaisseau;
     }
 
-    public void monte() {
 
-        this.y -= 20;
+
+    public int deplacementVaisseauHorizontal() {
+        if (dX > 0) {
+            this.x = this.x + dX;
+            this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-right.png"));
+            this.imgVaisseau = this.icoVaisseau.getImage();
+
+        }else if(dX<0){
+            this.x = this.x + dX;
+            this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-left.png"));
+            this.imgVaisseau = this.icoVaisseau.getImage();
+        }else{
+            this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-top.png"));
+            this.imgVaisseau = this.icoVaisseau.getImage();
+        }
+
+        return this.getX();
+    }
+    public int deplacementVaisseauVertical() {
+        if (dY > 0) {
+            this.y = this.y + dY;
+
+        }else if(dY<0){
+            this.y = this.y + dY;
+        }
+
+        return this.getY();
     }
 
-    public void descend() {
 
-        this.y += 20;
-    }
 
-    public void droite() {
-
-        this.x += 20;
-        this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-right.png"));
-        this.imgVaisseau = this.icoVaisseau.getImage();
-    }
-
-    public void gauche() {
-        this.x -= 20;
-        this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-left.png"));
-        this.imgVaisseau = this.icoVaisseau.getImage();
-    }
-
-    public void relachePlus(){
-        this.y -= 10;
-
-    }
-    public void relacheMoins(){
-        this.y += 10;
-    }
-    }
+}
 

@@ -15,10 +15,9 @@ public class MaFenetre extends JFrame {
 		setTitle("Test");
 		setResizable(false);
 		vBackgroundWindow = new BackgroundWindow(this);
-		// Vaisseau vVaisseau = new Vaisseau();
-		// this.getContentPane().add(vVaisseau);
+		new Vaisseau2(250, 650, "/images/avion-top.png");
 		this.getContentPane().add(vBackgroundWindow);
-		this.addMouseListener(new EcouteurVaisseau2());
+		this.addKeyListener(new EcouteurVaisseau2());
 		// this.addKeyListener(new EcouteurClavier(vVaisseau));
 		setVisible(true);
 	}

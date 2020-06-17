@@ -4,15 +4,18 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class Vaisseau2 implements Runnable {
+public class Vaisseau2 {
+	public static final String img1 = "/images/avion-top.png";
+	public static int dX = 0;
+	public static int dY = 0;
 	private int largeur;
 	private int hauteur;
 	private int x;
 	private int y;
+
 	private String strImage;
 	private ImageIcon icoVaisseau;
 	private Image imgVaisseau;
-	private static final int VITESSE = 20;
 
 	public Vaisseau2(int x, int y, String strImage) {
 		this.largeur = 10;
@@ -20,8 +23,9 @@ public class Vaisseau2 implements Runnable {
 		this.x = x;
 		this.y = y;
 		this.strImage = strImage;
-		this.icoVaisseau = new ImageIcon(getClass().getResource(this.strImage));
+		this.icoVaisseau = new ImageIcon(getClass().getResource(strImage));
 		this.imgVaisseau = this.icoVaisseau.getImage();
+
 	}
 
 	public int getLargeur() {
@@ -80,25 +84,31 @@ public class Vaisseau2 implements Runnable {
 		this.imgVaisseau = imgVaisseau;
 	}
 
-	public void monte() {
-		this.y -= VITESSE;
+	public int deplacementVaisseauHorizontal() {
+		if (dX > 0) {
+			this.x = this.x + dX;
+			this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-right.png"));
+			this.imgVaisseau = this.icoVaisseau.getImage();
+
+		} else if (dX < 0) {
+			this.x = this.x + dX;
+			this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-left.png"));
+			this.imgVaisseau = this.icoVaisseau.getImage();
+		} else {
+			this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-top.png"));
+			this.imgVaisseau = this.icoVaisseau.getImage();
+		}
+		return this.getX();
 	}
 
-	public void descend() {
-		this.y += VITESSE;
-	}
+	public int deplacementVaisseauVertical() {
+		if (dY > 0) {
+			this.y = this.y + dY;
 
-	public void droite() {
-		this.x += VITESSE;
-	}
+		} else if (dY < 0) {
+			this.y = this.y + dY;
+		}
 
-	public void gauche() {
-		this.x -= VITESSE;
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-
+		return this.getY();
 	}
 }

@@ -4,8 +4,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class Vaisseau2 {
-	public static final String img1 = "/images/avion-top.png";
+public class Vaisseau {
 	public static int dX = 0;
 	public static int dY = 0;
 	private int largeur;
@@ -17,7 +16,7 @@ public class Vaisseau2 {
 	private ImageIcon icoVaisseau;
 	private Image imgVaisseau;
 
-	public Vaisseau2(int x, int y, String strImage) {
+	public Vaisseau(int x, int y, String strImage) {
 		this.largeur = 10;
 		this.hauteur = 10;
 		this.x = x;
@@ -87,15 +86,14 @@ public class Vaisseau2 {
 	public int deplacementVaisseauHorizontal() {
 		if (dX > 0) {
 			this.x = this.x + dX;
-			this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-right.png"));
+			this.icoVaisseau = new ImageIcon(getClass().getResource(Constantes.AVION_RIGHT));
 			this.imgVaisseau = this.icoVaisseau.getImage();
-
 		} else if (dX < 0) {
 			this.x = this.x + dX;
-			this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-left.png"));
+			this.icoVaisseau = new ImageIcon(getClass().getResource(Constantes.AVION_LEFT));
 			this.imgVaisseau = this.icoVaisseau.getImage();
 		} else {
-			this.icoVaisseau = new ImageIcon(getClass().getResource("/images/avion-top.png"));
+			this.icoVaisseau = new ImageIcon(getClass().getResource(Constantes.AVION_TOP));
 			this.imgVaisseau = this.icoVaisseau.getImage();
 		}
 		return this.getX();
@@ -104,11 +102,9 @@ public class Vaisseau2 {
 	public int deplacementVaisseauVertical() {
 		if (dY > 0) {
 			this.y = this.y + dY;
-
 		} else if (dY < 0) {
 			this.y = this.y + dY;
 		}
-
 		return this.getY();
 	}
 }

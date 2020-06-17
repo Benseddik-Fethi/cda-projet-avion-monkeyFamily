@@ -3,11 +3,10 @@ package com.cda.utils;
 import java.util.Random;
 
 public class Tools {
-
-    public static int genererInt(int borneInf, int borneSup){
-        Random random = new Random();
-        int nb;
-        nb = borneInf+random.nextInt(borneSup-borneInf);
-        return nb;
-    }
+	public static int genererInt(int borneInf, int borneSup) {
+		Random random = new Random();
+		int nb;
+		nb = borneInf + random.nextInt(borneSup - borneInf);
+		return nb;
+	}
 }

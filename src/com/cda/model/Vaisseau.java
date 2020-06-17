@@ -1,8 +1,7 @@
 package com.cda.model;
 
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.awt.*;
 
 public class Vaisseau {
 	public static int dX = 0;

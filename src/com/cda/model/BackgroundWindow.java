@@ -1,12 +1,16 @@
 package com.cda.model;
 
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import com.cda.listener.EcouteurVaisseau;
+import com.cda.listener.EcouteurVaisseauSouris;
 import com.cda.utils.Tools;
 
 public class BackgroundWindow extends JPanel {
@@ -21,6 +25,11 @@ public class BackgroundWindow extends JPanel {
 	private int yMissile;
 
 	public BackgroundWindow(MaFenetre vMaFenetre) {
+		// Pour jouer à la souris
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image image = toolkit.getImage(Constantes.AVION_TOP);
+		Cursor perso = toolkit.createCustomCursor(image, new Point(0, 0), "perso");
+		this.setCursor(perso);
 		this.yFond = 400;
 		setSize(vMaFenetre.getWidth(), vMaFenetre.getHeight());
 		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
@@ -34,6 +43,9 @@ public class BackgroundWindow extends JPanel {
 		this.setFocusable(true);
 		this.requestFocusInWindow();
 		this.addKeyListener(new EcouteurVaisseau());
+		this.addMouseListener(new EcouteurVaisseauSouris());
+		this.addMouseMotionListener(new EcouteurVaisseauSouris());
+
 		Thread chronoEcran = new Thread(new Chrono());
 		chronoEcran.start();
 	}

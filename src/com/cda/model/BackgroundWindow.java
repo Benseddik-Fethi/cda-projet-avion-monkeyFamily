@@ -2,8 +2,6 @@ package com.cda.model;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -21,10 +19,8 @@ public class BackgroundWindow extends JPanel {
 	public MissileFeu vMissileFeu3;
 	private ImageIcon icoBandeFond;
 	private Image imgBandeFond;
-	private BufferedImage imgVaisseau;
 	private int dYMissile;
 	private int yMissile;
-	private Random hasard;
 
 	public BackgroundWindow(MaFenetre vMaFenetre) {
 		this.yFond = 400;
@@ -37,7 +33,6 @@ public class BackgroundWindow extends JPanel {
 		this.vMissileFeu1 = new MissileFeu(300, Tools.genererInt(-150, -10), "/images/missile-feu.png");
 		this.vMissileFeu2 = new MissileFeu(80, Tools.genererInt(-150, -10), "/images/missile-feu.png");
 		this.vMissileFeu3 = new MissileFeu(400, Tools.genererInt(-150, -10), "/images/missile-feu.png");
-		hasard = new Random();
 		this.setFocusable(true);
 		this.requestFocusInWindow();
 		this.addKeyListener(new EcouteurVaisseau());

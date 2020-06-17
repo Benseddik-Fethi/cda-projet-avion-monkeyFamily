@@ -3,12 +3,8 @@ package com.cda.model;
 import com.cda.listener.EcouteurVaisseau2;
 import com.cda.utils.Tools;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Random;
 
 
 public class BackgroundWindow extends JPanel {
@@ -22,10 +18,9 @@ public class BackgroundWindow extends JPanel {
     public MissileFeu vMissileFeu3;
     private ImageIcon icoBandeFond;
     private Image imgBandeFond;
-    private BufferedImage imgVaisseau;
     private int dYMissile;
     private int yMissile;
-    private Random hasard;
+
 
 
     public BackgroundWindow(MaFenetre vMaFenetre) {
@@ -39,7 +34,6 @@ public class BackgroundWindow extends JPanel {
         this.vMissileFeu1 = new MissileFeu(300, Tools.genererInt(-150, -10), "/images/missile-feu.png");
         this.vMissileFeu2 = new MissileFeu(80, Tools.genererInt(-150, -10), "/images/missile-feu.png");
         this.vMissileFeu3 = new MissileFeu(400, Tools.genererInt(-150, -10), "/images/missile-feu.png");
-        hasard = new Random();
         this.setFocusable(true);
         this.requestFocusInWindow();
         this.addKeyListener(new EcouteurVaisseau2());
@@ -88,12 +82,5 @@ public class BackgroundWindow extends JPanel {
         g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(), vaisseau.deplacementVaisseauVertical(), 90, 90, null);
     }
 
-    public void chargerImag(String vImg) {
-        try {
-            imgVaisseau = ImageIO.read(Vaisseau.class.getResource(vImg));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
 

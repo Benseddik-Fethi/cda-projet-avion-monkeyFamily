@@ -86,14 +86,14 @@ public class Vaisseau {
 	public int deplacementVaisseauHorizontal() {
 		if (dX > 0) {
 			this.x = this.x + dX;
-			this.icoVaisseau = new ImageIcon(getClass().getResource(Constantes.AVION_TOP));
+			this.icoVaisseau = new ImageIcon(getClass().getResource(Constantes.AVION_RIGHT));
 			this.imgVaisseau = this.icoVaisseau.getImage();
 		} else if (dX < 0) {
 			this.x = this.x + dX;
 			this.icoVaisseau = new ImageIcon(getClass().getResource(Constantes.AVION_LEFT));
 			this.imgVaisseau = this.icoVaisseau.getImage();
 		} else {
-			this.icoVaisseau = new ImageIcon(getClass().getResource(Constantes.AVION_RIGHT));
+			this.icoVaisseau = new ImageIcon(getClass().getResource(Constantes.AVION_TOP));
 			this.imgVaisseau = this.icoVaisseau.getImage();
 		}
 		return this.getX();

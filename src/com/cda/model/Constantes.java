@@ -70,7 +70,7 @@ public class Constantes {
 	protected static final String AVION_RIGHT = "/images/avion-right.png";
 
 	// Utilisé dans la classe BackgroundWindow dans le package com.cda.listener.
-	protected static final String FOND = "/images/fond.png";
+	protected static final String FOND = "/images/fond.jpg";
 
 	// Utilisé dans la classe BackgroundWindow dans le package com.cda.listener.
 	protected static final String MISSILE_FEU = "/images/missile-feu.png";

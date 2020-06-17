@@ -36,6 +36,22 @@ public class TableauDeBord extends JPanel {
         chronoEcran.start();
     }
 
+    public static void collissionArray(Entite vVaisseau, ArrayList<Entite> listMissile) {
+        for (Entite entite : listMissile) {
+            collision(entite, vVaisseau);
+        }
+    }
+
+    public static void collision(Entite vMissile, Entite vVaisseau) {
+        Rectangle rect1 = vMissile.getBounds();
+        Rectangle rect2 = vVaisseau.getBounds();
+        if (rect2.intersects(rect1)) {
+            System.out.println("BOOM!!!!");
+        } else {
+
+        }
+    }
+
     public void initMissile() {
         if (init) {
             for (int i = 0; i < Constantes.NOMBRE_MISSILE_INIT; i++) {
@@ -61,7 +77,7 @@ public class TableauDeBord extends JPanel {
         super.paintComponent(g);
         deplacementFond(g);
         initMissile();
-        TableauDeBord.collision(TableauDeBord.vaisseau, Constantes.mesMissile.get(0));
+        collissionArray(vaisseau, Constantes.mesMissile);
         ArrayList<Entite> missileDetruit = new ArrayList<>();
         for (Entite monMissile : Constantes.mesMissile) {
             if (!monMissile.detruit) {
@@ -76,10 +92,9 @@ public class TableauDeBord extends JPanel {
             Constantes.mesMissile.add(missileDetruit());
         }
         g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
-                vaisseau.deplacementVaisseauVertical(),vaisseau.hauteur, vaisseau.largeur, null);
+                vaisseau.deplacementVaisseauVertical(), vaisseau.hauteur, vaisseau.largeur, null);
 
     }
-
 
     public Entite missileDetruit() {
         Entite sortie = null;
@@ -95,16 +110,6 @@ public class TableauDeBord extends JPanel {
             sortie = new MissileNormal();
         }
         return sortie;
-    }
-
-    public static void collision(Entite vMissile, Entite vVaisseau) {
-        Rectangle rect1 = vMissile.getBounds();
-        Rectangle rect2 = vVaisseau.getBounds();
-        if (rect2.intersects(rect1)) {
-            System.out.println("BOOM!!!!");
-        } else {
-
-        }
     }
 
 }

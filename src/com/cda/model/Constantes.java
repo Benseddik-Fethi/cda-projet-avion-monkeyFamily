@@ -24,7 +24,7 @@ public class Constantes {
      * d�filement du fond en modifiant la
      * valeur.
      */
-    protected final static int VITESSE_DEFILEMENT_FOND = 50;
+    protected final static int VITESSE_DEFILEMENT_FOND = 5;
 
     /**
      * Utilis� dans la classe MaFenetre dans le package com.cda.listener.
@@ -103,7 +103,7 @@ public class Constantes {
     protected static final int VITESSE_CHUTE_ZIGZAG = 1;
 
     /*=======Constante Tableau Missile========*/
-    protected static final int NOMBRE_MISSILE_INIT = 1;
+    protected static final int NOMBRE_MISSILE_INIT = 5;
     protected static final ArrayList<Entite> mesMissile = new ArrayList<>();
 
 

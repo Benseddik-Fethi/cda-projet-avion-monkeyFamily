@@ -4,7 +4,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class Vaisseau2 {
+public class Vaisseau2 implements Runnable {
 	private int largeur;
 	private int hauteur;
 	private int x;
@@ -22,7 +22,6 @@ public class Vaisseau2 {
 		this.strImage = strImage;
 		this.icoVaisseau = new ImageIcon(getClass().getResource(this.strImage));
 		this.imgVaisseau = this.icoVaisseau.getImage();
-
 	}
 
 	public int getLargeur() {
@@ -95,5 +94,11 @@ public class Vaisseau2 {
 
 	public void gauche() {
 		this.x -= VITESSE;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
 	}
 }

@@ -4,7 +4,7 @@ public class Chrono implements Runnable {
 
     @Override
     public void run() {
-        while (!BackgroundWindow.finDuJeu) {
+        while (!TableauDeBord.finDuJeu) {
             MaFenetre.vBackgroundWindow.yFond++;
             MaFenetre.vBackgroundWindow.repaint();
             try {

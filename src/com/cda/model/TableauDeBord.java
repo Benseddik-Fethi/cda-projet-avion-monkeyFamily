@@ -76,7 +76,7 @@ public class TableauDeBord extends JPanel {
             Constantes.mesMissile.add(missileDetruit());
         }
         g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
-                vaisseau.deplacementVaisseauVertical(),100, 100, null);
+                vaisseau.deplacementVaisseauVertical(),vaisseau.hauteur, vaisseau.largeur, null);
 
     }
 
@@ -100,7 +100,6 @@ public class TableauDeBord extends JPanel {
     public static void collision(Entite vMissile, Entite vVaisseau) {
         Rectangle rect1 = vMissile.getBounds();
         Rectangle rect2 = vVaisseau.getBounds();
-
         if (rect2.intersects(rect1)) {
             System.out.println("BOOM!!!!");
         } else {

@@ -6,6 +6,8 @@ public class Vaisseau extends Entite {
 
 
     public Vaisseau() {
+        this.hauteur = Constantes.HAUTEUR_AVION;
+        this.largeur = Constantes.LARGEUR_AVION;
         this.xPos = Constantes.POSITIONX_DEPART_AVION;
         this.yPos =Constantes.POSITIONY_DEPART_AVION;
         this.strImage = Constantes.AVION_TOP;

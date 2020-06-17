@@ -3,11 +3,10 @@ package com.cda.listener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import com.cda.model.Constantes;
 import com.cda.model.Vaisseau;
 
 public class EcouteurVaisseau implements KeyListener {
-	private static final int VITESSE = 5;
-
 	@Override
 	public void keyTyped(KeyEvent e) {
 
@@ -17,16 +16,16 @@ public class EcouteurVaisseau implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_DOWN:
-			Vaisseau.dY = VITESSE;
+			Vaisseau.dY = Constantes.VITESSE_VAISSEAU;
 			break;
 		case KeyEvent.VK_UP:
-			Vaisseau.dY = -VITESSE;
+			Vaisseau.dY = -Constantes.VITESSE_VAISSEAU;
 			break;
 		case KeyEvent.VK_RIGHT:
-			Vaisseau.dX = VITESSE;
+			Vaisseau.dX = Constantes.VITESSE_VAISSEAU;
 			break;
 		case KeyEvent.VK_LEFT:
-			Vaisseau.dX = -VITESSE;
+			Vaisseau.dX = -Constantes.VITESSE_VAISSEAU;
 			break;
 		}
 	}

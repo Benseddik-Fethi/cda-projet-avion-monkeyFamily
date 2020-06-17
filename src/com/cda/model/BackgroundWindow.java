@@ -10,8 +10,6 @@ import com.cda.listener.EcouteurVaisseau;
 import com.cda.utils.Tools;
 
 public class BackgroundWindow extends JPanel {
-	private final int HAUTEUR = 400;
-	private final int DISTANCE_MISSILES = 300;
 	public int yFond;
 	public static Vaisseau vaisseau;
 	public MissileFeu vMissileFeu1;
@@ -25,14 +23,14 @@ public class BackgroundWindow extends JPanel {
 	public BackgroundWindow(MaFenetre vMaFenetre) {
 		this.yFond = 400;
 		setSize(vMaFenetre.getWidth(), vMaFenetre.getHeight());
-		this.icoBandeFond = new ImageIcon(getClass().getResource("/images/fond.jpg"));
+		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
 		this.imgBandeFond = this.icoBandeFond.getImage();
-		vaisseau = new Vaisseau(250, 650, "/images/avion-top.png");
+		vaisseau = new Vaisseau(250, 650, Constantes.AVION_TOP);
 		this.dYMissile = 0;
 		this.yMissile = 100;
-		this.vMissileFeu1 = new MissileFeu(300, Tools.genererInt(-150, -10), "/images/missile-feu.png");
-		this.vMissileFeu2 = new MissileFeu(80, Tools.genererInt(-150, -10), "/images/missile-feu.png");
-		this.vMissileFeu3 = new MissileFeu(400, Tools.genererInt(-150, -10), "/images/missile-feu.png");
+		this.vMissileFeu1 = new MissileFeu(300, Tools.genererInt(-150, -10), Constantes.MISSILE_FEU);
+		this.vMissileFeu2 = new MissileFeu(80, Tools.genererInt(-150, -10), Constantes.MISSILE_FEU);
+		this.vMissileFeu3 = new MissileFeu(400, Tools.genererInt(-150, -10), Constantes.MISSILE_FEU);
 		this.setFocusable(true);
 		this.requestFocusInWindow();
 		this.addKeyListener(new EcouteurVaisseau());
@@ -65,13 +63,13 @@ public class BackgroundWindow extends JPanel {
 
 	// Methode pour animation du fond d'ecran
 	private void deplacementFond(Graphics g) {
-		if (yFond == MaFenetre.FENETRE_HEIGHT) {
+		if (yFond == Constantes.FENETRE_HEIGHT) {
 			yFond = 400;
 		}
 		g.drawImage(this.imgBandeFond, 0, this.yFond, null);
-		g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR, null);
-		g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR * 2, null);
-		g.drawImage(this.imgBandeFond, 0, this.yFond - this.HAUTEUR * 3, null);
+		g.drawImage(this.imgBandeFond, 0, this.yFond - Constantes.IMAGE_HEIGHT, null);
+		g.drawImage(this.imgBandeFond, 0, this.yFond - Constantes.IMAGE_HEIGHT * 2, null);
+		g.drawImage(this.imgBandeFond, 0, this.yFond - Constantes.IMAGE_HEIGHT * 3, null);
 	}
 
 	@Override

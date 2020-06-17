@@ -8,14 +8,14 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import com.cda.listener.EcouteurVaisseau2;
+import com.cda.listener.EcouteurVaisseau;
 import com.cda.utils.Tools;
 
 public class BackgroundWindow extends JPanel {
 	private final int HAUTEUR = 400;
 	private final int DISTANCE_MISSILES = 300;
 	public int yFond;
-	public static Vaisseau2 vaisseau;
+	public static Vaisseau vaisseau;
 	public MissileFeu vMissileFeu1;
 	public MissileFeu vMissileFeu2;
 	public MissileFeu vMissileFeu3;
@@ -31,7 +31,7 @@ public class BackgroundWindow extends JPanel {
 		setSize(vMaFenetre.getWidth(), vMaFenetre.getHeight());
 		this.icoBandeFond = new ImageIcon(getClass().getResource("/images/fond.jpg"));
 		this.imgBandeFond = this.icoBandeFond.getImage();
-		vaisseau = new Vaisseau2(250, 650, "/images/avion-top.png");
+		vaisseau = new Vaisseau(250, 650, "/images/avion-top.png");
 		this.dYMissile = 0;
 		this.yMissile = 100;
 		this.vMissileFeu1 = new MissileFeu(300, Tools.genererInt(-150, -10), "/images/missile-feu.png");
@@ -40,7 +40,7 @@ public class BackgroundWindow extends JPanel {
 		hasard = new Random();
 		this.setFocusable(true);
 		this.requestFocusInWindow();
-		this.addKeyListener(new EcouteurVaisseau2());
+		this.addKeyListener(new EcouteurVaisseau());
 		Thread chronoEcran = new Thread(new Chrono());
 		chronoEcran.start();
 	}

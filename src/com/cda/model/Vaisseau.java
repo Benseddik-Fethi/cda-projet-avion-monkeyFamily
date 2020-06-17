@@ -4,7 +4,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class Vaisseau2 {
+public class Vaisseau {
 	public static final String img1 = "/images/avion-top.png";
 	public static int dX = 0;
 	public static int dY = 0;
@@ -17,7 +17,7 @@ public class Vaisseau2 {
 	private ImageIcon icoVaisseau;
 	private Image imgVaisseau;
 
-	public Vaisseau2(int x, int y, String strImage) {
+	public Vaisseau(int x, int y, String strImage) {
 		this.largeur = 10;
 		this.hauteur = 10;
 		this.x = x;

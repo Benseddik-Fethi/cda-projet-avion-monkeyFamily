@@ -2,7 +2,7 @@ package com.cda.model;
 
 import javax.swing.JFrame;
 
-import com.cda.listener.EcouteurVaisseau2;
+import com.cda.listener.EcouteurVaisseau;
 
 public class MaFenetre extends JFrame {
 	public final static int FENETRE_WIDTH = 600;
@@ -15,9 +15,9 @@ public class MaFenetre extends JFrame {
 		setTitle("Test");
 		setResizable(false);
 		vBackgroundWindow = new BackgroundWindow(this);
-		new Vaisseau2(250, 650, "/images/avion-top.png");
+		new Vaisseau(250, 650, "/images/avion-top.png");
 		this.getContentPane().add(vBackgroundWindow);
-		this.addKeyListener(new EcouteurVaisseau2());
+		this.addKeyListener(new EcouteurVaisseau());
 		setVisible(true);
 	}
 }

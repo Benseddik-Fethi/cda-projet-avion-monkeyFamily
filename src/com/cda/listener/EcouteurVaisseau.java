@@ -3,9 +3,9 @@ package com.cda.listener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import com.cda.model.Vaisseau2;
+import com.cda.model.Vaisseau;
 
-public class EcouteurVaisseau2 implements KeyListener {
+public class EcouteurVaisseau implements KeyListener {
 	private static final int VITESSE = 5;
 
 	@Override
@@ -17,19 +17,16 @@ public class EcouteurVaisseau2 implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_DOWN:
-			Vaisseau2.dY = VITESSE;
+			Vaisseau.dY = VITESSE;
 			break;
-
 		case KeyEvent.VK_UP:
-			Vaisseau2.dY = -VITESSE;
+			Vaisseau.dY = -VITESSE;
 			break;
-
 		case KeyEvent.VK_RIGHT:
-			Vaisseau2.dX = VITESSE;
+			Vaisseau.dX = VITESSE;
 			break;
-
 		case KeyEvent.VK_LEFT:
-			Vaisseau2.dX = -VITESSE;
+			Vaisseau.dX = -VITESSE;
 			break;
 		}
 	}
@@ -38,16 +35,16 @@ public class EcouteurVaisseau2 implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_DOWN:
-			Vaisseau2.dY = 0;
+			Vaisseau.dY = 0;
 			break;
 		case KeyEvent.VK_UP:
-			Vaisseau2.dY = 0;
+			Vaisseau.dY = 0;
 			break;
 		case KeyEvent.VK_RIGHT:
-			Vaisseau2.dX = 0;
+			Vaisseau.dX = 0;
 			break;
 		case KeyEvent.VK_LEFT:
-			Vaisseau2.dX = 0;
+			Vaisseau.dX = 0;
 			break;
 		}
 	}

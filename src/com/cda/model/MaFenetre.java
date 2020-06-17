@@ -18,7 +18,6 @@ public class MaFenetre extends JFrame {
 		new Vaisseau2(250, 650, "/images/avion-top.png");
 		this.getContentPane().add(vBackgroundWindow);
 		this.addKeyListener(new EcouteurVaisseau2());
-		// this.addKeyListener(new EcouteurClavier(vVaisseau));
 		setVisible(true);
 	}
 }

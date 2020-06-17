@@ -4,12 +4,14 @@ import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import com.cda.emu.EnumMissile;
 import com.cda.listener.EcouteurVaisseau;
 import com.cda.listener.EcouteurVaisseauSouris;
 import com.cda.utils.Tools;
@@ -31,7 +33,7 @@ public class TableauDeBord extends JPanel {
 		setSize(vMaFenetre.getWidth(), vMaFenetre.getHeight());
 		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
 		this.imgBandeFond = this.icoBandeFond.getImage();
-		vaisseau = new Vaisseau(250, 650, Constantes.AVION_TOP);
+		vaisseau = new Vaisseau();
 		this.setFocusable(true);
 		this.requestFocusInWindow();
 		this.addKeyListener(new EcouteurVaisseau());
@@ -39,6 +41,22 @@ public class TableauDeBord extends JPanel {
 		this.addMouseMotionListener(new EcouteurVaisseauSouris());
 		Thread chronoEcran = new Thread(new Chrono());
 		chronoEcran.start();
+	}
+
+	public static void collissionArray(Entite vVaisseau, ArrayList<Entite> listMissile) {
+		for (Entite entite : listMissile) {
+			collision(entite, vVaisseau);
+		}
+	}
+
+	public static void collision(Entite vMissile, Entite vVaisseau) {
+		Rectangle rect1 = vMissile.getBounds();
+		Rectangle rect2 = vVaisseau.getBounds();
+		if (rect2.intersects(rect1)) {
+			System.out.println("BOOM!!!!");
+		} else {
+
+		}
 	}
 
 	public void initMissile() {
@@ -66,6 +84,7 @@ public class TableauDeBord extends JPanel {
 		super.paintComponent(g);
 		deplacementFond(g);
 		initMissile();
+		collissionArray(vaisseau, Constantes.mesMissile);
 		ArrayList<Entite> missileDetruit = new ArrayList<>();
 		for (Entite monMissile : Constantes.mesMissile) {
 			if (!monMissile.detruit) {
@@ -74,74 +93,30 @@ public class TableauDeBord extends JPanel {
 			} else {
 				missileDetruit.add(monMissile);
 			}
+			// monMissile = missileDetruit();
 		}
 		Constantes.mesMissile.removeAll(missileDetruit);
 		for (int i = 0; i < missileDetruit.size(); i++) {
 			Constantes.mesMissile.add(missileDetruit());
 		}
 		g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
-				vaisseau.deplacementVaisseauVertical(), 150, 150, null);
-		TableauDeBord.collision(TableauDeBord.vaisseau, Constantes.mesMissile.get(0));
+				vaisseau.deplacementVaisseauVertical(), vaisseau.hauteur, vaisseau.largeur, null);
+
 	}
 
 	public Entite missileDetruit() {
 		Entite sortie = null;
-		ArrayList<Entite> missiles = new ArrayList<>();
-		missiles.add(new MissileGlace());
-		missiles.add(new MissileFeu());
-		missiles.add(new MissileNormal());
-		missiles.add(new MissileZigZag());
-		missiles.add(new MissileGlace());
-		missiles.add(new MissileFeu());
-		missiles.add(new MissileNormal());
-		missiles.add(new MissileZigZag());
-		missiles.add(new MissileGlace());
-		missiles.add(new MissileFeu());
-		missiles.add(new MissileNormal());
-		missiles.add(new MissileZigZag());
-
-		return missiles.get(Tools.genererInt(0, missiles.size()));
-	}
-
-	public static boolean collision(Entite pAvion, Entite pMissile) {
-
-		Point pMA = new Point(pMissile.getxPos(), pMissile.getyPos());
-		Point pMB = new Point(pMissile.getxPos() + pMissile.getLargeur(), pMissile.getyPos());
-		Point pMC = new Point(pMissile.getxPos() + pMissile.getLargeur(), pMissile.getyPos() + pMissile.getHauteur());
-		Point pMD = new Point(pMissile.getxPos(), pMissile.getyPos() + pMissile.getHauteur());
-
-		Point pAA = new Point(pAvion.getxPos(), pAvion.getyPos());
-		Point pAB = new Point(pAvion.getxPos() + pAvion.getLargeur(), pAvion.getyPos());
-		Point pAC = new Point(pAvion.getxPos() + pAvion.getLargeur(), pAvion.getyPos() + pAvion.getHauteur());
-		Point pAD = new Point(pAvion.getxPos(), pAvion.getyPos() + pAvion.getHauteur());
-
-		return (pMC.getX() > pAA.getX() && pMC.getX() < pAB.getX() && pMC.getY() > pAA.getY()
-				&& pAA.getY() < pAD.getY());
-
-//		Point missA = new Point(pMissile.getxPos(), pMissile.getyPos());
-//		Point missB = new Point(pMissile.getxPos() + pMissile.getLargeur(), pMissile.getyPos());
-//		Point missC = new Point(pMissile.getxPos() + pMissile.getLargeur(), pMissile.getyPos() + pMissile.getHauteur());
-//		Point missD = new Point(pMissile.getxPos(), pMissile.getyPos() + pMissile.getHauteur());
-//
-//		Point avionA = new Point(pAvion.getxPos(), pAvion.getyPos());
-//		Point avionB = new Point(pAvion.getxPos() + pAvion.getLargeur(), pAvion.getyPos());
-//		Point avionC = new Point(pAvion.getxPos() + pAvion.getLargeur(), pAvion.getyPos() + pAvion.getHauteur());
-//		Point aD = new Point(pAvion.getxPos(), pAvion.getyPos() + pAvion.getHauteur());
-//
-//		return (missC.getX() < avionB.getX() && missC.getX() > avionA.getX() && missC.getY() > avionA.getY()
-//				&& missC.getY() < aD.getY())
-//				|| (missD.getX() < avionB.getX() && missD.getX() > avionA.getX() && missD.getY() > avionA.getY()
-//						&& missD.getY() < aD.getY());
-
-	}
-
-	public static boolean collisionArray(Entite unVaisseau, ArrayList<Entite> tabMissiles) {
-		for (Entite leMissile : tabMissiles) {
-			if (collision(leMissile, unVaisseau)) {
-				System.out.println("test");
-			}
+		int choixMissile = Tools.genererInt(0, EnumMissile.values().length);
+		EnumMissile monMissile = EnumMissile.values()[choixMissile];
+		if (monMissile == EnumMissile.FEU) {
+			sortie = new MissileFeu();
+		} else if (monMissile == EnumMissile.GLACE) {
+			sortie = new MissileGlace();
+		} else if (monMissile == EnumMissile.ZIGZAG) {
+			sortie = new MissileZigZag();
+		} else {
+			sortie = new MissileNormal();
 		}
-		return finDuJeu;
+		return sortie;
 	}
-
 }

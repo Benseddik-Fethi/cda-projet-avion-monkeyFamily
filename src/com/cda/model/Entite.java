@@ -1,6 +1,7 @@
 package com.cda.model;
 
 import java.awt.Image;
+import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
@@ -16,8 +17,34 @@ public abstract class Entite {
 	protected String missileDetruit;
 	protected ImageIcon icoMissile;
 	protected Image imgMissile;
+	protected ImageIcon icoVaisseau;
+	protected Image imgVaisseau;
 	protected boolean detruit;
 	protected boolean mur = false;
+
+	public ImageIcon getIcoVaisseau() {
+		return icoVaisseau;
+	}
+
+	public void setIcoVaisseau(ImageIcon icoVaisseau) {
+		this.icoVaisseau = icoVaisseau;
+	}
+
+	public Image getImgVaisseau() {
+		return imgVaisseau;
+	}
+
+	public void setImgVaisseau(Image imgVaisseau) {
+		this.imgVaisseau = imgVaisseau;
+	}
+
+	public boolean isMur() {
+		return mur;
+	}
+
+	public void setMur(boolean mur) {
+		this.mur = mur;
+	}
 
 	public int getVitesse() {
 		return vitesse;
@@ -115,6 +142,10 @@ public abstract class Entite {
 		this.detruit = detruit;
 	}
 
+	public Rectangle getBounds() {
+		return new Rectangle(this.getxPos(), this.getyPos(), this.getLargeur(), this.getHauteur());
+	}
+
 	public int deplacementMissile() {
 		if (this.getyPos() < 820 && !(this instanceof MissileZigZag)) {
 			this.setyPos(this.yPos + this.dY);
@@ -145,5 +176,6 @@ public abstract class Entite {
 		} else {
 			return false;
 		}
+
 	}
 }

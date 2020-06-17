@@ -17,8 +17,8 @@ public class EcouteurVaisseauSouris implements MouseListener, MouseMotionListene
     @Override
     public void mouseDragged(MouseEvent e) {
         Point p = e.getPoint();
-        TableauDeBord.vaisseau.setX(p.x);
-        TableauDeBord.vaisseau.setY(p.y);
+        TableauDeBord.vaisseau.setxPos(p.x);
+        TableauDeBord.vaisseau.setyPos(p.y);
         if (dragSouris) {
             MaFenetre.vBackgroundWindow.repaint();
         }

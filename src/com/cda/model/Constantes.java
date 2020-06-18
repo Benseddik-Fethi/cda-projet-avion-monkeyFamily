@@ -69,10 +69,10 @@ public class Constantes {
     protected static final String FOND = "/images/fond.jpg";
 
 /*========Constante Avion========*/
-    protected static final int HAUTEUR_AVION = 50;
-    protected static final int LARGEUR_AVION = 50;
-    protected static final int POSITIONX_DEPART_AVION =250;
-    protected static final int POSITIONY_DEPART_AVION =650;
+    public static final int HAUTEUR_AVION = 70;
+    public static final int LARGEUR_AVION = 70;
+    public static final int POSITIONX_DEPART_AVION =250;
+    public static final int POSITIONY_DEPART_AVION =650;
 
     /*-----------------Constante Missile---------*/
     protected static final int LARGEUR_MISSILE = 50;
@@ -103,8 +103,16 @@ public class Constantes {
     protected static final int VITESSE_CHUTE_ZIGZAG = 1;
 
     /*=======Constante Tableau Missile========*/
-    protected static final int NOMBRE_MISSILE_INIT = 5;
-    protected static final ArrayList<Entite> mesMissile = new ArrayList<>();
+    protected static final int NOMBRE_MISSILE_INIT = 3;
+    protected static final ArrayList<Entite> MES_MISSILES = new ArrayList<>();
 
+
+    /*==============Constante Missile Avion=====*/
+    public static final int HAUTEUR_MISSILE_AVION= 20;
+    public static final int LARGEUR_MISSILE_AVION= 60;
+    protected static final String IMAGE_MISSILE_AVION = "/images/missile.png";
+    public static final int DELTA_MISSILE = 6;
+    protected static final int NOMBRE_MISSILE_TIR_INIT = 10;
+    protected static final ArrayList<Entite> MES_TIR_MISSILE = new ArrayList<>();
 
 }

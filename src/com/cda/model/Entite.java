@@ -18,8 +18,16 @@ public abstract class Entite {
     protected ImageIcon icoVaisseau;
     protected Image imgVaisseau;
     protected boolean detruit;
+    protected boolean tirMissile;
     protected boolean mur = false;
 
+    public boolean isTirMissile() {
+        return tirMissile;
+    }
+
+    public void setTirMissile(boolean tirMissile) {
+        this.tirMissile = tirMissile;
+    }
 
     public ImageIcon getIcoVaisseau() {
         return icoVaisseau;
@@ -142,7 +150,7 @@ public abstract class Entite {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(this.getxPos(), this.getyPos(), this.getLargeur(), this.getHauteur());
+        return new Rectangle(this.getxPos(), this.getyPos(), this.getLargeur()-5, this.getHauteur()-5);
     }
 
     public int deplacementMissile() {
@@ -176,6 +184,16 @@ public abstract class Entite {
         } else {
             return false;
         }
+    }
 
+    public int deplacementTirMissile() {
+        if (this.tirMissile) {
+            if (this.yPos > 0) {
+                this.yPos = this.yPos - Constantes.DELTA_MISSILE;
+            } else {
+                this.tirMissile = false;
+            }
+        }
+        return yPos;
     }
 }

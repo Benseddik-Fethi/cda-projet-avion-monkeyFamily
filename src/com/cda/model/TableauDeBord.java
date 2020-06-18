@@ -4,7 +4,6 @@ import com.cda.emu.EnumMissile;
 import com.cda.listener.EcouteurVaisseau;
 import com.cda.listener.EcouteurVaisseauSouris;
 import com.cda.utils.Tools;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ public class TableauDeBord extends JPanel {
     private ImageIcon icoBandeFond;
     private Image imgBandeFond;
     private boolean init = true;
+    public MissileAvion missileAvion = new MissileAvion();
 
     public TableauDeBord(MaFenetre vMaFenetre) {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -46,7 +46,7 @@ public class TableauDeBord extends JPanel {
         Rectangle rect1 = vMissile.getBounds();
         Rectangle rect2 = vVaisseau.getBounds();
         if (rect2.intersects(rect1)) {
-            System.out.println("BOOM!!!!");
+            vMissile.detruit = true;
         } else {
 
         }
@@ -55,7 +55,7 @@ public class TableauDeBord extends JPanel {
     public void initMissile() {
         if (init) {
             for (int i = 0; i < Constantes.NOMBRE_MISSILE_INIT; i++) {
-                Constantes.mesMissile.add(missileDetruit());
+                Constantes.MES_MISSILES.add(missileDetruit());
             }
             init = false;
         }
@@ -77,20 +77,11 @@ public class TableauDeBord extends JPanel {
         super.paintComponent(g);
         deplacementFond(g);
         initMissile();
-        collissionArray(vaisseau, Constantes.mesMissile);
-        ArrayList<Entite> missileDetruit = new ArrayList<>();
-        for (Entite monMissile : Constantes.mesMissile) {
-            if (!monMissile.detruit) {
-                g.drawImage(monMissile.getImgMissile(), monMissile.getxPos(), monMissile.deplacementMissile(), monMissile.hauteur, monMissile.largeur, null);
-            } else {
-                missileDetruit.add(monMissile);
-            }
-            //monMissile = missileDetruit();
-        }
-        Constantes.mesMissile.removeAll(missileDetruit);
-        for (int i = 0; i < missileDetruit.size(); i++) {
-            Constantes.mesMissile.add(missileDetruit());
-        }
+
+        collissionArray(vaisseau, Constantes.MES_MISSILES);
+        collissionArray(missileAvion, Constantes.MES_MISSILES);
+        rechargementmissile(g);
+        missileAvion.tirMissileVaisseau(g);
         g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
                 vaisseau.deplacementVaisseauVertical(), vaisseau.hauteur, vaisseau.largeur, null);
 
@@ -112,4 +103,18 @@ public class TableauDeBord extends JPanel {
         return sortie;
     }
 
+    public void rechargementmissile(Graphics g){
+        ArrayList<Entite> missileDetruit = new ArrayList<>();
+        for (Entite monMissile : Constantes.MES_MISSILES) {
+            if (!monMissile.detruit) {
+                g.drawImage(monMissile.getImgMissile(), monMissile.getxPos(), monMissile.deplacementMissile(), monMissile.hauteur, monMissile.largeur, null);
+            } else {
+                missileDetruit.add(monMissile);
+            }
+        }
+        Constantes.MES_MISSILES.removeAll(missileDetruit);
+        for (int i = 0; i < missileDetruit.size(); i++) {
+            Constantes.MES_MISSILES.add(missileDetruit());
+        }
+    }
 }

@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 public abstract class Entite {
+
 	protected int vitesse;
 	protected int largeur;
 	protected int hauteur;
@@ -20,7 +21,16 @@ public abstract class Entite {
 	protected ImageIcon icoVaisseau;
 	protected Image imgVaisseau;
 	protected boolean detruit;
+	protected boolean tirMissile;
 	protected boolean mur = false;
+
+	public boolean isTirMissile() {
+		return tirMissile;
+	}
+
+	public void setTirMissile(boolean tirMissile) {
+		this.tirMissile = tirMissile;
+	}
 
 	public ImageIcon getIcoVaisseau() {
 		return icoVaisseau;
@@ -143,20 +153,20 @@ public abstract class Entite {
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(this.getxPos(), this.getyPos(), this.getLargeur(), this.getHauteur());
+		return new Rectangle(this.getxPos(), this.getyPos(), this.getLargeur() - 5, this.getHauteur() - 5);
 	}
 
 	public int deplacementMissile() {
-		if (this.getyPos() < 820 && !(this instanceof MissileZigZag)) {
+		if (this.getyPos() < 820 && !(this instanceof BombeZigZag)) {
 			this.setyPos(this.yPos + this.dY);
-		} else if (this.getyPos() < 820 && (this instanceof MissileZigZag) && mur) {
+		} else if (this.getyPos() < 820 && (this instanceof BombeZigZag) && mur) {
 			this.setyPos(this.yPos + this.dY);
 			this.setxPos(this.xPos - 1);
 
 			if (this.xPos == -5) {
 				mur = false;
 			}
-		} else if (this.getyPos() < 820 && (this instanceof MissileZigZag) && !mur) {
+		} else if (this.getyPos() < 820 && (this instanceof BombeZigZag) && !mur) {
 			this.setyPos(this.yPos + this.dY);
 			this.setxPos(this.xPos + 1);
 			if (this.xPos == 560) {
@@ -168,14 +178,14 @@ public abstract class Entite {
 		return this.getyPos();
 	}
 
-	public boolean missileDetruit(Entite vEntite) {
-		if (this.yPos < vEntite.getyPos() + vEntite.getHauteur() && this.yPos + this.hauteur > vEntite.getyPos()
-				&& this.xPos + this.hauteur > vEntite.getxPos()
-				&& this.xPos < vEntite.getxPos() + vEntite.getLargeur()) {
-			return true;
-		} else {
-			return false;
+	public int deplacementTirMissile() {
+		if (this.tirMissile) {
+			if (this.yPos > 0) {
+				this.yPos = this.yPos - Constantes.DELTA_MISSILE;
+			} else {
+				this.tirMissile = false;
+			}
 		}
-
+		return yPos;
 	}
 }

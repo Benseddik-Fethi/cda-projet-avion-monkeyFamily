@@ -4,7 +4,6 @@ import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
@@ -17,10 +16,11 @@ import com.cda.listener.EcouteurVaisseauSouris;
 import com.cda.utils.Tools;
 
 public class TableauDeBord extends JPanel {
-	public static int cmpt = 0;
+
 	public static Vaisseau vaisseau;
 	public static boolean finDuJeu = false;
-	public int yFond;
+	public int PosyFond;
+	public TirVaisseau missileAvion = new TirVaisseau();
 	private ImageIcon icoBandeFond;
 	private Image imgBandeFond;
 	private boolean init = true;
@@ -30,7 +30,7 @@ public class TableauDeBord extends JPanel {
 		Image image = toolkit.getImage(Constantes.AVION_TOP);
 		Cursor perso = toolkit.createCustomCursor(image, new Point(0, 0), "perso");
 		this.setCursor(perso);
-		this.yFond = 400;
+		this.PosyFond = 400;
 		setSize(vMaFenetre.getWidth(), vMaFenetre.getHeight());
 		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
 		this.imgBandeFond = this.icoBandeFond.getImage();
@@ -44,27 +44,10 @@ public class TableauDeBord extends JPanel {
 		chronoEcran.start();
 	}
 
-	public static void collissionArray(Entite vVaisseau, ArrayList<Entite> listMissile) {
-		for (Entite entite : listMissile) {
-			collision(entite, vVaisseau);
-		}
-	}
-
-	public static void collision(Entite vMissile, Entite vVaisseau) {
-
-		Rectangle rect1 = vMissile.getBounds();
-		Rectangle rect2 = vVaisseau.getBounds();
-		if (rect2.intersects(rect1)) {
-			System.out.println("BOOM!!!!" + cmpt++);
-		} else {
-
-		}
-	}
-
 	public void initMissile() {
 		if (init) {
 			for (int i = 0; i < Constantes.NOMBRE_MISSILE_INIT; i++) {
-				Constantes.mesMissile.add(missileDetruit());
+				Constantes.MES_MISSILES.add(missileDetruit());
 			}
 			init = false;
 		}
@@ -72,13 +55,13 @@ public class TableauDeBord extends JPanel {
 
 	// Methode pour animation du fond d'ecran
 	private void deplacementFond(Graphics g) {
-		if (yFond == Constantes.FENETRE_HEIGHT) {
-			yFond = 800;
+		if (PosyFond == Constantes.FENETRE_HEIGHT) {
+			PosyFond = 400;
 		}
-		g.drawImage(this.imgBandeFond, 0, this.yFond, null);
-		g.drawImage(this.imgBandeFond, 0, this.yFond - Constantes.IMAGE_HEIGHT, null);
-		g.drawImage(this.imgBandeFond, 0, this.yFond - Constantes.IMAGE_HEIGHT * 2, null);
-		g.drawImage(this.imgBandeFond, 0, this.yFond - Constantes.IMAGE_HEIGHT * 3, null);
+		g.drawImage(this.imgBandeFond, 0, this.PosyFond, null);
+		g.drawImage(this.imgBandeFond, 0, this.PosyFond - Constantes.IMAGE_HEIGHT, null);
+		g.drawImage(this.imgBandeFond, 0, this.PosyFond - Constantes.IMAGE_HEIGHT * 2, null);
+		g.drawImage(this.imgBandeFond, 0, this.PosyFond - Constantes.IMAGE_HEIGHT * 3, null);
 	}
 
 	@Override
@@ -86,24 +69,15 @@ public class TableauDeBord extends JPanel {
 		super.paintComponent(g);
 		deplacementFond(g);
 		initMissile();
-		collissionArray(vaisseau, Constantes.mesMissile);
-		ArrayList<Entite> missileDetruit = new ArrayList<>();
-		for (Entite monMissile : Constantes.mesMissile) {
-			if (!monMissile.detruit) {
-				g.drawImage(monMissile.getImgMissile(), monMissile.getxPos(), monMissile.deplacementMissile(),
-						monMissile.hauteur, monMissile.largeur, null);
-			} else {
-				missileDetruit.add(monMissile);
-			}
-			// monMissile = missileDetruit();
-		}
-		Constantes.mesMissile.removeAll(missileDetruit);
-		for (int i = 0; i < missileDetruit.size(); i++) {
-			Constantes.mesMissile.add(missileDetruit());
-		}
+		// TirVaisseau.initMissile();
+		// TirVaisseau.tirMissileMultiple(g);
+		GestionCollision.collissionArray(vaisseau, Constantes.MES_MISSILES);
+		GestionCollision.collissionArray(missileAvion, Constantes.MES_MISSILES);
+		rechargementmissile(g);
+		missileAvion.tirMissileVaisseau(g);
+
 		g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
 				vaisseau.deplacementVaisseauVertical(), vaisseau.hauteur, vaisseau.largeur, null);
-
 	}
 
 	public Entite missileDetruit() {
@@ -111,14 +85,30 @@ public class TableauDeBord extends JPanel {
 		int choixMissile = Tools.genererInt(0, EnumMissile.values().length);
 		EnumMissile monMissile = EnumMissile.values()[choixMissile];
 		if (monMissile == EnumMissile.FEU) {
-			sortie = new MissileFeu();
+			sortie = new BombeFeu();
 		} else if (monMissile == EnumMissile.GLACE) {
-			sortie = new MissileGlace();
+			sortie = new BombeGlace();
 		} else if (monMissile == EnumMissile.ZIGZAG) {
-			sortie = new MissileZigZag();
+			sortie = new BombeZigZag();
 		} else {
-			sortie = new MissileNormal();
+			sortie = new BombeNormal();
 		}
 		return sortie;
+	}
+
+	public void rechargementmissile(Graphics g) {
+		ArrayList<Entite> missileDetruit = new ArrayList<>();
+		for (Entite monMissile : Constantes.MES_MISSILES) {
+			if (!monMissile.detruit) {
+				g.drawImage(monMissile.getImgMissile(), monMissile.getxPos(), monMissile.deplacementMissile(),
+						monMissile.hauteur, monMissile.largeur, null);
+			} else {
+				missileDetruit.add(monMissile);
+			}
+		}
+		Constantes.MES_MISSILES.removeAll(missileDetruit);
+		for (int i = 0; i < missileDetruit.size(); i++) {
+			Constantes.MES_MISSILES.add(missileDetruit());
+		}
 	}
 }

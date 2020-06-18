@@ -154,16 +154,16 @@ public abstract class Entite {
     }
 
     public int deplacementMissile() {
-        if (this.getyPos() < 820 && !(this instanceof MissileZigZag)) {
+        if (this.getyPos() < 820 && !(this instanceof BombeZigZag)) {
             this.setyPos(this.yPos + this.dY);
-        } else if (this.getyPos() < 820 && (this instanceof MissileZigZag) && mur) {
+        } else if (this.getyPos() < 820 && (this instanceof BombeZigZag) && mur) {
             this.setyPos(this.yPos + this.dY);
             this.setxPos(this.xPos - 1);
 
             if (this.xPos == -5) {
                 mur = false;
             }
-        } else if (this.getyPos() < 820 && (this instanceof MissileZigZag) && !mur) {
+        } else if (this.getyPos() < 820 && (this instanceof BombeZigZag) && !mur) {
             this.setyPos(this.yPos + this.dY);
             this.setxPos(this.xPos + 1);
             if (this.xPos == 560) {
@@ -175,16 +175,6 @@ public abstract class Entite {
         return this.getyPos();
     }
 
-    public boolean missileDetruit(Entite vEntite) {
-        if (this.yPos < vEntite.getyPos() + vEntite.getHauteur()
-                && this.yPos + this.hauteur > vEntite.getyPos()
-                && this.xPos + this.hauteur > vEntite.getxPos()
-                && this.xPos < vEntite.getxPos() + vEntite.getLargeur()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public int deplacementTirMissile() {
         if (this.tirMissile) {

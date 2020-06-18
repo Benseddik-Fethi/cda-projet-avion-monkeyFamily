@@ -10,6 +10,8 @@ public class MaFenetre extends JFrame {
 
 	public MaFenetre() {
 		setSize(Constantes.FENETRE_WIDTH, Constantes.FENETRE_HEIGHT);
+		// pour enlever la fenetre - plein ecran??
+		// setUndecorated(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("FlightFight");
 		setResizable(false);

@@ -17,6 +17,7 @@ import com.cda.listener.EcouteurVaisseauSouris;
 import com.cda.utils.Tools;
 
 public class TableauDeBord extends JPanel {
+	public static int cmpt = 0;
 	public static Vaisseau vaisseau;
 	public static boolean finDuJeu = false;
 	public int yFond;
@@ -50,10 +51,11 @@ public class TableauDeBord extends JPanel {
 	}
 
 	public static void collision(Entite vMissile, Entite vVaisseau) {
+
 		Rectangle rect1 = vMissile.getBounds();
 		Rectangle rect2 = vVaisseau.getBounds();
 		if (rect2.intersects(rect1)) {
-			System.out.println("BOOM!!!!");
+			System.out.println("BOOM!!!!" + cmpt++);
 		} else {
 
 		}
@@ -71,7 +73,7 @@ public class TableauDeBord extends JPanel {
 	// Methode pour animation du fond d'ecran
 	private void deplacementFond(Graphics g) {
 		if (yFond == Constantes.FENETRE_HEIGHT) {
-			yFond = 400;
+			yFond = 800;
 		}
 		g.drawImage(this.imgBandeFond, 0, this.yFond, null);
 		g.drawImage(this.imgBandeFond, 0, this.yFond - Constantes.IMAGE_HEIGHT, null);

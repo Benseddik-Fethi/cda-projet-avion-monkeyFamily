@@ -55,7 +55,7 @@ public class Constantes {
 	 */
 	// Utilis� dans les classes Vaisseau, MaFenetre dans le package
 	// com.cda.listener.
-	protected static final String AVION_TOP = "/images/avion-top-def.png";
+	protected static final String AVION_TOP = "/images/avion-top.png";
 
 	// Utilis� dans les classes Vaisseau, MaFenetre dans le package
 	// com.cda.listener.
@@ -68,7 +68,7 @@ public class Constantes {
 	protected static final String AVION_RIGHT = "/images/avion-right.png";
 
 	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
-	protected static final String FOND = "/images/fond.jpg";
+	protected static final String FOND = "/images/fond-test.png";
 
 	/* ========Constante Avion======== */
 	protected static final int HAUTEUR_AVION = 100;

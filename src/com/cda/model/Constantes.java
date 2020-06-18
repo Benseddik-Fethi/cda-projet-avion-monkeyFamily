@@ -39,7 +39,7 @@ public class Constantes {
 	 * @param <b>FENETRE_HEIGHT</b> permet de param�trer la hauteur de la fen�tre de
 	 *                              jeu.
 	 */
-	protected final static int FENETRE_HEIGHT = 900;
+	protected final static int FENETRE_HEIGHT = 800;
 
 	/**
 	 * Utilis� dans les classes BackgroundWindow, MaFenetre dans le package
@@ -64,11 +64,11 @@ public class Constantes {
 	protected static final String AVION_RIGHT = "/images/avion-right.png";
 
 	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
-	protected static final String FOND = "/images/fond.jpg";
+	protected static final String FOND = "/images/fond-ecran.jpg";
 
 	/* ========Constante Avion======== */
-	public static final int HAUTEUR_AVION = 100;
-	public static final int LARGEUR_AVION = 100;
+	public static final int HAUTEUR_AVION = 70;
+	public static final int LARGEUR_AVION = 70;
 	public static final int POSITIONX_DEPART_AVION = 250;
 	public static final int POSITIONY_DEPART_AVION = 650;
 
@@ -79,22 +79,22 @@ public class Constantes {
 
 	/* ============Constante Missile Feu========== */
 	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
-	protected static final String MISSILE_FEU = "/images/missile-feu.png";
+	protected static final String MISSILE_FEU = "/images/Bombe-Feu.png";
 	protected static final int VITESSE_CHUTE_FEU = 3;
 
 	/* ============Constante Missile Glace========== */
 	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
-	protected static final String MISSILE_GLACE = "/images/missile-glace.png";
+	protected static final String MISSILE_GLACE = "/images/Bombe-Glace.png";
 	protected static final int VITESSE_CHUTE_GLACE = 2;
 
 	/* ============Constante Missile Normal========== */
 	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
-	protected static final String MISSILE_NORMAL = "/images/missile-normal.png";
+	protected static final String MISSILE_NORMAL = "/images/Bombe-Normal.png";
 	protected static final int VITESSE_CHUTE_NORMAL = 2;
 
 	/* ============Constante Missile ZigZag========== */
 	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
-	protected static final String MISSILE_ZIGZAG = "/images/missile-zigzag.png";
+	protected static final String MISSILE_ZIGZAG = "/images/Bombe-ZigZag.png";
 	protected static final String MISSILE_ZIGZAG_DROITE = "/images/missile-zigzag-droite.png";
 	protected static final String MISSILE_ZIGZAG_GAUCHE = "/images/missile-zigzag-gauche.png";
 	protected static final int VITESSE_CHUTE_ZIGZAG = 1;
@@ -106,9 +106,8 @@ public class Constantes {
 	/* ==============Constante Missile Avion===== */
 	public static final int HAUTEUR_MISSILE_AVION = 20;
 	public static final int LARGEUR_MISSILE_AVION = 60;
-	protected static final String IMAGE_MISSILE_AVION = "/images/tir-avion.png";
-	public static final int DELTA_MISSILE = 6;
-	protected static final int NOMBRE_MISSILE_TIR_INIT = 10;
-	protected static final ArrayList<Entite> MES_TIR_MISSILE = new ArrayList<>();
-
+	protected static final String IMAGE_MISSILE_AVION = "/images/Tir-Vaisseau.png";
+	public static final int DELTA_MISSILE = 4;
+	protected static final int NOMBRE_MISSILE_TIR_INIT = 1;
+	public static final ArrayList<Entite> MES_TIR_MISSILE = new ArrayList<>();
 }

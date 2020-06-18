@@ -4,8 +4,8 @@ import com.cda.utils.Tools;
 
 import javax.swing.*;
 
-public class MissileZigZag extends Entite {
-    public MissileZigZag() {
+public class BombeZigZag extends Entite {
+    public BombeZigZag() {
 
         this.largeur = Constantes.LARGEUR_MISSILE;
         this.hauteur = Constantes.HAUTEUR_MISSILE;

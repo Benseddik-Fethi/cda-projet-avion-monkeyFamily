@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 class Accueil extends JPanel {
     ImageIcon logoTeam = new ImageIcon(getClass().getResource(Constantes.LOGO));
     Image imgLogo = logoTeam.getImage();
-    public static String nomJoueur2 = "";
+    public static String nomJoueur2;
     protected JTextField nomJoueur = new JTextField();
     ImageIcon lancer = new ImageIcon("/images/bout.png");
     private ImageIcon icoBandeFond;
@@ -40,14 +40,17 @@ class Accueil extends JPanel {
         setSize(cdaFenetre.getWidth(), cdaFenetre.getHeight());
         this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
         this.imgBandeFond = this.icoBandeFond.getImage();
-        nomJoueur2 = this.nomJoueur.getText();
+
 
         lancerPartie.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                cdaFenetre.lancerPartiePanel();
+                nomJoueur2 = nomJoueur.getText().trim();
+                if(nomJoueur2.length()!=0) {
+                    cdaFenetre.lancerPartiePanel();
+                }
             }
 
             @Override

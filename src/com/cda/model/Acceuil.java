@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 class Accueil extends JPanel {
+    ImageIcon logoTeam = new ImageIcon(getClass().getResource(Constantes.LOGO));
+    Image imgLogo = logoTeam.getImage();
 	public static String nomJoueur2 = "";
 	protected JTextField nomJoueur = new JTextField();
 	ImageIcon lancer = new ImageIcon("/images/bout.png");
@@ -79,6 +81,7 @@ class Accueil extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(imgBandeFond, this.getX(), this.getY(), null);
+        g.drawImage(imgLogo, 150, 500,300,333,null);
 
 	}
 }

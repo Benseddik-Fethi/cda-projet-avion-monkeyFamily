@@ -12,7 +12,7 @@ public class Chrono implements Runnable {
             System.out.println(Accueil.nomJoueur2);
             timerBouclier++;
             timerDifficult++;
-            if (timerBouclier == 700) {
+            if (timerBouclier == 1000) {
                 Bouclier.actif = false;
                 timerBouclier = 0;
             }

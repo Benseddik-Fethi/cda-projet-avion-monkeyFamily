@@ -21,7 +21,7 @@ public abstract class GestionCollision {
     public static void collision(Entite vMissile, Entite vVaisseau) {
         Rectangle rect1 = vMissile.getBounds();
         Rectangle rect2 = vVaisseau.getBoundsVaisseau();
-        if (rect2.intersects(rect1)) {
+        if (rect2.intersects(rect1) && !Bouclier.actif) {
             if ((vVaisseau instanceof TirVaisseau && vMissile instanceof BombeFeu)
                     || (vVaisseau instanceof TirVaisseau && vMissile instanceof BombeGlace)
                     || (vVaisseau instanceof TirVaisseau && vMissile instanceof BombeZigZag)
@@ -76,7 +76,7 @@ public abstract class GestionCollision {
                 gestionVie();
                 System.out.println("touché par missile");
 
-            } else if (vMissile instanceof Mine) {
+            } else if (vMissile instanceof Mine && !Bouclier.actif) {
                 vMissile.detruit = true;
                 vVaisseau.detruit = true;
                 vie--;
@@ -84,6 +84,7 @@ public abstract class GestionCollision {
                 System.out.println("détruit par mine");
 
             } else {
+                System.out.println("détruit par bouclier");
                 vMissile.detruit = true;
             }
         }
@@ -112,7 +113,8 @@ public abstract class GestionCollision {
         }
 
     }
-public static void gestionPoint(){
+
+    public static void gestionPoint() {
         if (compteurGlobal < 999999) {
             compteur();
         } else {

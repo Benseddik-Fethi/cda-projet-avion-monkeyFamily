@@ -11,7 +11,7 @@ class Accueil extends JPanel {
     ImageIcon lancer = new ImageIcon("/images/bout.png");
     private ImageIcon icoBandeFond;
     private Image imgBandeFond;
-    ImageIcon icoMissile = new ImageIcon(getClass().getResource(Constantes.bouton));
+    ImageIcon icoMissile = new ImageIcon(getClass().getResource(Constantes.BOUTON));
     Image imgMissile = icoMissile.getImage();
     public Accueil(final MaFenetre cdaFenetre) {
         this.setLayout(null);

@@ -64,8 +64,6 @@ public class TableauDeBord extends JPanel {
         super.paintComponent(g);
         deplacementFond(g);
         initMissile();
-        //TirVaisseau.initMissile();
-        //TirVaisseau.tirMissileMultiple(g);
         GestionCollision.collissionArray(vaisseau, Constantes.MES_MISSILES);
         GestionCollision.collissionArray(missileAvion, Constantes.MES_MISSILES);
         rechargementmissile(g);

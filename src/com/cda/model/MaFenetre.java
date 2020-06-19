@@ -6,7 +6,7 @@ import java.awt.Container;
 import javax.swing.*;
 
 public class MaFenetre extends JFrame {
-    private final CardLayout cardLayout = new CardLayout();
+    protected final CardLayout cardLayout = new CardLayout();
     public static final String ACCUEIL_PANEL = "ACCUEIL_PANEL";
     public static final String PARTIE_PANEL = "PARTIE_PANEL";
     private Container contentPane;
@@ -35,5 +35,9 @@ public static Accueil vAccueil;
         cardLayout.show(contentPane, PARTIE_PANEL);
         vBackgroundWindow.go();
         vBackgroundWindow.requestFocus(true);
+    }
+
+    public void finDePArtie(){
+        cardLayout.show(contentPane,ACCUEIL_PANEL);
     }
 }

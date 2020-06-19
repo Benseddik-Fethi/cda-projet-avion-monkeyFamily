@@ -109,6 +109,7 @@ public abstract class GestionCollision {
         }
         if (vie < 0) {
             TableauDeBord.finDuJeu = true;
+            FichierSauvegarde.fichier();
             System.out.println("partie fini");
         }
 

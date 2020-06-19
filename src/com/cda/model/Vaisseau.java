@@ -1,8 +1,12 @@
 package com.cda.model;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 public class Vaisseau extends Entite {
+	ImageIcon ii;
+	Image i;
 
 	public Vaisseau() {
 		this.hauteur = Constantes.HAUTEUR_AVION;
@@ -12,7 +16,6 @@ public class Vaisseau extends Entite {
 		this.strImage = Constantes.AVION_TOP;
 		this.icoVaisseau = new ImageIcon(getClass().getResource(strImage));
 		this.imgVaisseau = this.icoVaisseau.getImage();
-
 	}
 
 	public int deplacementVaisseauHorizontal() {

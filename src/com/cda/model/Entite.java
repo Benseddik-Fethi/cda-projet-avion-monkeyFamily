@@ -5,6 +5,8 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+import com.cda.utils.Tools;
+
 public abstract class Entite {
 
 	protected int vitesse;
@@ -12,10 +14,15 @@ public abstract class Entite {
 	protected int hauteur;
 	protected int xPos;
 	protected int yPos;
+	protected int onfireXPos;
+	protected int onfireYPos;
 	protected int dY;
 	protected int dX;
 	protected String strImage;
 	protected String missileDetruit;
+	protected String strOnFire;
+	protected ImageIcon icoOnFire;
+	protected Image imgOnFire;
 	protected ImageIcon icoMissile;
 	protected Image imgMissile;
 	protected ImageIcon icoVaisseau;
@@ -23,6 +30,22 @@ public abstract class Entite {
 	protected boolean detruit;
 	protected boolean tirMissile;
 	protected boolean mur = false;
+
+	public int getOnfireXPos() {
+		return onfireXPos;
+	}
+
+	public void setOnfireXPos(int onfireXPos) {
+		this.onfireXPos = onfireXPos;
+	}
+
+	public int getOnfireYPos() {
+		return onfireYPos;
+	}
+
+	public void setOnfireYPos(int onfireYPos) {
+		this.onfireYPos = onfireYPos;
+	}
 
 	public boolean isTirMissile() {
 		return tirMissile;
@@ -46,6 +69,14 @@ public abstract class Entite {
 
 	public void setImgVaisseau(Image imgVaisseau) {
 		this.imgVaisseau = imgVaisseau;
+	}
+
+	public Image getImgOnFire() {
+		return imgOnFire;
+	}
+
+	public void setImgOnFire(Image imgOnFire) {
+		this.imgOnFire = imgOnFire;
 	}
 
 	public boolean isMur() {
@@ -156,13 +187,20 @@ public abstract class Entite {
 		return new Rectangle(this.getxPos(), this.getyPos(), this.getLargeur() - 5, this.getHauteur() - 5);
 	}
 
+	public Rectangle getBoundsVaisseau() {
+		return new Rectangle(this.getxPos(), this.getyPos(), this.getLargeur() - 20, this.getHauteur() - 10);
+	}
+
 	public int deplacementMissile() {
 		if (this.getyPos() < 820 && !(this instanceof BombeZigZag)) {
+			if (this instanceof Mine) {
+				this.setyPos(this.yPos + Tools.genererInt(-1, 1));
+				this.setxPos(this.xPos + Tools.genererInt(-1, 2));
+			}
 			this.setyPos(this.yPos + this.dY);
 		} else if (this.getyPos() < 820 && (this instanceof BombeZigZag) && mur) {
 			this.setyPos(this.yPos + this.dY);
 			this.setxPos(this.xPos - 1);
-
 			if (this.xPos == -5) {
 				mur = false;
 			}

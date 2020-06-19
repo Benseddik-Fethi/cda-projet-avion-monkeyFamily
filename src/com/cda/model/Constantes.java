@@ -138,4 +138,7 @@ public class Constantes {
 	protected static final String BOUTON = "/images/bouton.png";
 	protected static final String BOUTON_HOVER = "/images/bouton-survol.png";
 
+	/*===========LOGO============*/
+	protected static final String LOGO = "/images/logo.png";
+
 }

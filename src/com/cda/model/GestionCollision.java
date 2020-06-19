@@ -5,13 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class GestionCollision {
-
-    public static int score = 0;
-
     public static int compteurGlobal = 0;
-    protected static int compteur1 = 0;
-    protected static int compteur2 = 0;
-    protected static int compteur3 = 0;
     protected static int mine = 0;
     protected static int bombeFeu = 0;
     protected static int bombeGlace = 0;
@@ -123,7 +117,4 @@ public abstract class GestionCollision {
         MaFenetre.vBackgroundWindow.score6.setImgMissile(imgMissile6);
     }
 
-    public static int getCompteurGlobal() {
-        return compteurGlobal;
-    }
 }

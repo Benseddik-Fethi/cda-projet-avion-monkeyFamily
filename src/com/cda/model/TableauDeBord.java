@@ -49,8 +49,6 @@ public class TableauDeBord extends JPanel {
 		this.addMouseListener(new EcouteurVaisseauSouris());
 		this.addMouseMotionListener(new EcouteurVaisseauSouris());
 
-
-
 	}
 public void go(){
 		Thread chronoEcran = new Thread(new Chrono()); // sortir thread et créer méthode pour lancer le jeu après le

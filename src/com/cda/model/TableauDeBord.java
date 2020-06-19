@@ -147,10 +147,12 @@ public void go(){
 	}
 
 	public static void difficulte() {
-		if (Chrono.timerDifficult == 500) {
-			Chrono.ajoutBombe++;
+		int i=1;
+		if (GestionCollision.compteurGlobal == 100*i && Constantes.VITESSE_DEFILEMENT_FOND>0) {
+			Constantes.VITESSE_DEFILEMENT_FOND--;
 			Chrono.timerDifficult = 0;
-			System.out.println(Chrono.ajoutBombe);
+			i++;
+			System.out.println();
 		}
 		Chrono.ajoutBombe = 0;
 	}

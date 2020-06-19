@@ -22,7 +22,7 @@ public class Constantes {
 	 *                                       d�filement du fond en modifiant la
 	 *                                       valeur.
 	 */
-	protected final static int VITESSE_DEFILEMENT_FOND = 8;
+	protected static int VITESSE_DEFILEMENT_FOND = 8;
 
 	/**
 	 * Utilis� dans la classe MaFenetre dans le package com.cda.listener.
@@ -137,5 +137,8 @@ public class Constantes {
 	/*=============imageBouton=======*/
 	protected static final String BOUTON = "/images/bouton.png";
 	protected static final String BOUTON_HOVER = "/images/bouton-survol.png";
+
+	/*===========LOGO============*/
+	protected static final String LOGO = "/images/logo.png";
 
 }

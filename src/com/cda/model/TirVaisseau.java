@@ -21,21 +21,7 @@ public class TirVaisseau extends Entite {
 		super.imgMissile = this.icoMissile.getImage();
 	}
 
-	public static void tirMissileMultiple(Graphics g) {
-		for (Entite monMissile : Constantes.MES_TIR_MISSILE) {
-			if (!monMissile.detruit) {
-				g.drawImage(monMissile.getImgMissile(), monMissile.xPos, monMissile.deplacementTirMissile(),
-						monMissile.hauteur, monMissile.largeur, null);
-			} else {
-				missileTirDetruit.add(monMissile);
-				monMissile.detruit = true;
-			}
-		}
-		Constantes.MES_TIR_MISSILE.removeAll(missileTirDetruit);
-		for (int i = 0; i < missileTirDetruit.size(); i++) {
-			Constantes.MES_TIR_MISSILE.add(missileDetruit());
-		}
-	}
+
 
 	public static Entite missileDetruit() {
 		return new TirVaisseau();
@@ -54,7 +40,7 @@ public class TirVaisseau extends Entite {
 		if (this.tirMissile) {
 			if (this.yPos > 0) {
 				this.yPos = this.yPos - Constantes.DELTA_MISSILE;
-				System.out.println("ok ok ok ");
+
 			} else {
 				this.tirMissile = false;
 			}

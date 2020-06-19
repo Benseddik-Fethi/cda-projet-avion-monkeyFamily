@@ -119,13 +119,13 @@ public class Constantes {
 	}
 
 	/* ==============Constante Missile Avion===== */
-	public static final int HAUTEUR_MISSILE_AVION = 50;
+	public static final int HAUTEUR_MISSILE_AVION = 60;
 	public static final int LARGEUR_MISSILE_AVION = 50;
 	public static final int LARGEUR_MISSILE_SECONDAIRE_AVION = 50;
 	protected static final String IMAGE_MISSILE_AVION = "/images/tir-avion.png";
 	protected static final String IMAGE_MISSILE_TIR_ON_FIRE = "/images/tir-on-fire.png";
-	public static final int DELTA_MISSILE = 35;
-	public static final int DELTA_MISSILE_SECONDAIRE = 5;
+	public static final int DELTA_MISSILE = 45;
+	public static final int DELTA_MISSILE_SECONDAIRE = 45;
 	protected static final int NOMBRE_MISSILE_TIR_INIT = 5;
 	public static final ArrayList<Entite> MES_TIR_MISSILE = new ArrayList<>();
 }

@@ -3,6 +3,7 @@ package com.cda.listener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import com.cda.model.Bouclier;
 import com.cda.model.Constantes;
 import com.cda.model.MaFenetre;
 import com.cda.model.TableauDeBord;
@@ -12,19 +13,24 @@ public class EcouteurVaisseau implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_NUMPAD0:
-			bouclier();
+
+			//bouclier();
 			break;
 		case KeyEvent.VK_DOWN:
 			TableauDeBord.vaisseau.setdY(Constantes.VITESSE_VAISSEAU);
+			TableauDeBord.bouclier.setdY(Constantes.VITESSE_VAISSEAU);
 			break;
 		case KeyEvent.VK_UP:
 			TableauDeBord.vaisseau.setdY(-Constantes.VITESSE_VAISSEAU);
+			TableauDeBord.bouclier.setdY(-Constantes.VITESSE_VAISSEAU);
 			break;
 		case KeyEvent.VK_RIGHT:
 			TableauDeBord.vaisseau.setdX(Constantes.VITESSE_VAISSEAU);
+			TableauDeBord.bouclier.setdX(Constantes.VITESSE_VAISSEAU);
 			break;
 		case KeyEvent.VK_LEFT:
 			TableauDeBord.vaisseau.setdX(-Constantes.VITESSE_VAISSEAU);
+			TableauDeBord.bouclier.setdX(-Constantes.VITESSE_VAISSEAU);
 			break;
 		case KeyEvent.VK_SPACE:
 			if (!MaFenetre.vBackgroundWindow.missileAvion.isTirMissile()) {
@@ -39,7 +45,7 @@ public class EcouteurVaisseau implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_NUMPAD0:
-			bouclier();
+			//bouclier();
 			break;
 		case KeyEvent.VK_DOWN:
 			TableauDeBord.vaisseau.setdY(Constantes.VITESSE_VAISSEAU);
@@ -70,7 +76,8 @@ public class EcouteurVaisseau implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_NUMPAD0:
-			bouclier();
+			Bouclier.actif = true;
+			//bouclier();
 			break;
 		case KeyEvent.VK_DOWN:
 			TableauDeBord.vaisseau.setdY(0);

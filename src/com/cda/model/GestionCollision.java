@@ -10,6 +10,7 @@ public abstract class GestionCollision {
     protected static int bombeFeu = 0;
     protected static int bombeGlace = 0;
     protected static int bombeZigZag = 0;
+    protected static int vie = 3;
 
     public static void collissionArray(Entite vVaisseau, ArrayList<Entite> listMissile) {
         for (Entite entite : listMissile) {
@@ -32,16 +33,19 @@ public abstract class GestionCollision {
                         vMissile.detruit = true;
                         mine = 0;
                         compteurGlobal += 100;
+                        gestionPoint();
                     }
                 } else if (vMissile instanceof BombeNormal) {
                     compteurGlobal++;
                     vMissile.detruit = true;
+                    gestionPoint();
                 } else if (vMissile instanceof BombeFeu) {
                     bombeFeu++;
                     if (bombeFeu > 5) {
                         vMissile.detruit = true;
                         bombeFeu = 0;
                         compteurGlobal += 5;
+                        gestionPoint();
                     }
                 } else if (vMissile instanceof BombeGlace) {
                     bombeGlace++;
@@ -49,36 +53,70 @@ public abstract class GestionCollision {
                         vMissile.detruit = true;
                         bombeGlace = 0;
                         compteurGlobal += 10;
+                        gestionPoint();
                     }
                 } else {
                     bombeZigZag++;
                     if (bombeZigZag > 15) {
+
                         vMissile.detruit = true;
                         bombeZigZag = 0;
                         compteurGlobal += 50;
+                        gestionPoint();
                     }
                 }
                 System.out.println("tir réussi");
-                if (compteurGlobal < 999999) {
-                    compteur();
-                } else {
-                    compteurGlobal = 0;
-                }
+
             } else if ((vVaisseau instanceof Vaisseau && vMissile instanceof BombeFeu)
                     || (vVaisseau instanceof Vaisseau && vMissile instanceof BombeGlace)
                     || (vVaisseau instanceof Vaisseau && vMissile instanceof BombeZigZag)
                     || (vVaisseau instanceof Vaisseau && vMissile instanceof BombeNormal)) {
                 vMissile.detruit = true;
+                vie--;
+                gestionVie();
                 System.out.println("touché par missile");
+
+            } else if (vMissile instanceof Mine) {
+                vMissile.detruit = true;
+                vVaisseau.detruit = true;
+                vie--;
+                gestionVie();
+                System.out.println("détruit par mine");
+
             } else {
                 vMissile.detruit = true;
             }
-        } else if (rect2.intersects(rect1) && vMissile instanceof Mine) {
-            if (vVaisseau instanceof Vaisseau) {
-                vMissile.detruit = true;
-                vVaisseau.detruit = true;
-                System.out.println("détruit par mine");
-            }
+        }
+    }
+
+    public static void gestionVie() {
+        String vieUtilise = "";
+        if (vie == 2) {
+            ImageIcon icoMissile = new ImageIcon(TableauScore.class.getResource(vieUtilise));
+            Image imgMissile = icoMissile.getImage();
+            MaFenetre.vBackgroundWindow.vie3.setImgMissile(imgMissile);
+        }
+        if (vie == 1) {
+            ImageIcon icoMissile = new ImageIcon(TableauScore.class.getResource(vieUtilise));
+            Image imgMissile = icoMissile.getImage();
+            MaFenetre.vBackgroundWindow.vie2.setImgMissile(imgMissile);
+        }
+        if (vie == 0) {
+            ImageIcon icoMissile = new ImageIcon(TableauScore.class.getResource(vieUtilise));
+            Image imgMissile = icoMissile.getImage();
+            MaFenetre.vBackgroundWindow.vie1.setImgMissile(imgMissile);
+        }
+        if (vie < 0) {
+            TableauDeBord.finDuJeu = true;
+            System.out.println("partie fini");
+        }
+
+    }
+public static void gestionPoint(){
+        if (compteurGlobal < 999999) {
+            compteur();
+        } else {
+            compteurGlobal = 0;
         }
     }
 

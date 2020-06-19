@@ -2,7 +2,6 @@ package com.cda.listener;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import com.cda.model.Bouclier;
 import com.cda.model.Constantes;
 import com.cda.model.MaFenetre;
@@ -77,6 +76,7 @@ public class EcouteurVaisseau implements KeyListener {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_NUMPAD0:
 			Bouclier.actif = true;
+			Bouclier.NbreBouclier--;
 			//bouclier();
 			break;
 		case KeyEvent.VK_DOWN:

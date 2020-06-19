@@ -9,10 +9,12 @@ public class Chrono implements Runnable {
     public void run() {
         while (!TableauDeBord.finDuJeu) {
             MaFenetre.vBackgroundWindow.PosyFond++;
+            System.out.println(Accueil.nomJoueur2);
             timerBouclier++;
             timerDifficult++;
-            if (timerBouclier == 1000) {
+            if (timerBouclier == 700) {
                 Bouclier.actif = false;
+                timerBouclier = 0;
             }
 
             MaFenetre.vBackgroundWindow.repaint();

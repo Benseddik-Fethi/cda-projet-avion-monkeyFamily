@@ -32,6 +32,14 @@ public class TableauDeBord extends JPanel {
 	public TableauScore score4 = new TableauScore();
 	public TableauScore score5 = new TableauScore();
 	public TableauScore score6 = new TableauScore();
+	public Vie vie1= new Vie();
+	public Vie vie2= new Vie();
+	public Vie vie3= new Vie();
+
+	public static Bouclier bouclier1 = new Bouclier();
+	public static Bouclier bouclier2 = new Bouclier();
+	public static Bouclier bouclier3 = new Bouclier();
+	public static Thread chronoEcran = new Thread(new Chrono());
 
 	public TableauDeBord(MaFenetre vMaFenetre) {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -51,7 +59,7 @@ public class TableauDeBord extends JPanel {
 
 	}
 public void go(){
-		Thread chronoEcran = new Thread(new Chrono()); // sortir thread et créer méthode pour lancer le jeu après le
+		 // sortir thread et créer méthode pour lancer le jeu après le
 		chronoEcran.start();
 }
 	public void initMissile() {
@@ -95,6 +103,12 @@ public void go(){
 		g.drawImage(score6.getImgMissile(), score.xPos - 155, score.yPos, null);
 		g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
 				vaisseau.deplacementVaisseauVertical(), vaisseau.hauteur, vaisseau.largeur, null);
+		g.drawImage(vie1.imgMissile, vie1.xPos, vie1.yPos, null);
+		g.drawImage(vie2.imgMissile, vie1.xPos +45, vie1.yPos, null);
+		g.drawImage(vie3.imgMissile, vie1.xPos + 90, vie1.yPos, null);
+		g.drawImage(bouclier1.imgMissile, vie1.xPos, 820,30,30,null );
+		g.drawImage(bouclier2.imgMissile, vie1.xPos +35, 820,30,30, null);
+		g.drawImage(bouclier3.imgMissile, vie1.xPos + 70, 820,30,30, null);
 
 	}
 

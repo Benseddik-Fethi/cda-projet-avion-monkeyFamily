@@ -128,4 +128,14 @@ public class Constantes {
 	public static final int DELTA_MISSILE_SECONDAIRE = 45;
 	protected static final int NOMBRE_MISSILE_TIR_INIT = 5;
 	public static final ArrayList<Entite> MES_TIR_MISSILE = new ArrayList<>();
+
+
+	/*==========Vie======================*/
+	protected static final int NBREDEVIE = 3;
+	protected static final String IMAGE_VIE = "/images/avion-icone.png";
+
+	/*=============imageBouton=======*/
+	protected static final String BOUTON = "/images/bouton.png";
+	protected static final String BOUTON_HOVER = "/images/bouton-survol.png";
+
 }

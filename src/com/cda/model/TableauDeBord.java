@@ -6,10 +6,8 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
 import com.cda.emu.EnumMissile;
 import com.cda.listener.EcouteurVaisseau;
 import com.cda.listener.EcouteurVaisseauSouris;
@@ -19,10 +17,10 @@ public class TableauDeBord extends JPanel {
 	public static Vaisseau vaisseau;
 	public static boolean finDuJeu = false;
 	public int PosyFond;
-	public Bouclier bouclier = new Bouclier();
+	public static Bouclier bouclier = new Bouclier();
 	public TirVaisseau missileAvion = new TirVaisseau();
 	public TirVaisseauSecondaire tirSecondaireAvion = new TirVaisseauSecondaire();
-//	public Test traineeAvion = new Test();
+	//	public Test traineeAvion = new Test();
 	private ImageIcon icoBandeFond;
 	private Image imgBandeFond;
 	private ImageIcon icoNuage;
@@ -51,12 +49,13 @@ public class TableauDeBord extends JPanel {
 		this.addMouseListener(new EcouteurVaisseauSouris());
 		this.addMouseMotionListener(new EcouteurVaisseauSouris());
 
-		Thread chronoEcran = new Thread(new Chrono()); // sortir thread et créer méthode pour lancer le jeu après le
-														// menu
-		chronoEcran.start();
+
 
 	}
-
+public void go(){
+		Thread chronoEcran = new Thread(new Chrono()); // sortir thread et créer méthode pour lancer le jeu après le
+		chronoEcran.start();
+}
 	public void initMissile() {
 		if (init) {
 			for (int i = 0; i < Constantes.NOMBRE_MISSILE_INIT; i++) {
@@ -88,6 +87,7 @@ public class TableauDeBord extends JPanel {
 		bouclier.initBouclier(g);
 		missileAvion.tirMissileVaisseau(g);
 		tirSecondaireAvion.tirMissileVaisseau(g);
+		difficulte();
 		// traineeAvion.tirMissileVaisseau(g);
 		g.drawImage(score.getImgMissile(), score.xPos + 20, score.yPos, null);
 		g.drawImage(score2.getImgMissile(), score.xPos - 15, score.yPos, null);
@@ -98,19 +98,7 @@ public class TableauDeBord extends JPanel {
 		g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
 				vaisseau.deplacementVaisseauVertical(), vaisseau.hauteur, vaisseau.largeur, null);
 
-<<<<<<< HEAD
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        deplacementFond(g);
-        initMissile();
-        GestionCollision.collissionArray(vaisseau, Constantes.MES_MISSILES);
-        GestionCollision.collissionArray(missileAvion, Constantes.MES_MISSILES);
-        rechargementmissile(g);
-        missileAvion.tirMissileVaisseau(g);
-=======
 	}
->>>>>>> dev
 
 	public Entite missileDetruit() {
 		Entite sortie = null;
@@ -147,11 +135,11 @@ public class TableauDeBord extends JPanel {
 	}
 
 	public static void difficulte() {
-		if (GestionCollision.getCompteurGlobal() > 1000) {
-			Constantes.setNOMBRE_MISSILE_INIT(Constantes.getNOMBRE_MISSILE_INIT() * 2);
-		} else if (GestionCollision.getCompteurGlobal() > 10000) {
-			Constantes.setNOMBRE_MISSILE_INIT(Constantes.getNOMBRE_MISSILE_INIT() * 5);
-
+		if (Chrono.timerDifficult == 500) {
+			Chrono.ajoutBombe++;
+			Chrono.timerDifficult = 0;
+			System.out.println(Chrono.ajoutBombe);
 		}
+		Chrono.ajoutBombe = 0;
 	}
 }

@@ -1,5 +1,7 @@
 package com.cda.model;
 
+import com.cda.program.Program;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -65,7 +67,7 @@ public abstract class GestionCollision {
                         gestionPoint();
                     }
                 }
-                System.out.println("tir réussi");
+
 
             } else if ((vVaisseau instanceof Vaisseau && vMissile instanceof BombeFeu)
                     || (vVaisseau instanceof Vaisseau && vMissile instanceof BombeGlace)
@@ -74,17 +76,17 @@ public abstract class GestionCollision {
                 vMissile.detruit = true;
                 vie--;
                 gestionVie();
-                System.out.println("touché par missile");
+
 
             } else if (vMissile instanceof Mine && !Bouclier.actif) {
                 vMissile.detruit = true;
                 vVaisseau.detruit = true;
                 vie--;
                 gestionVie();
-                System.out.println("détruit par mine");
+
 
             } else {
-                System.out.println("détruit par bouclier");
+
                 vMissile.detruit = true;
             }
         }
@@ -108,10 +110,9 @@ public abstract class GestionCollision {
             MaFenetre.vBackgroundWindow.vie1.setImgMissile(imgMissile);
         }
         if (vie < 0) {
-            TableauDeBord.finDuJeu = true;
             FichierSauvegarde.fichier();
-            //MaFenetre.finDePArtie();
-            System.out.println("partie fini");
+            Chrono.pause = true;
+            Program.vMaFenetre.finPartie();
         }
 
     }

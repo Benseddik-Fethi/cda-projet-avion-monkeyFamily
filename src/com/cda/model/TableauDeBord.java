@@ -16,6 +16,7 @@ import com.cda.listener.EcouteurVaisseauSouris;
 import com.cda.utils.Tools;
 
 public class TableauDeBord extends JPanel {
+<<<<<<< HEAD
 	public static Vaisseau vaisseau;
 	public static boolean finDuJeu = false;
 	public int PosyFond;
@@ -42,6 +43,48 @@ public class TableauDeBord extends JPanel {
 	public static Bouclier bouclier2 = new Bouclier();
 	public static Bouclier bouclier3 = new Bouclier();
 	public static Thread chronoEcran = new Thread(new Chrono());
+=======
+    public static Vaisseau vaisseau;
+    public static boolean finDuJeu = false;
+    public int PosyFond;
+    public static Bouclier bouclier = new Bouclier();
+    public TirVaisseau missileAvion = new TirVaisseau();
+    public TirVaisseauSecondaire tirSecondaireAvion = new TirVaisseauSecondaire();
+    private final ImageIcon icoBandeFond;
+    private final Image imgBandeFond;
+    private boolean init = true;
+    public TableauScore score = new TableauScore();
+    public TableauScore score2 = new TableauScore();
+    public TableauScore score3 = new TableauScore();
+    public TableauScore score4 = new TableauScore();
+    public TableauScore score5 = new TableauScore();
+    public TableauScore score6 = new TableauScore();
+    public Vie vie1 = new Vie();
+    public Vie vie2 = new Vie();
+    public Vie vie3 = new Vie();
+
+    public static Bouclier bouclier1 = new Bouclier();
+    public static Bouclier bouclier2 = new Bouclier();
+    public static Bouclier bouclier3 = new Bouclier();
+    public static Thread chronoEcran = new Thread(new Chrono());
+
+    public TableauDeBord(MaFenetre vMaFenetre) {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image image = toolkit.getImage(Constantes.AVION_TOP);
+        Cursor perso = toolkit.createCustomCursor(image, new Point(0, 0), "perso");
+        this.setCursor(perso);
+        this.PosyFond = 0;
+        setSize(vMaFenetre.getWidth(), vMaFenetre.getHeight());
+        this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
+        this.imgBandeFond = this.icoBandeFond.getImage();
+        vaisseau = new Vaisseau();
+        this.setFocusable(true);
+        this.requestFocusInWindow();
+        this.addKeyListener(new EcouteurVaisseau());
+        this.addMouseListener(new EcouteurVaisseauSouris());
+        this.addMouseMotionListener(new EcouteurVaisseauSouris());
+    }
+>>>>>>> Fethi
 
 	public TableauDeBord(MaFenetre vMaFenetre) {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -74,6 +117,7 @@ public class TableauDeBord extends JPanel {
 		}
 	}
 
+<<<<<<< HEAD
 	// Methode pour animation du fond d'ecran
 	private void deplacementFond(Graphics g) {
 		if (PosyFond == Constantes.FENETRE_HEIGHT) {
@@ -84,6 +128,34 @@ public class TableauDeBord extends JPanel {
 		g.drawImage(this.imgBandeFond, 0, this.PosyFond - Constantes.IMAGE_HEIGHT * 2, null);
 		g.drawImage(this.imgBandeFond, 0, this.PosyFond - Constantes.IMAGE_HEIGHT * 3, null);
 	}
+=======
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        deplacementFond(g);
+        initMissile();
+        GestionCollision.collissionArray(vaisseau, Constantes.MES_MISSILES);
+        GestionCollision.collissionArray(missileAvion, Constantes.MES_MISSILES);
+        rechargementmissile(g);
+        bouclier.initBouclier(g);
+        missileAvion.tirMissileVaisseau(g);
+        tirSecondaireAvion.tirMissileVaisseau(g);
+        difficulte();
+        g.drawImage(score.getImgMissile(), score.xPos + 20, score.yPos, null);
+        g.drawImage(score2.getImgMissile(), score.xPos - 15, score.yPos, null);
+        g.drawImage(score3.getImgMissile(), score.xPos - 50, score.yPos, null);
+        g.drawImage(score4.getImgMissile(), score.xPos - 85, score.yPos, null);
+        g.drawImage(score5.getImgMissile(), score.xPos - 120, score.yPos, null);
+        g.drawImage(score6.getImgMissile(), score.xPos - 155, score.yPos, null);
+        g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
+                vaisseau.deplacementVaisseauVertical(), vaisseau.hauteur, vaisseau.largeur, null);
+        g.drawImage(vie1.imgMissile, vie1.xPos, vie1.yPos, null);
+        g.drawImage(vie2.imgMissile, vie1.xPos + 45, vie1.yPos, null);
+        g.drawImage(vie3.imgMissile, vie1.xPos + 90, vie1.yPos, null);
+        g.drawImage(bouclier1.imgMissile, vie1.xPos, 820, 30, 30, null);
+        g.drawImage(bouclier2.imgMissile, vie1.xPos + 35, 820, 30, 30, null);
+        g.drawImage(bouclier3.imgMissile, vie1.xPos + 70, 820, 30, 30, null);
+>>>>>>> Fethi
 
 	@Override
 	protected void paintComponent(Graphics g) {

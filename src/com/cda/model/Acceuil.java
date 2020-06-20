@@ -58,6 +58,7 @@ class Accueil extends JPanel {
 				nomJoueur2 = nomJoueur.getText().trim();
 				if (nomJoueur2.length() != 0) {
 					cdaFenetre.lancerPartiePanel();
+					MaFenetre.monSon.musiqueFondStart();
 				}
 			}
 

@@ -55,7 +55,6 @@ public class TableauDeBord extends JPanel {
 		this.addKeyListener(new EcouteurVaisseau());
 		this.addMouseListener(new EcouteurVaisseauSouris());
 		this.addMouseMotionListener(new EcouteurVaisseauSouris());
-
 	}
 
 	public void go() {

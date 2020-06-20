@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import com.cda.model.Bouclier;
+import com.cda.model.Chrono;
 import com.cda.model.Constantes;
 import com.cda.model.MaFenetre;
 import com.cda.model.TableauDeBord;
@@ -12,8 +13,13 @@ public class EcouteurVaisseau implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		switch (e.getKeyCode()) {
+		case KeyEvent.VK_NUMPAD1:
+			Chrono.pause = true;
+			break;
+		case KeyEvent.VK_NUMPAD2:
+			Chrono.pause = false;
+			break;
 		case KeyEvent.VK_NUMPAD0:
-
 			// bouclier();
 			break;
 		case KeyEvent.VK_DOWN:
@@ -44,6 +50,12 @@ public class EcouteurVaisseau implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
+		case KeyEvent.VK_NUMPAD1:
+			Chrono.pause = true;
+			break;
+		case KeyEvent.VK_NUMPAD2:
+			Chrono.pause = false;
+			break;
 		case KeyEvent.VK_NUMPAD0:
 			// bouclier();
 			break;
@@ -75,6 +87,12 @@ public class EcouteurVaisseau implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
+		case KeyEvent.VK_NUMPAD1:
+			Chrono.pause = true;
+			break;
+		case KeyEvent.VK_NUMPAD2:
+			Chrono.pause = false;
+			break;
 		case KeyEvent.VK_NUMPAD0:
 			Bouclier.actif = true;
 			Bouclier.NbreBouclier--;
@@ -95,7 +113,6 @@ public class EcouteurVaisseau implements KeyListener {
 		case KeyEvent.VK_SPACE:
 			if (!MaFenetre.vBackgroundWindow.missileAvion.isTirMissile()) {
 				tirDouble();
-
 				break;
 
 			}

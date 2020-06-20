@@ -13,20 +13,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 class Accueil extends JPanel {
-	ImageIcon logoTeam = new ImageIcon(getClass().getResource(Constantes.LOGO));
-	Image imgLogo = logoTeam.getImage();
-
+	private ImageIcon logoTeam = new ImageIcon(getClass().getResource(Constantes.LOGO));
+	private Image imgLogo = logoTeam.getImage();
 	public static String nomJoueur2;
 	protected JTextField nomJoueur = new JTextField();
-	ImageIcon lancer = new ImageIcon("/images/bout.png");
 	private ImageIcon icoBandeFond;
 	private Image imgBandeFond;
-	ImageIcon icoMissile = new ImageIcon(getClass().getResource(Constantes.BOUTON));
-	Image imgMissile = icoMissile.getImage();
+	private ImageIcon icoBouton = new ImageIcon(getClass().getResource(Constantes.BOUTON));
+	private Image imgMissile = icoBouton.getImage();
 
 	public Accueil(final MaFenetre cdaFenetre) {
 		this.setLayout(null);
-
 		JPanel lancerPartie = new JPanel() {
 
 			@Override
@@ -36,7 +33,6 @@ class Accueil extends JPanel {
 			}
 		};
 		lancerPartie.setOpaque(false);
-		JTextField nomJoueur = new JTextField();
 		nomJoueur.setOpaque(false);
 		nomJoueur.setHorizontalAlignment(JTextField.CENTER);
 		nomJoueur.setBorder(BorderFactory.createLineBorder(Color.gray, 2));
@@ -64,16 +60,16 @@ class Accueil extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				super.mouseEntered(e);
-				icoMissile = new ImageIcon(getClass().getResource(Constantes.BOUTON_HOVER));
-				imgMissile = icoMissile.getImage();
+				icoBouton = new ImageIcon(getClass().getResource(Constantes.BOUTON_HOVER));
+				imgMissile = icoBouton.getImage();
 				lancerPartie.repaint();
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				super.mouseExited(e);
-				icoMissile = new ImageIcon(getClass().getResource(Constantes.BOUTON));
-				imgMissile = icoMissile.getImage();
+				icoBouton = new ImageIcon(getClass().getResource(Constantes.BOUTON));
+				imgMissile = icoBouton.getImage();
 				lancerPartie.repaint();
 			}
 		});

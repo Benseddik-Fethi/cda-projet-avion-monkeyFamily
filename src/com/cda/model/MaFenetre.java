@@ -9,11 +9,15 @@ public class MaFenetre extends JFrame {
     protected final CardLayout cardLayout = new CardLayout();
     public static final String ACCUEIL_PANEL = "ACCUEIL_PANEL";
     public static final String PARTIE_PANEL = "PARTIE_PANEL";
+    public static final String SCORE_PANEL ="SCORE_PANEL";
     private Container contentPane;
     public static TableauDeBord vBackgroundWindow;
-public static Accueil vAccueil;
+    public static Accueil vAccueil;
+    public static PanelScore vPanelScore;
+
     public MaFenetre() {
         vAccueil = new Accueil(this);
+        vPanelScore = new PanelScore();
         setSize(Constantes.FENETRE_WIDTH, Constantes.FENETRE_HEIGHT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("FlightFight");
@@ -25,7 +29,8 @@ public static Accueil vAccueil;
         this.setLayout(cardLayout);
         contentPane = this.getContentPane();
         contentPane.add(vAccueil, ACCUEIL_PANEL);
-        this.getContentPane().add(vBackgroundWindow,PARTIE_PANEL);
+        contentPane.add(vPanelScore, SCORE_PANEL);
+        contentPane.add(vBackgroundWindow,PARTIE_PANEL);
 
 
         this.setVisible(true);
@@ -37,7 +42,8 @@ public static Accueil vAccueil;
         vBackgroundWindow.requestFocus(true);
     }
 
-    public void finDePArtie(){
+   /* public void finDePArtie(){
         cardLayout.show(contentPane,ACCUEIL_PANEL);
-    }
+        TableauDeBord.finDuJeu = false;
+    }*/
 }

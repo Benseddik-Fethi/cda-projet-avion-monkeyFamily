@@ -16,7 +16,6 @@ public class Chrono implements Runnable {
                 Bouclier.actif = false;
                 timerBouclier = 0;
             }
-
             MaFenetre.vBackgroundWindow.repaint();
             try {
                 Thread.sleep(Constantes.VITESSE_DEFILEMENT_FOND);

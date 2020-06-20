@@ -1,5 +1,7 @@
 package com.cda.model;
 
+import com.cda.program.Program;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -110,6 +112,7 @@ public abstract class GestionCollision {
         if (vie < 0) {
             TableauDeBord.finDuJeu = true;
             FichierSauvegarde.fichier();
+            //MaFenetre.finDePArtie();
             System.out.println("partie fini");
         }
 

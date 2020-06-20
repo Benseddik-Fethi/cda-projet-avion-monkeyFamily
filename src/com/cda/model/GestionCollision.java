@@ -1,11 +1,7 @@
 package com.cda.model;
 
 import java.awt.Image;
-import java.awt.Rectangle;=======
-import com.cda.program.Program;
-
-import javax.swing.*;
-import java.awt.*;>>>>>>>dev
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;

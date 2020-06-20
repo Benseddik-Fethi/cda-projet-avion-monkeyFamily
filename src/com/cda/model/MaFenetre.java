@@ -15,11 +15,13 @@ public class MaFenetre extends JFrame {
 	public static final String FIN_PANEL = "FIN_PANEL";
 	public static TableauDeBord vBackgroundWindow;
 	public static Accueil vAccueil;
+	public static PanelFin vPanelFin;
 	private Container contentPane;
 	public static Son monSon;
 
 	public MaFenetre() {
 		vAccueil = new Accueil(this);
+		vPanelFin = new PanelFin(this);
 		setSize(Constantes.FENETRE_WIDTH, Constantes.FENETRE_HEIGHT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("FlightFight");
@@ -32,6 +34,7 @@ public class MaFenetre extends JFrame {
 		contentPane = this.getContentPane();
 		contentPane.add(vAccueil, ACCUEIL_PANEL);
 		contentPane.add(vBackgroundWindow, PARTIE_PANEL);
+		contentPane.add(vPanelFin, FIN_PANEL);
 		monSon = new Son("/1-welcome.wav");
 		this.setVisible(true);
 	}
@@ -42,7 +45,8 @@ public class MaFenetre extends JFrame {
 		vBackgroundWindow.requestFocus(true);
 	}
 
-	public void finDePArtie() {
-		cardLayout.show(contentPane, ACCUEIL_PANEL);
+	public void finDePartie() {
+		System.out.println("test_panel_fin");
+		cardLayout.show(contentPane, FIN_PANEL);
 	}
 }

@@ -13,11 +13,11 @@ public class MaFenetre extends JFrame {
     private final Container contentPane;
     public static TableauDeBord vBackgroundWindow;
     public static Accueil vAccueil;
-    public static PanelScore vPanelScore;
+    public static PanelFin vPanelFin;
 
     public MaFenetre() {
         vAccueil = new Accueil(this);
-        vPanelScore = new PanelScore();
+        vPanelFin = new PanelFin(this);
         setSize(Constantes.FENETRE_WIDTH, Constantes.FENETRE_HEIGHT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("FlightFight");
@@ -29,7 +29,7 @@ public class MaFenetre extends JFrame {
         this.setLayout(cardLayout);
         contentPane = this.getContentPane();
         contentPane.add(vAccueil, ACCUEIL_PANEL);
-        contentPane.add(vPanelScore, SCORE_PANEL);
+        contentPane.add(vPanelFin, SCORE_PANEL);
         contentPane.add(vBackgroundWindow, PARTIE_PANEL);
 
 
@@ -42,8 +42,19 @@ public class MaFenetre extends JFrame {
         vBackgroundWindow.requestFocus(true);
     }
 
-   /* public void finDePArtie(){
-        cardLayout.show(contentPane,ACCUEIL_PANEL);
-        TableauDeBord.finDuJeu = false;
-    }*/
+    public void finPartie(){
+        cardLayout.show(contentPane, SCORE_PANEL);
+    }
+
+    public void rejouer(){
+        cardLayout.show(contentPane, PARTIE_PANEL);
+        GestionCollision.compteurGlobal = 0;
+        GestionCollision.vie += 3;
+        Bouclier.NbreBouclier += 3;
+        vBackgroundWindow.repaint();
+        vBackgroundWindow.requestFocus(true);
+
+    }
+
+
 }

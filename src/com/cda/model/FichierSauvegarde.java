@@ -5,14 +5,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Properties;
 
 public class FichierSauvegarde {
 
     public static void fichier() {
-        Properties vPropriete = System.getProperties();
-        String vNomSession = vPropriete.getProperty("user.name");
-        String vUserDir = vPropriete.getProperty("user.dir");
+
         DateTimeFormatter vDateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDateTime vDate = LocalDateTime.now();
         String vDateFormater = vDate.format(vDateFormat);

@@ -110,14 +110,6 @@ public class Constantes {
     protected static int NOMBRE_MISSILE_INIT = 5;
     protected static final ArrayList<Entite> MES_MISSILES = new ArrayList<>();
 
-    public static int getNOMBRE_MISSILE_INIT() {
-        return NOMBRE_MISSILE_INIT;
-    }
-
-    public static void setNOMBRE_MISSILE_INIT(int pNombreMissiles) {
-        NOMBRE_MISSILE_INIT = pNombreMissiles;
-    }
-
     /* ==============Constante Missile Avion===== */
     public static final int HAUTEUR_MISSILE_AVION = 60;
     public static final int LARGEUR_MISSILE_AVION = 50;
@@ -137,6 +129,12 @@ public class Constantes {
     /*=============imageBouton=======*/
     protected static final String BOUTON = "/images/bouton.png";
     protected static final String BOUTON_HOVER = "/images/bouton-survol.png";
+    protected static final String BOUTON_REJOUER = "/images/bout-rejouer.png";
+    protected static final String BOUTON_REJOUER_HOVER = "/images/bout-rejouer-survol.png";
+    protected static final String BOUTON_SCORES = "/images/bout-scores.png";
+    protected static final String BOUTON_SCORES_HOVER = "/images/bout-scores-survol.png";
+    protected static final String BOUTON_QUITTER = "/images/bout-quitter.png";
+    protected static final String BOUTON_QUITTER_HOVER = "/images/bout-quitter-survol.png";
 
     /*===========LOGO============*/
     protected static final String LOGO = "/images/logo.png";

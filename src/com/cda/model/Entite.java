@@ -29,21 +29,6 @@ public abstract class Entite {
     protected boolean tirMissile;
     protected boolean mur = false;
 
-    public int getOnfireXPos() {
-        return onfireXPos;
-    }
-
-    public void setOnfireXPos(int onfireXPos) {
-        this.onfireXPos = onfireXPos;
-    }
-
-    public int getOnfireYPos() {
-        return onfireYPos;
-    }
-
-    public void setOnfireYPos(int onfireYPos) {
-        this.onfireYPos = onfireYPos;
-    }
 
     public boolean isTirMissile() {
         return tirMissile;
@@ -53,45 +38,11 @@ public abstract class Entite {
         this.tirMissile = tirMissile;
     }
 
-    public ImageIcon getIcoVaisseau() {
-        return icoVaisseau;
-    }
-
-    public void setIcoVaisseau(ImageIcon icoVaisseau) {
-        this.icoVaisseau = icoVaisseau;
-    }
 
     public Image getImgVaisseau() {
         return imgVaisseau;
     }
 
-    public void setImgVaisseau(Image imgVaisseau) {
-        this.imgVaisseau = imgVaisseau;
-    }
-
-    public Image getImgOnFire() {
-        return imgOnFire;
-    }
-
-    public void setImgOnFire(Image imgOnFire) {
-        this.imgOnFire = imgOnFire;
-    }
-
-    public boolean isMur() {
-        return mur;
-    }
-
-    public void setMur(boolean mur) {
-        this.mur = mur;
-    }
-
-    public int getVitesse() {
-        return vitesse;
-    }
-
-    public void setVitesse(int vitesse) {
-        this.vitesse = vitesse;
-    }
 
     public int getLargeur() {
         return largeur;
@@ -133,29 +84,10 @@ public abstract class Entite {
         this.dY = dY;
     }
 
-    public int getdX() {
-        return dX;
-    }
-
     public void setdX(int dX) {
         this.dX = dX;
     }
 
-    public String getStrImage() {
-        return strImage;
-    }
-
-    public void setStrImage(String strImage) {
-        this.strImage = strImage;
-    }
-
-    public String getMissileDetruit() {
-        return missileDetruit;
-    }
-
-    public void setMissileDetruit(String missileDetruit) {
-        this.missileDetruit = missileDetruit;
-    }
 
     public ImageIcon getIcoMissile() {
         return icoMissile;
@@ -173,13 +105,6 @@ public abstract class Entite {
         this.imgMissile = imgMissile;
     }
 
-    public boolean isDetruit() {
-        return detruit;
-    }
-
-    public void setDetruit(boolean detruit) {
-        this.detruit = detruit;
-    }
 
     public Rectangle getBounds() {
         return new Rectangle(this.getxPos(), this.getyPos(), this.getLargeur() - 5, this.getHauteur() - 5);

@@ -61,8 +61,6 @@ public class EcouteurVaisseau implements KeyListener {
 			break;
 		case KeyEvent.VK_DOWN:
 			TableauDeBord.vaisseau.setdY(Constantes.VITESSE_VAISSEAU);
-//			traineeAvion();
-			break;
 		case KeyEvent.VK_UP:
 			// traineeAvion();
 			TableauDeBord.vaisseau.setdY(-Constantes.VITESSE_VAISSEAU);
@@ -114,7 +112,6 @@ public class EcouteurVaisseau implements KeyListener {
 			if (!MaFenetre.vBackgroundWindow.missileAvion.isTirMissile()) {
 				tirDouble();
 				break;
-
 			}
 		}
 	}
@@ -134,19 +131,4 @@ public class EcouteurVaisseau implements KeyListener {
 		MaFenetre.vBackgroundWindow.tirSecondaireAvion
 				.setxPos((TableauDeBord.vaisseau.getxPos() - 75) + Constantes.LARGEUR_AVION);
 	}
-
-//	public void bouclier() {
-//		System.out.println("bouclier");
-//		MaFenetre.vBackgroundWindow.bouclier.setTirMissile(true);
-//		MaFenetre.vBackgroundWindow.bouclier.setyPos((TableauDeBord.vaisseau.getyPos() - 100));
-//		MaFenetre.vBackgroundWindow.bouclier.setxPos((TableauDeBord.vaisseau.getxPos()));
-//	}
-
-//	public void traineeAvion() {
-//		MaFenetre.vBackgroundWindow.traineeAvion.setTirMissile(true);
-//		MaFenetre.vBackgroundWindow.traineeAvion
-//				.setyPos((TableauDeBord.vaisseau.getyPos()) - Constantes.HAUTEUR_MISSILE_AVION);
-//		MaFenetre.vBackgroundWindow.tirSecondaireAvion
-//				.setxPos((TableauDeBord.vaisseau.getxPos()) + Constantes.LARGEUR_AVION);
-//	}
 }

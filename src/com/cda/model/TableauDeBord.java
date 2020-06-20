@@ -22,8 +22,11 @@ public class TableauDeBord extends JPanel {
 	public static Bouclier bouclier = new Bouclier();
 	public TirVaisseau missileAvion = new TirVaisseau();
 	public TirVaisseauSecondaire tirSecondaireAvion = new TirVaisseauSecondaire();
-	private ImageIcon icoBandeFond;
-	private Image imgBandeFond;
+	// public Test traineeAvion = new Test();
+	private final ImageIcon icoBandeFond;
+	private final Image imgBandeFond;
+	private ImageIcon icoNuage;
+	private Image imgNuage;
 	private boolean init = true;
 	public TableauScore score = new TableauScore();
 	public TableauScore score2 = new TableauScore();
@@ -109,7 +112,6 @@ public class TableauDeBord extends JPanel {
 		g.drawImage(bouclier1.imgMissile, vie1.xPos, 820, 30, 30, null);
 		g.drawImage(bouclier2.imgMissile, vie1.xPos + 35, 820, 30, 30, null);
 		g.drawImage(bouclier3.imgMissile, vie1.xPos + 70, 820, 30, 30, null);
-
 	}
 
 	public Entite missileDetruit() {

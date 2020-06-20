@@ -12,11 +12,11 @@ public class MaFenetre extends JFrame {
 	protected final CardLayout cardLayout = new CardLayout();
 	public static final String ACCUEIL_PANEL = "ACCUEIL_PANEL";
 	public static final String PARTIE_PANEL = "PARTIE_PANEL";
-	private Container contentPane;
+	public static final String FIN_PANEL = "FIN_PANEL";
 	public static TableauDeBord vBackgroundWindow;
-	public static Son monSon;
-
 	public static Accueil vAccueil;
+	private Container contentPane;
+	public static Son monSon;
 
 	public MaFenetre() {
 		vAccueil = new Accueil(this);
@@ -31,9 +31,8 @@ public class MaFenetre extends JFrame {
 		this.setLayout(cardLayout);
 		contentPane = this.getContentPane();
 		contentPane.add(vAccueil, ACCUEIL_PANEL);
-		this.getContentPane().add(vBackgroundWindow, PARTIE_PANEL);
+		contentPane.add(vBackgroundWindow, PARTIE_PANEL);
 		monSon = new Son("/1-welcome.wav");
-
 		this.setVisible(true);
 	}
 

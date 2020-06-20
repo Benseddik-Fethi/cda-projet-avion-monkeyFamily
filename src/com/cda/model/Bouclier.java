@@ -20,14 +20,14 @@ public class Bouclier extends Entite {
     }
 
 
-
     public void initBouclier(Graphics g) {
-        if (actif && NbreBouclier>0) {
+        if (actif && NbreBouclier > 0) {
             Bouclier.gestionBouclier();
             g.drawImage(imgMissile, TableauDeBord.vaisseau.xPos - 30, TableauDeBord.vaisseau.yPos - 30, 160, 160, null);
         }
     }
-    public static void gestionBouclier(){
+
+    public static void gestionBouclier() {
         String vieUtilisé = "";
         if (NbreBouclier == 3) {
             ImageIcon icoMissile = new ImageIcon(TableauScore.class.getResource(vieUtilisé));

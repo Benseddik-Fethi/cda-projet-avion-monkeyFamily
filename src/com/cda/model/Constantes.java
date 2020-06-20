@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * Constantes du projet
  */
 public class Constantes {
-
 	/**
 	 * Utilis� dans la classe Ecouteur Vaisseau dans le package com.cda.listener.
 	 *
@@ -136,8 +135,13 @@ public class Constantes {
 	/* =============imageBouton======= */
 	protected static final String BOUTON = "/images/bouton.png";
 	protected static final String BOUTON_HOVER = "/images/bouton-survol.png";
+	protected static final String BOUTON_REJOUER = "/images/bouton-rejouer.png";
+	protected static final String BOUTON_REJOUER_HOVER = "/images/bouton-rejouer-survol.png";
+	protected static final String BOUTON_SCORES = "/images/bouton-scores.png";
+	protected static final String BOUTON_SCORES_HOVER = "/images/bouton-scores-survol.png";
+	protected static final String BOUTON_QUITTER = "/images/bouton-quitter.png";
+	protected static final String BOUTON_QUITTER_HOVER = "/images/bouton-quitter-survol.png";
 
 	/* ===========LOGO============ */
 	protected static final String LOGO = "/images/logo.png";
-
 }

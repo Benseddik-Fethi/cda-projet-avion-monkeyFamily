@@ -192,7 +192,7 @@ public abstract class Entite {
 	}
 
 	public int deplacementMissile() {
-		if (this.getyPos() < 820 && !(this instanceof BombeZigZag)) {
+		if (this.getyPos() < 950 && !(this instanceof BombeZigZag)) {
 			if (this instanceof Mine) {
 				this.setyPos(this.yPos + Tools.genererInt(-1, 1));
 				this.setxPos(this.xPos + Tools.genererInt(-1, 2));

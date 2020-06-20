@@ -21,8 +21,6 @@ public class TirVaisseau extends Entite {
 		super.imgMissile = this.icoMissile.getImage();
 	}
 
-
-
 	public static Entite missileDetruit() {
 		return new TirVaisseau();
 	}
@@ -48,24 +46,10 @@ public class TirVaisseau extends Entite {
 		return yPos;
 	}
 
-//	public int animCanons() {
-//		if (this.tirMissile) {
-//			if (this.yPos > 900) {
-//				this.yPos = this.yPos;
-//			} else {
-//				ok = false;
-//				this.tirMissile = false;
-//			}
-//		}
-//		return yPos;
-//	}
-
 	public void tirMissileVaisseau(Graphics g) {
 		if (this.tirMissile) {
 			g.drawImage(this.imgMissile, this.xPos, this.deplacementTirMissile() + 50, Constantes.LARGEUR_MISSILE_AVION,
 					Constantes.HAUTEUR_MISSILE_AVION, null);
-//			g.drawImage(this.imgOnFire, this.onfireXPos + 25, this.deplacementTirMissile() + 35,
-//					Constantes.HAUTEUR_MISSILE_AVION, Constantes.LARGEUR_MISSILE_AVION, null);
 		}
 	}
 }

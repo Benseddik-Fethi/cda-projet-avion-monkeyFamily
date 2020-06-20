@@ -2,6 +2,7 @@ package com.cda.listener;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import com.cda.model.Bouclier;
 import com.cda.model.Constantes;
 import com.cda.model.MaFenetre;
@@ -13,7 +14,7 @@ public class EcouteurVaisseau implements KeyListener {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_NUMPAD0:
 
-			//bouclier();
+			// bouclier();
 			break;
 		case KeyEvent.VK_DOWN:
 			TableauDeBord.vaisseau.setdY(Constantes.VITESSE_VAISSEAU);
@@ -44,7 +45,7 @@ public class EcouteurVaisseau implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_NUMPAD0:
-			//bouclier();
+			// bouclier();
 			break;
 		case KeyEvent.VK_DOWN:
 			TableauDeBord.vaisseau.setdY(Constantes.VITESSE_VAISSEAU);
@@ -77,7 +78,7 @@ public class EcouteurVaisseau implements KeyListener {
 		case KeyEvent.VK_NUMPAD0:
 			Bouclier.actif = true;
 			Bouclier.NbreBouclier--;
-			//bouclier();
+			// bouclier();
 			break;
 		case KeyEvent.VK_DOWN:
 			TableauDeBord.vaisseau.setdY(0);
@@ -117,12 +118,12 @@ public class EcouteurVaisseau implements KeyListener {
 				.setxPos((TableauDeBord.vaisseau.getxPos() - 75) + Constantes.LARGEUR_AVION);
 	}
 
-	public void bouclier() {
-		System.out.println("bouclier");
-		MaFenetre.vBackgroundWindow.bouclier.setTirMissile(true);
-		MaFenetre.vBackgroundWindow.bouclier.setyPos((TableauDeBord.vaisseau.getyPos() - 100));
-		MaFenetre.vBackgroundWindow.bouclier.setxPos((TableauDeBord.vaisseau.getxPos()));
-	}
+//	public void bouclier() {
+//		System.out.println("bouclier");
+//		MaFenetre.vBackgroundWindow.bouclier.setTirMissile(true);
+//		MaFenetre.vBackgroundWindow.bouclier.setyPos((TableauDeBord.vaisseau.getyPos() - 100));
+//		MaFenetre.vBackgroundWindow.bouclier.setxPos((TableauDeBord.vaisseau.getxPos()));
+//	}
 
 //	public void traineeAvion() {
 //		MaFenetre.vBackgroundWindow.traineeAvion.setTirMissile(true);

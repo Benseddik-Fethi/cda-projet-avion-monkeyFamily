@@ -6,8 +6,10 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
 import com.cda.emu.EnumMissile;
 import com.cda.listener.EcouteurVaisseau;
 import com.cda.listener.EcouteurVaisseauSouris;
@@ -20,11 +22,8 @@ public class TableauDeBord extends JPanel {
 	public static Bouclier bouclier = new Bouclier();
 	public TirVaisseau missileAvion = new TirVaisseau();
 	public TirVaisseauSecondaire tirSecondaireAvion = new TirVaisseauSecondaire();
-	//	public Test traineeAvion = new Test();
 	private ImageIcon icoBandeFond;
 	private Image imgBandeFond;
-	private ImageIcon icoNuage;
-	private Image imgNuage;
 	private boolean init = true;
 	public TableauScore score = new TableauScore();
 	public TableauScore score2 = new TableauScore();
@@ -32,9 +31,9 @@ public class TableauDeBord extends JPanel {
 	public TableauScore score4 = new TableauScore();
 	public TableauScore score5 = new TableauScore();
 	public TableauScore score6 = new TableauScore();
-	public Vie vie1= new Vie();
-	public Vie vie2= new Vie();
-	public Vie vie3= new Vie();
+	public Vie vie1 = new Vie();
+	public Vie vie2 = new Vie();
+	public Vie vie3 = new Vie();
 
 	public static Bouclier bouclier1 = new Bouclier();
 	public static Bouclier bouclier2 = new Bouclier();
@@ -58,10 +57,12 @@ public class TableauDeBord extends JPanel {
 		this.addMouseMotionListener(new EcouteurVaisseauSouris());
 
 	}
-public void go(){
-		 // sortir thread et créer méthode pour lancer le jeu après le
+
+	public void go() {
+		// sortir thread et créer méthode pour lancer le jeu après le
 		chronoEcran.start();
-}
+	}
+
 	public void initMissile() {
 		if (init) {
 			for (int i = 0; i < Constantes.NOMBRE_MISSILE_INIT; i++) {
@@ -104,11 +105,11 @@ public void go(){
 		g.drawImage(vaisseau.getImgVaisseau(), vaisseau.deplacementVaisseauHorizontal(),
 				vaisseau.deplacementVaisseauVertical(), vaisseau.hauteur, vaisseau.largeur, null);
 		g.drawImage(vie1.imgMissile, vie1.xPos, vie1.yPos, null);
-		g.drawImage(vie2.imgMissile, vie1.xPos +45, vie1.yPos, null);
+		g.drawImage(vie2.imgMissile, vie1.xPos + 45, vie1.yPos, null);
 		g.drawImage(vie3.imgMissile, vie1.xPos + 90, vie1.yPos, null);
-		g.drawImage(bouclier1.imgMissile, vie1.xPos, 820,30,30,null );
-		g.drawImage(bouclier2.imgMissile, vie1.xPos +35, 820,30,30, null);
-		g.drawImage(bouclier3.imgMissile, vie1.xPos + 70, 820,30,30, null);
+		g.drawImage(bouclier1.imgMissile, vie1.xPos, 820, 30, 30, null);
+		g.drawImage(bouclier2.imgMissile, vie1.xPos + 35, 820, 30, 30, null);
+		g.drawImage(bouclier3.imgMissile, vie1.xPos + 70, 820, 30, 30, null);
 
 	}
 
@@ -147,8 +148,8 @@ public void go(){
 	}
 
 	public static void difficulte() {
-		int i=1;
-		if (GestionCollision.compteurGlobal == 100*i && Constantes.VITESSE_DEFILEMENT_FOND>0) {
+		int i = 1;
+		if (GestionCollision.compteurGlobal == 100 * i && Constantes.VITESSE_DEFILEMENT_FOND > 0) {
 			Constantes.VITESSE_DEFILEMENT_FOND--;
 			Chrono.timerDifficult = 0;
 			i++;

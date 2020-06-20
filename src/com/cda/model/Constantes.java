@@ -22,7 +22,7 @@ public class Constantes {
 	 *                                       d�filement du fond en modifiant la
 	 *                                       valeur.
 	 */
-	protected static int VITESSE_DEFILEMENT_FOND = 8;
+	protected static int VITESSE_DEFILEMENT_FOND = 6;
 
 	/**
 	 * Utilis� dans la classe MaFenetre dans le package com.cda.listener.
@@ -107,7 +107,7 @@ public class Constantes {
 	protected static final int VITESSE_CHUTE_MINES = 1;
 
 	/* =======Constante Tableau Missile======== */
-	protected static int NOMBRE_MISSILE_INIT = 5;
+	protected static int NOMBRE_MISSILE_INIT = 8;
 	protected static final ArrayList<Entite> MES_MISSILES = new ArrayList<>();
 
 	public static int getNOMBRE_MISSILE_INIT() {
@@ -129,16 +129,15 @@ public class Constantes {
 	protected static final int NOMBRE_MISSILE_TIR_INIT = 5;
 	public static final ArrayList<Entite> MES_TIR_MISSILE = new ArrayList<>();
 
-
-	/*==========Vie======================*/
+	/* ==========Vie====================== */
 	protected static final int NBREDEVIE = 3;
 	protected static final String IMAGE_VIE = "/images/avion-icone.png";
 
-	/*=============imageBouton=======*/
+	/* =============imageBouton======= */
 	protected static final String BOUTON = "/images/bouton.png";
 	protected static final String BOUTON_HOVER = "/images/bouton-survol.png";
 
-	/*===========LOGO============*/
+	/* ===========LOGO============ */
 	protected static final String LOGO = "/images/logo.png";
 
 }

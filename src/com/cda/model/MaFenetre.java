@@ -1,16 +1,16 @@
 package com.cda.model;
 
 import com.cda.listener.EcouteurVaisseau;
-import java.awt.CardLayout;
-import java.awt.Container;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class MaFenetre extends JFrame {
     protected final CardLayout cardLayout = new CardLayout();
     public static final String ACCUEIL_PANEL = "ACCUEIL_PANEL";
     public static final String PARTIE_PANEL = "PARTIE_PANEL";
-    public static final String SCORE_PANEL ="SCORE_PANEL";
-    private Container contentPane;
+    public static final String SCORE_PANEL = "SCORE_PANEL";
+    private final Container contentPane;
     public static TableauDeBord vBackgroundWindow;
     public static Accueil vAccueil;
     public static PanelScore vPanelScore;
@@ -30,7 +30,7 @@ public class MaFenetre extends JFrame {
         contentPane = this.getContentPane();
         contentPane.add(vAccueil, ACCUEIL_PANEL);
         contentPane.add(vPanelScore, SCORE_PANEL);
-        contentPane.add(vBackgroundWindow,PARTIE_PANEL);
+        contentPane.add(vBackgroundWindow, PARTIE_PANEL);
 
 
         this.setVisible(true);

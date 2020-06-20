@@ -1,10 +1,8 @@
 package com.cda.model;
 
-import com.cda.utils.Tools;
-
 import javax.swing.*;
 
-public class Vie extends Entite{
+public class Vie extends Entite {
 
 
     public Vie() {

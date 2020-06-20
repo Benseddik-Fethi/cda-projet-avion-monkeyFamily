@@ -1,7 +1,5 @@
 package com.cda.model;
 
-import com.cda.program.Program;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

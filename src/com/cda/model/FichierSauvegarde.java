@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class FichierSauvegarde {
 
-    public static void fichier()  {
+    public static void fichier() {
         Properties vPropriete = System.getProperties();
         String vNomSession = vPropriete.getProperty("user.name");
         String vUserDir = vPropriete.getProperty("user.dir");

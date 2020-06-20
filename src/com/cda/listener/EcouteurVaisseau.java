@@ -75,6 +75,7 @@ public class EcouteurVaisseau implements KeyListener {
 			break;
 		case KeyEvent.VK_SPACE:
 			if (!MaFenetre.vBackgroundWindow.missileAvion.isTirMissile()) {
+				MaFenetre.monSonTir.startMusique();
 				tirDouble();
 				tirSecondaire();
 				break;
@@ -109,6 +110,7 @@ public class EcouteurVaisseau implements KeyListener {
 			TableauDeBord.vaisseau.setdX(0);
 			break;
 		case KeyEvent.VK_SPACE:
+			MaFenetre.monSonTir.stopMusique();
 			if (!MaFenetre.vBackgroundWindow.missileAvion.isTirMissile()) {
 				tirDouble();
 				break;

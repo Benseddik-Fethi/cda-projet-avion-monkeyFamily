@@ -69,6 +69,12 @@ public class Constantes {
 	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
 	protected static final String FOND = "/images/fond.png";
 
+	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
+	protected static final String FOND_INTRO = "/images/fond-intro.png";
+
+	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
+	protected static final String FOND_FIN = "/images/fond-fin.png";
+
 	/* ========Constante Avion======== */
 	public static final int HAUTEUR_AVION = 100;
 	public static final int LARGEUR_AVION = 100;

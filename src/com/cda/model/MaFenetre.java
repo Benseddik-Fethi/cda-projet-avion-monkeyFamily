@@ -10,6 +10,8 @@ import com.cda.listener.EcouteurVaisseau;
 
 public class MaFenetre extends JFrame {
 	public static Son monSon;
+	public static Son monSonTir;
+	public static Son monSonIntro;
 	protected final CardLayout cardLayout = new CardLayout();
 	public static final String ACCUEIL_PANEL = "ACCUEIL_PANEL";
 	public static final String PARTIE_PANEL = "PARTIE_PANEL";
@@ -35,7 +37,10 @@ public class MaFenetre extends JFrame {
 		contentPane.add(vAccueil, ACCUEIL_PANEL);
 		contentPane.add(vPanelFin, SCORE_PANEL);
 		contentPane.add(vBackgroundWindow, PARTIE_PANEL);
-		monSon = new Son("/audio/1-welcome.wav");
+		monSon = new Son("/music.wav");
+		monSonIntro = new Son("/intro.wav");
+		monSonTir = new Son("/tir.wav");
+		MaFenetre.monSonIntro.startMusique();
 		this.setVisible(true);
 	}
 

@@ -109,6 +109,8 @@ public abstract class GestionCollision {
 			MaFenetre.vBackgroundWindow.vie1.setImgMissile(imgMissile);
 		}
 		if (vie < 0) {
+			MaFenetre.monSon.stopMusique();
+			MaFenetre.monSonIntro.startMusique();
 			FichierSauvegarde.fichier();
 			Chrono.pause = true;
 			Program.vMaFenetre.finPartie();

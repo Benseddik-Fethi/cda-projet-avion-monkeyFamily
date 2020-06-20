@@ -15,8 +15,6 @@ import javax.swing.JTextField;
 import com.cda.program.Program;
 
 class Accueil extends JPanel {
-	private final ImageIcon logoTeam = new ImageIcon(getClass().getResource(Constantes.LOGO));
-	private final Image imgLogo = logoTeam.getImage();
 	public static String nomJoueur2;
 	protected JTextField nomJoueur = new JTextField();
 	private final ImageIcon icoBandeFond;
@@ -44,9 +42,8 @@ class Accueil extends JPanel {
 		this.add(lancerPartie);
 		this.add(nomJoueur);
 		setSize(cdaFenetre.getWidth(), cdaFenetre.getHeight());
-		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
+		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND_INTRO));
 		this.imgBandeFond = this.icoBandeFond.getImage();
-
 		lancerPartie.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -55,7 +52,8 @@ class Accueil extends JPanel {
 				nomJoueur2 = nomJoueur.getText().trim();
 				if (nomJoueur2.length() != 0) {
 					Program.vMaFenetre.lancerPartiePanel();
-					MaFenetre.monSon.musiqueFondStart();
+					MaFenetre.monSonIntro.stopMusique();
+					MaFenetre.monSon.startMusique();
 				}
 			}
 
@@ -81,7 +79,5 @@ class Accueil extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(imgBandeFond, this.getX(), this.getY(), null);
-		g.drawImage(imgLogo, 150, 500, 300, 333, null);
-
 	}
 }

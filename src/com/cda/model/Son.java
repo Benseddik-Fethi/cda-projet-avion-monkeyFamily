@@ -26,18 +26,18 @@ public class Son {
 			clip = AudioSystem.getClip();
 			clip.open(monExplosion);
 			gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(-15.0f); // Reduce volume by 10 decibels.
+			gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 		} catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public void musiqueFondStart() {
+	public void startMusique() {
 		clip.start();
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
-	public void bruitageTirStart() {
-		clip.start();
+	public void stopMusique() {
+		clip.stop();
 	}
 }

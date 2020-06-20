@@ -52,7 +52,7 @@ public class PanelFin extends JPanel {
 		this.add(boutonQuitter);
 		this.add(boutonRejouer);
 		this.add(boutonScores);
-		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
+		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND_FIN));
 		this.imgBandeFond = this.icoBandeFond.getImage();
 		boutonQuitter.addMouseListener(new MouseAdapter() {
 			@Override
@@ -85,7 +85,8 @@ public class PanelFin extends JPanel {
 				super.mouseClicked(e);
 				Program.vMaFenetre.rejouer();
 				Chrono.pause = false;
-
+				MaFenetre.monSonIntro.stopMusique();
+				MaFenetre.monSon.startMusique();
 			}
 
 			@Override

@@ -21,7 +21,7 @@ public class Constantes {
 	 *                                       d�filement du fond en modifiant la
 	 *                                       valeur.
 	 */
-	protected static int VITESSE_DEFILEMENT_FOND = 6;
+	protected static int VITESSE_DEFILEMENT_FOND = 8;
 
 	/**
 	 * Utilis� dans la classe MaFenetre dans le package com.cda.listener.
@@ -68,8 +68,6 @@ public class Constantes {
 
 	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
 	protected static final String FOND = "/images/fond.png";
-	// Utilis� dans la classe BackgroundWindow dans le package com.cda.listener.
-	protected static final String FOND_TEST = "/images/fond-test.png";
 
 	/* ========Constante Avion======== */
 	public static final int HAUTEUR_AVION = 100;
@@ -108,16 +106,8 @@ public class Constantes {
 	protected static final int VITESSE_CHUTE_MINES = 1;
 
 	/* =======Constante Tableau Missile======== */
-	protected static int NOMBRE_MISSILE_INIT = 8;
+	protected static int NOMBRE_MISSILE_INIT = 5;
 	protected static final ArrayList<Entite> MES_MISSILES = new ArrayList<>();
-
-	public static int getNOMBRE_MISSILE_INIT() {
-		return NOMBRE_MISSILE_INIT;
-	}
-
-	public static void setNOMBRE_MISSILE_INIT(int pNombreMissiles) {
-		NOMBRE_MISSILE_INIT = pNombreMissiles;
-	}
 
 	/* ==============Constante Missile Avion===== */
 	public static final int HAUTEUR_MISSILE_AVION = 60;
@@ -137,12 +127,12 @@ public class Constantes {
 	/* =============imageBouton======= */
 	protected static final String BOUTON = "/images/bouton.png";
 	protected static final String BOUTON_HOVER = "/images/bouton-survol.png";
-	protected static final String BOUTON_REJOUER = "/images/bouton-rejouer.png";
-	protected static final String BOUTON_REJOUER_HOVER = "/images/bouton-rejouer-survol.png";
-	protected static final String BOUTON_SCORES = "/images/bouton-scores.png";
-	protected static final String BOUTON_SCORES_HOVER = "/images/bouton-scores-survol.png";
-	protected static final String BOUTON_QUITTER = "/images/bouton-quitter.png";
-	protected static final String BOUTON_QUITTER_HOVER = "/images/bouton-quitter-survol.png";
+	protected static final String BOUTON_REJOUER = "/images/bout-rejouer.png";
+	protected static final String BOUTON_REJOUER_HOVER = "/images/bout-rejouer-survol.png";
+	protected static final String BOUTON_SCORES = "/images/bout-scores.png";
+	protected static final String BOUTON_SCORES_HOVER = "/images/bout-scores-survol.png";
+	protected static final String BOUTON_QUITTER = "/images/bout-quitter.png";
+	protected static final String BOUTON_QUITTER_HOVER = "/images/bout-quitter-survol.png";
 
 	/* ===========LOGO============ */
 	protected static final String LOGO = "/images/logo.png";

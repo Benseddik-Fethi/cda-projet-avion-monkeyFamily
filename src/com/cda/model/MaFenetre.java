@@ -9,15 +9,15 @@ import javax.swing.JFrame;
 import com.cda.listener.EcouteurVaisseau;
 
 public class MaFenetre extends JFrame {
+	public static Son monSon;
 	protected final CardLayout cardLayout = new CardLayout();
 	public static final String ACCUEIL_PANEL = "ACCUEIL_PANEL";
 	public static final String PARTIE_PANEL = "PARTIE_PANEL";
-	public static final String FIN_PANEL = "FIN_PANEL";
+	public static final String SCORE_PANEL = "SCORE_PANEL";
+	private final Container contentPane;
 	public static TableauDeBord vBackgroundWindow;
 	public static Accueil vAccueil;
 	public static PanelFin vPanelFin;
-	private Container contentPane;
-	public static Son monSon;
 
 	public MaFenetre() {
 		vAccueil = new Accueil(this);
@@ -33,9 +33,9 @@ public class MaFenetre extends JFrame {
 		this.setLayout(cardLayout);
 		contentPane = this.getContentPane();
 		contentPane.add(vAccueil, ACCUEIL_PANEL);
+		contentPane.add(vPanelFin, SCORE_PANEL);
 		contentPane.add(vBackgroundWindow, PARTIE_PANEL);
-		contentPane.add(vPanelFin, FIN_PANEL);
-		monSon = new Son("/1-welcome.wav");
+		monSon = new Son("/audio/1-welcome.wav");
 		this.setVisible(true);
 	}
 
@@ -45,8 +45,17 @@ public class MaFenetre extends JFrame {
 		vBackgroundWindow.requestFocus(true);
 	}
 
-	public void finDePartie() {
-		System.out.println("test_panel_fin");
-		cardLayout.show(contentPane, FIN_PANEL);
+	public void finPartie() {
+		cardLayout.show(contentPane, SCORE_PANEL);
+	}
+
+	public void rejouer() {
+		cardLayout.show(contentPane, PARTIE_PANEL);
+		GestionCollision.compteurGlobal = 0;
+		GestionCollision.vie += 3;
+		Bouclier.NbreBouclier += 3;
+		vBackgroundWindow.repaint();
+		vBackgroundWindow.requestFocus(true);
+
 	}
 }

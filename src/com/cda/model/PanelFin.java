@@ -8,26 +8,52 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class PanelFin extends JPanel {
-	Boutons boutonQuitter;
-	Boutons boutonRejouer;
-	Boutons boutonScores;
+import com.cda.program.Program;
 
+public class PanelFin extends JPanel {
+	ImageIcon icoBoutonQuit = new ImageIcon(getClass().getResource(Constantes.BOUTON_QUITTER));
+	Image imgBoutonQuit = icoBoutonQuit.getImage();
+	ImageIcon icoBoutonRejouer = new ImageIcon(getClass().getResource(Constantes.BOUTON_REJOUER));
+	Image imgBoutonRejouer = icoBoutonRejouer.getImage();
+	ImageIcon icoBoutonScore = new ImageIcon(getClass().getResource(Constantes.BOUTON_SCORES));
+	Image imgBoutonScore = icoBoutonScore.getImage();
 	private final ImageIcon icoBandeFond;
 	private final Image imgBandeFond;
 
-	private ImageIcon icoBoutonTemp;
-	private Image icoImageTemp;
-
 	public PanelFin(final MaFenetre cdaFenetre) {
-
-		boutonQuitter = new Boutons(Constantes.BOUTON_QUITTER);
-		boutonRejouer = new Boutons(Constantes.BOUTON_REJOUER);
-		boutonScores = new Boutons(Constantes.BOUTON_SCORES);
-
-		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND_TEST));
+		this.setLayout(null);
+		JPanel boutonQuitter = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(imgBoutonQuit, 0, 0, 200, 50, null);
+			}
+		};
+		JPanel boutonRejouer = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(imgBoutonRejouer, 0, 0, 200, 50, null);
+			}
+		};
+		JPanel boutonScores = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(imgBoutonScore, 0, 0, 200, 50, null);
+			}
+		};
+		boutonQuitter.setBounds(200, 350, 200, 50);
+		boutonRejouer.setBounds(200, 500, 200, 50);
+		boutonScores.setBounds(200, 650, 200, 50);
+		boutonQuitter.setOpaque(false);
+		boutonRejouer.setOpaque(false);
+		boutonScores.setOpaque(false);
+		this.add(boutonQuitter);
+		this.add(boutonRejouer);
+		this.add(boutonScores);
+		this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.FOND));
 		this.imgBandeFond = this.icoBandeFond.getImage();
-
 		boutonQuitter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -38,26 +64,72 @@ public class PanelFin extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				super.mouseEntered(e);
-				icoBoutonTemp = new ImageIcon(getClass().getResource(Constantes.BOUTON_QUITTER_HOVER));
-				boutonQuitter.setImgBouton(icoBoutonTemp.getImage());
+				icoBoutonQuit = new ImageIcon(getClass().getResource(Constantes.BOUTON_QUITTER_HOVER));
+				imgBoutonQuit = icoBoutonQuit.getImage();
 				boutonQuitter.repaint();
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				super.mouseExited(e);
-				icoBoutonTemp = new ImageIcon(getClass().getResource(Constantes.BOUTON_QUITTER));
-				boutonQuitter.setImgBouton(icoBoutonTemp.getImage());
+				icoBoutonQuit = new ImageIcon(getClass().getResource(Constantes.BOUTON_QUITTER));
+				imgBoutonQuit = icoBoutonQuit.getImage();
 				boutonQuitter.repaint();
+
 			}
 		});
 
-		this.add(boutonQuitter);
-		this.add(boutonRejouer);
-		this.add(boutonScores);
+		boutonRejouer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				Program.vMaFenetre.rejouer();
+				Chrono.pause = false;
 
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				super.mouseEntered(e);
+				icoBoutonRejouer = new ImageIcon(getClass().getResource(Constantes.BOUTON_REJOUER_HOVER));
+				imgBoutonRejouer = icoBoutonRejouer.getImage();
+				boutonRejouer.repaint();
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				super.mouseExited(e);
+				icoBoutonRejouer = new ImageIcon(getClass().getResource(Constantes.BOUTON_REJOUER));
+				imgBoutonRejouer = icoBoutonRejouer.getImage();
+				boutonRejouer.repaint();
+
+			}
+		});
+		boutonScores.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				super.mouseEntered(e);
+				icoBoutonScore = new ImageIcon(getClass().getResource(Constantes.BOUTON_SCORES_HOVER));
+				imgBoutonScore = icoBoutonScore.getImage();
+				boutonScores.repaint();
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				super.mouseExited(e);
+				icoBoutonScore = new ImageIcon(getClass().getResource(Constantes.BOUTON_SCORES));
+				imgBoutonScore = icoBoutonScore.getImage();
+				boutonScores.repaint();
+
+			}
+		});
 		setSize(cdaFenetre.getWidth(), cdaFenetre.getHeight());
-
 	}
 
 	@Override

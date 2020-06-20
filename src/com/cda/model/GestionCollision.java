@@ -1,7 +1,11 @@
 package com.cda.model;
 
 import java.awt.Image;
-import java.awt.Rectangle;
+import java.awt.Rectangle;=======
+import com.cda.program.Program;
+
+import javax.swing.*;
+import java.awt.*;>>>>>>>dev
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -69,7 +73,6 @@ public abstract class GestionCollision {
 						gestionPoint();
 					}
 				}
-				System.out.println("tir réussi");
 
 			} else if ((vVaisseau instanceof Vaisseau && vMissile instanceof BombeFeu)
 					|| (vVaisseau instanceof Vaisseau && vMissile instanceof BombeGlace)
@@ -78,17 +81,15 @@ public abstract class GestionCollision {
 				vMissile.detruit = true;
 				vie--;
 				gestionVie();
-				System.out.println("touché par missile");
 
 			} else if (vMissile instanceof Mine && !Bouclier.actif) {
 				vMissile.detruit = true;
 				vVaisseau.detruit = true;
 				vie--;
 				gestionVie();
-				System.out.println("détruit par mine");
 
 			} else {
-				System.out.println("détruit par bouclier");
+
 				vMissile.detruit = true;
 			}
 		}
@@ -112,10 +113,9 @@ public abstract class GestionCollision {
 			MaFenetre.vBackgroundWindow.vie1.setImgMissile(imgMissile);
 		}
 		if (vie < 0) {
-			TableauDeBord.finDuJeu = true;
 			FichierSauvegarde.fichier();
-			Program.vMaFenetre.finDePartie();
-			System.out.println("partie fini");
+			Chrono.pause = true;
+			Program.vMaFenetre.finPartie();
 		}
 
 	}
@@ -160,5 +160,4 @@ public abstract class GestionCollision {
 		Image imgMissile6 = icoMissile6.getImage();
 		MaFenetre.vBackgroundWindow.score6.setImgMissile(imgMissile6);
 	}
-
 }

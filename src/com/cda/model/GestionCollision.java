@@ -5,16 +5,17 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 import com.cda.program.Program;
 
-public abstract class GestionCollision {
+public abstract class GestionCollision extends JPanel {
 	public static int compteurGlobal = 0;
 	protected static int mine = 0;
 	protected static int bombeFeu = 0;
 	protected static int bombeGlace = 0;
 	protected static int bombeZigZag = 0;
-	protected static int vie = 3;
+	public static int vie = 3;
 
 	public static void collissionArray(Entite vVaisseau, ArrayList<Entite> listMissile) {
 		for (Entite entite : listMissile) {
@@ -62,7 +63,6 @@ public abstract class GestionCollision {
 				} else {
 					bombeZigZag++;
 					if (bombeZigZag > 15) {
-
 						vMissile.detruit = true;
 						bombeZigZag = 0;
 						compteurGlobal += 50;
@@ -83,9 +83,7 @@ public abstract class GestionCollision {
 				vVaisseau.detruit = true;
 				vie--;
 				gestionVie();
-
 			} else {
-
 				vMissile.detruit = true;
 			}
 		}
@@ -110,12 +108,12 @@ public abstract class GestionCollision {
 		}
 		if (vie < 0) {
 			MaFenetre.monSon.stopMusique();
+			MaFenetre.monSonTir.stopMusique();
 			MaFenetre.monSonIntro.startMusique();
 			FichierSauvegarde.fichier();
 			Chrono.pause = true;
 			Program.vMaFenetre.finPartie();
 		}
-
 	}
 
 	public static void gestionPoint() {
@@ -157,5 +155,25 @@ public abstract class GestionCollision {
 		ImageIcon icoMissile6 = new ImageIcon(TableauScore.class.getResource(test6));
 		Image imgMissile6 = icoMissile6.getImage();
 		MaFenetre.vBackgroundWindow.score6.setImgMissile(imgMissile6);
+	}
+
+	public static void scoreReinit() {
+		ImageIcon icoMissile = new ImageIcon("/images/score-0.png");
+		Image imgMissile = icoMissile.getImage();
+		MaFenetre.vBackgroundWindow.score.setImgMissile(imgMissile);
+		MaFenetre.vBackgroundWindow.score2.setImgMissile(imgMissile);
+		MaFenetre.vBackgroundWindow.score3.setImgMissile(imgMissile);
+		MaFenetre.vBackgroundWindow.score4.setImgMissile(imgMissile);
+		MaFenetre.vBackgroundWindow.score5.setImgMissile(imgMissile);
+		MaFenetre.vBackgroundWindow.score6.setImgMissile(imgMissile);
+
+	}
+
+	public static void setCompteurGlobal(int compteurGlobal) {
+		GestionCollision.compteurGlobal = compteurGlobal;
+	}
+
+	public static void setVie(int vie) {
+		GestionCollision.vie = vie;
 	}
 }

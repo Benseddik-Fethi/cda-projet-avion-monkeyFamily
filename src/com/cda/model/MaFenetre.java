@@ -26,7 +26,7 @@ public class MaFenetre extends JFrame {
 		vPanelFin = new PanelFin(this);
 		setSize(Constantes.FENETRE_WIDTH, Constantes.FENETRE_HEIGHT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle("FlightFight");
+		setTitle("Monkey Squad");
 		setResizable(false);
 		setLocationRelativeTo(null);
 		vBackgroundWindow = new TableauDeBord(this);
@@ -56,9 +56,6 @@ public class MaFenetre extends JFrame {
 
 	public void rejouer() {
 		cardLayout.show(contentPane, PARTIE_PANEL);
-		GestionCollision.compteurGlobal = 0;
-		GestionCollision.vie += 3;
-		Bouclier.NbreBouclier += 3;
 		vBackgroundWindow.repaint();
 		vBackgroundWindow.requestFocus(true);
 

@@ -129,6 +129,7 @@ public class Constantes {
 	/* ==========Vie====================== */
 	protected static final int NBREDEVIE = 3;
 	protected static final String IMAGE_VIE = "/images/avion-icone.png";
+	protected static final String IMAGE_ICONE_VIES = "/images/vie-icone.png";
 
 	/* =============imageBouton======= */
 	protected static final String BOUTON = "/images/bouton.png";

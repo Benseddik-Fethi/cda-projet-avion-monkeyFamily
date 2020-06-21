@@ -43,9 +43,9 @@ public class PanelFin extends JPanel {
 				g.drawImage(imgBoutonScore, 0, 0, 200, 50, null);
 			}
 		};
-		boutonQuitter.setBounds(200, 350, 200, 50);
-		boutonRejouer.setBounds(200, 500, 200, 50);
-		boutonScores.setBounds(200, 650, 200, 50);
+		boutonQuitter.setBounds(200, 510, 200, 50);
+		boutonRejouer.setBounds(200, 390, 200, 50);
+		boutonScores.setBounds(200, 450, 200, 50);
 		boutonQuitter.setOpaque(false);
 		boutonRejouer.setOpaque(false);
 		boutonScores.setOpaque(false);
@@ -87,6 +87,12 @@ public class PanelFin extends JPanel {
 				Chrono.pause = false;
 				MaFenetre.monSonIntro.stopMusique();
 				MaFenetre.monSon.startMusique();
+				MaFenetre.vBackgroundWindow.vaisseau.setxPos(Constantes.POSITIONX_DEPART_AVION);
+				MaFenetre.vBackgroundWindow.vaisseau.setyPos(Constantes.POSITIONY_DEPART_AVION);
+				GestionCollision.setCompteurGlobal(0);
+				GestionCollision.setVie(3);
+				GestionCollision.scoreReinit();
+				Bouclier.setNbreBouclier(4);
 			}
 
 			@Override

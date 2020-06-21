@@ -46,8 +46,8 @@ class Accueil extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				nomJoueur2 = nomJoueur.getText().trim();
-				if (nomJoueur2.length() != 0) {
+				nomJoueur2 = nomJoueur.getText().trim().replace(" ", "-");
+				if (nomJoueur2.length() >3 && nomJoueur2.length()<6) {
 					Program.vMaFenetre.lancerPartiePanel();
 					MaFenetre.monSonIntro.stopMusique();
 					MaFenetre.monSon.startMusique();

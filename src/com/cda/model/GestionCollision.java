@@ -161,6 +161,14 @@ public abstract class GestionCollision extends JPanel {
 	}
 
 	public static void scoreReinit() {
+		Chrono.pause = false;
+		Bouclier.setNbreBouclier(4);
+		MaFenetre.monSonIntro.stopMusique();
+		MaFenetre.monSon.startMusique();
+		MaFenetre.vBackgroundWindow.vaisseau.setxPos(Constantes.POSITIONX_DEPART_AVION);
+		MaFenetre.vBackgroundWindow.vaisseau.setyPos(Constantes.POSITIONY_DEPART_AVION);
+		GestionCollision.setCompteurGlobal(0);
+		GestionCollision.setVie(3);
 		ImageIcon icoMissile = new ImageIcon("/images/score-0.png");
 		Image imgMissile = icoMissile.getImage();
 		MaFenetre.vBackgroundWindow.score.setImgMissile(imgMissile);

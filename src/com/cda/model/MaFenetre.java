@@ -26,7 +26,7 @@ public class MaFenetre extends JFrame {
 	public MaFenetre() {
 		vAccueil = new Accueil(this);
 		vPanelFin = new PanelFin(this);
-		vPanelScore = new PanelScore(this);
+
 		setSize(Constantes.FENETRE_WIDTH, Constantes.FENETRE_HEIGHT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Monkey Squad");
@@ -37,11 +37,10 @@ public class MaFenetre extends JFrame {
 		setIconImage(new ImageIcon(this.getClass().getResource("/images/test-icon.png")).getImage());
 		this.setLayout(cardLayout);
 		contentPane = this.getContentPane();
-
 		contentPane.add(vAccueil, ACCUEIL_PANEL);
 		contentPane.add(vPanelFin, FIN_PANEL);
 		contentPane.add(vBackgroundWindow, PARTIE_PANEL);
-		contentPane.add(vPanelScore, SCORE_PANEL);
+
 		monSon = new Son("/audio/music.wav");
 		monSonIntro = new Son("/audio/intro.wav");
 		monSonTir = new Son("/audio/tir.wav");
@@ -65,6 +64,8 @@ public class MaFenetre extends JFrame {
 		vBackgroundWindow.requestFocus(true);
 	}
 	public void afficheScore(){
+		vPanelScore = new PanelScore(this);
+		contentPane.add(vPanelScore, SCORE_PANEL);
 		cardLayout.show(contentPane, SCORE_PANEL);
 	}
 }

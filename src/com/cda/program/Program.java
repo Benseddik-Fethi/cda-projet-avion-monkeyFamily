@@ -1,6 +1,5 @@
 package com.cda.program;
 
-import com.cda.model.FichierSauvegarde;
 import com.cda.model.MaFenetre;
 
 public class Program {

@@ -1,12 +1,15 @@
 package com.cda.model;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Properties;
 
 public class FichierSauvegarde {
 
+<<<<<<< HEAD
 	private static Properties vPropriete = System.getProperties();
 	private static String vUserDir = vPropriete.getProperty("user.dir");
 	private static DateTimeFormatter vDateFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -15,7 +18,17 @@ public class FichierSauvegarde {
 	private static File vFichier = new File("c://temp//sauvegarde-jeu.txt");
 	protected static TreeMap<Integer, String> tableauScore = new TreeMap<>(Collections.reverseOrder());
 
+=======
+>>>>>>> dev
 	public static void fichier() {
+		Properties vPropriete = System.getProperties();
+		String vUserDir = vPropriete.getProperty("user.dir");
+		DateTimeFormatter vDateFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime vDate = LocalDateTime.now();
+		String vDateFormater = vDate.format(vDateFormat);
+
+
+		File vFichier = new File("sauvegarde-jeu.txt");
 
 		if (vFichier.exists()) {
 		} else {
@@ -26,13 +39,14 @@ public class FichierSauvegarde {
 			}
 		}
 		try (FileWriter vFileWriter = new FileWriter(vFichier, true)) {
-			vFileWriter.append(Accueil.nomJoueur2).append(" ").append(String.valueOf(GestionCollision.compteurGlobal)).append(" ")
-					.append(vDateFormater).append("\n");
+			vFileWriter.append(vDateFormater).append(" : ").append(Accueil.nomJoueur2).append(" ----> ")
+					.append(String.valueOf(GestionCollision.compteurGlobal)).append("\n");
 			vFileWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 
 	public static void recupererScore() {
 
@@ -61,5 +75,6 @@ public class FichierSauvegarde {
 		}
 	}
 
+=======
+>>>>>>> dev
 }
-

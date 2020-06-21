@@ -1,14 +1,17 @@
 package com.cda.model;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import com.cda.program.Program;
 
 class Accueil extends JPanel {
@@ -46,8 +49,8 @@ class Accueil extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				nomJoueur2 = nomJoueur.getText().trim().replace(" ", "-");
-				if (nomJoueur2.length() >3 && nomJoueur2.length()<6) {
+				nomJoueur2 = nomJoueur.getText().trim();
+				if (nomJoueur2.length() != 0) {
 					Program.vMaFenetre.lancerPartiePanel();
 					MaFenetre.monSonIntro.stopMusique();
 					MaFenetre.monSon.startMusique();

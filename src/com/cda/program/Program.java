@@ -7,7 +7,6 @@ public class Program {
 	public static MaFenetre vMaFenetre;
 
 	public static void main(String[] args) {
-		//FichierSauvegarde.recupererScore();
 		vMaFenetre = new MaFenetre();
 	}
 }

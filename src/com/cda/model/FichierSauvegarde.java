@@ -12,7 +12,7 @@ public class FichierSauvegarde {
 	private static DateTimeFormatter vDateFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	private static LocalDateTime vDate = LocalDateTime.now();
 	private static String vDateFormater = vDate.format(vDateFormat);
-	private static File vFichier = new File("sauvegarde-jeu.txt");
+	private static File vFichier = new File("c://temp//sauvegarde-jeu.txt");
 	protected static TreeMap<Integer, String> tableauScore = new TreeMap<>(Collections.reverseOrder());
 
 	public static void fichier() {
@@ -61,15 +61,5 @@ public class FichierSauvegarde {
 		}
 	}
 
-	public static void trier() {
-		Set set2 = tableauScore.entrySet();
-		Iterator iterator2 = set2.iterator();
-		System.out.println("Après le tri: ");
-		for (int i = 0; i < set2.size() && i<10; i++) {
-			Map.Entry me2 = (Map.Entry) iterator2.next();
-			System.out.print(me2.getKey() + " ");
-			System.out.println(me2.getValue());
-		}
-	}
 }
 

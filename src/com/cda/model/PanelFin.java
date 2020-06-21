@@ -110,6 +110,7 @@ public class PanelFin extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
 				Program.vMaFenetre.afficheScore();
+				MaFenetre.vPanelScore.repaint();
 
 			}
 

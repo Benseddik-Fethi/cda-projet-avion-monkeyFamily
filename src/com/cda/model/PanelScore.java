@@ -26,7 +26,6 @@ public class PanelScore extends JPanel {
         setSize(cdaFenetre.getWidth(), cdaFenetre.getHeight());
         this.icoBandeFond = new ImageIcon(getClass().getResource(Constantes.IMAGE_FOND_SCORE));
         this.imgBandeFond = this.icoBandeFond.getImage();
-
         JPanel boutonQuitter = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -97,7 +96,7 @@ public class PanelScore extends JPanel {
 
             }
         });
-        FichierSauvegarde.recupererScore();
+
         Set set2 = FichierSauvegarde.tableauScore.entrySet();
         Iterator iterator2 = set2.iterator();
         for (int i = 0; i < 10 || i>set2.size(); i++) {

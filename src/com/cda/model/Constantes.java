@@ -145,5 +145,5 @@ public class Constantes {
 	protected static final String LOGO = "/images/logo.png";
 
 	/*========Image Fond=====*/
-	protected static final String IMAGE_FOND_SCORE = "/images/fond-scores.png";
+	protected static final String IMAGE_FOND_SCORE = "/images/fond-score.png";
 }

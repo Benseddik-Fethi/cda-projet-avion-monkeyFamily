@@ -117,6 +117,7 @@ public class PanelFin extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
+				Program.vMaFenetre.afficheScore();
 
 			}
 

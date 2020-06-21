@@ -39,6 +39,7 @@ public class TableauDeBord extends JPanel {
 	public Vie vie2 = new Vie();
 	public Vie vie3 = new Vie();
 	private static boolean init = true;
+	protected static int difficulte = 0;
 
 	public TableauDeBord(MaFenetre vMaFenetre) {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -57,16 +58,7 @@ public class TableauDeBord extends JPanel {
 		this.addMouseMotionListener(new EcouteurVaisseauSouris());
 	}
 
-	public static void difficulte() {
-		int i = 1;
-		if (GestionCollision.compteurGlobal == 100 * i && Constantes.VITESSE_DEFILEMENT_FOND > 0) {
-			Constantes.VITESSE_DEFILEMENT_FOND--;
-			Chrono.timerDifficult = 0;
-			i++;
-			System.out.println();
-		}
-		Chrono.ajoutBombe = 0;
-	}
+
 
 	public void go() {
 		// sortir thread et créer méthode pour lancer le jeu après le
@@ -94,7 +86,6 @@ public class TableauDeBord extends JPanel {
 		bouclier.initBouclier(g);
 		missileAvion.tirMissileVaisseau(g);
 		tirSecondaireAvion.tirMissileVaisseau(g);
-		difficulte();
 		g.drawImage(score.getImgMissile(), score.xPos + 20, score.yPos, null);
 		g.drawImage(score2.getImgMissile(), score.xPos - 15, score.yPos, null);
 		g.drawImage(score3.getImgMissile(), score.xPos - 50, score.yPos, null);

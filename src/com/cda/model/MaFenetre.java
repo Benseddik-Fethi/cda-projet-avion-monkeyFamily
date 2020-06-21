@@ -37,9 +37,9 @@ public class MaFenetre extends JFrame {
 		contentPane.add(vAccueil, ACCUEIL_PANEL);
 		contentPane.add(vPanelFin, SCORE_PANEL);
 		contentPane.add(vBackgroundWindow, PARTIE_PANEL);
-		monSon = new Son("/music.wav");
-		monSonIntro = new Son("/intro.wav");
-		monSonTir = new Son("/tir.wav");
+		monSon = new Son("/audio/music.wav");
+		monSonIntro = new Son("/audio/intro.wav");
+		monSonTir = new Son("/audio/tir.wav");
 		MaFenetre.monSonIntro.startMusique();
 		this.setVisible(true);
 	}
@@ -58,6 +58,5 @@ public class MaFenetre extends JFrame {
 		cardLayout.show(contentPane, PARTIE_PANEL);
 		vBackgroundWindow.repaint();
 		vBackgroundWindow.requestFocus(true);
-
 	}
 }

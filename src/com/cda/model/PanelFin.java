@@ -93,6 +93,7 @@ public class PanelFin extends JPanel {
 				GestionCollision.setVie(3);
 				GestionCollision.scoreReinit();
 				Bouclier.setNbreBouclier(4);
+				MaFenetre.vBackgroundWindow.repaint();
 			}
 
 			@Override

@@ -4,8 +4,6 @@ public class Chrono implements Runnable {
 
     public static boolean pause = false;
     protected static int timerBouclier = 0;
-    protected static int timerDifficult = 0;
-    protected static int ajoutBombe = 0;
 
     @Override
     public void run() {
@@ -13,9 +11,8 @@ public class Chrono implements Runnable {
             if (!pause) {
                 MaFenetre.vBackgroundWindow.PosyFond++;
                 MaFenetre.vBackgroundWindow.repaint();
-                System.out.println(Accueil.nomJoueur2);
                 timerBouclier++;
-                timerDifficult++;
+
                 if (timerBouclier == 1000) {
                     Bouclier.actif = false;
                     timerBouclier = 0;
@@ -26,6 +23,7 @@ public class Chrono implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
         }
     }
 }

@@ -91,6 +91,9 @@ public abstract class GestionCollision extends JPanel {
 
 	public static void gestionVie() {
 		String vieUtilise = "";
+		if(vie == 3){
+			vieUtilise = Constantes.IMAGE_ICONE_VIES;
+		}
 		if (vie == 2) {
 			ImageIcon icoMissile = new ImageIcon(TableauScore.class.getResource(vieUtilise));
 			Image imgMissile = icoMissile.getImage();
@@ -166,6 +169,16 @@ public abstract class GestionCollision extends JPanel {
 		MaFenetre.vBackgroundWindow.score4.setImgMissile(imgMissile);
 		MaFenetre.vBackgroundWindow.score5.setImgMissile(imgMissile);
 		MaFenetre.vBackgroundWindow.score6.setImgMissile(imgMissile);
+		icoMissile = new ImageIcon(TableauScore.class.getResource(Constantes.IMAGE_ICONE_VIES));
+		imgMissile = icoMissile.getImage();
+		MaFenetre.vBackgroundWindow.vie1.setImgMissile(imgMissile);
+		MaFenetre.vBackgroundWindow.vie2.setImgMissile(imgMissile);
+		MaFenetre.vBackgroundWindow.vie3.setImgMissile(imgMissile);
+		icoMissile = new ImageIcon(TableauScore.class.getResource("/images/bouclier.png"));
+		imgMissile = icoMissile.getImage();
+		TableauDeBord.bouclier1.setImgMissile(imgMissile);
+		TableauDeBord.bouclier2.setImgMissile(imgMissile);
+		TableauDeBord.bouclier3.setImgMissile(imgMissile);
 
 	}
 

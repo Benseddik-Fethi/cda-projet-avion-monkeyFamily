@@ -13,6 +13,7 @@ public class Constantes {
 	 *                       valeur.
 	 */
 	public static final int VITESSE_VAISSEAU = 5;
+	public static final String IMAGE_FOND_SCORE = "/images/fond-scores.png";
 
 	/**
 	 * Utilis� dans la classe Chrono dans le package com.cda.model.
@@ -143,10 +144,4 @@ public class Constantes {
 
 	/* ===========LOGO============ */
 	protected static final String LOGO = "/images/logo.png";
-<<<<<<< HEAD
-
-	/*========Image Fond=====*/
-	protected static final String IMAGE_FOND_SCORE = "/images/fond-score.png";
-=======
->>>>>>> dev
 }

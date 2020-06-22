@@ -59,14 +59,4 @@ public class MaFenetre extends JFrame {
 		vBackgroundWindow.repaint();
 		vBackgroundWindow.requestFocus(true);
 	}
-<<<<<<< HEAD
-	public void afficheScore(){
-		FichierSauvegarde.recupererScore();
-		vPanelScore = new PanelScore(this);
-		contentPane.add(vPanelScore, SCORE_PANEL);
-		cardLayout.show(contentPane, SCORE_PANEL);
-		vPanelScore.repaint();
-	}
-=======
->>>>>>> dev
 }

@@ -1,9 +1,19 @@
 package com.cda.model;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.Map.Entry;
 
 public class FichierSauvegarde {
 
@@ -35,29 +45,47 @@ public class FichierSauvegarde {
 	}
 
 	public static void recupererScore() {
-
 		BufferedReader lecteurAvecBuffer = null;
 		String ligne = "";
+
 		try {
 			lecteurAvecBuffer = new BufferedReader(new FileReader(vFichier));
-		} catch (FileNotFoundException exc) {
+		} catch (FileNotFoundException var6) {
 		}
-		while (true) {
 
+		while(true) {
 			try {
-				if ((ligne = lecteurAvecBuffer.readLine()) == null) break;
-			} catch (IOException e) {
-				e.printStackTrace();
+				if ((ligne = lecteurAvecBuffer.readLine()) == null) {
+					break;
+				}
+			} catch (IOException var7) {
+				var7.printStackTrace();
 			}
+
 			String[] ligneSplit = ligne.split(" ");
 			int score = Integer.parseInt(ligneSplit[1]);
 			String nom = ligneSplit[0] + " " + ligneSplit[2];
 			tableauScore.put(score, nom);
 		}
+
+
 		try {
 			lecteurAvecBuffer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException var5) {
+			var5.printStackTrace();
+		}
+
+	}
+
+	public static void trier() {
+		Set set2 = tableauScore.entrySet();
+		Iterator iterator2 = set2.iterator();
+		System.out.println("Après le tri: ");
+
+		for (int i = 0; i < set2.size() && i < 10; ++i) {
+			Entry me2 = (Entry) iterator2.next();
+			System.out.print(me2.getKey() + " ");
+			System.out.println(me2.getValue());
 		}
 	}
 }

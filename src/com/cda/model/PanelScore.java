@@ -75,6 +75,16 @@ public class PanelScore extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
 				Program.vMaFenetre.rejouer();
+				Chrono.pause = false;
+				MaFenetre.monSonIntro.stopMusique();
+				MaFenetre.monSon.startMusique();
+				MaFenetre.vBackgroundWindow.vaisseau.setxPos(Constantes.POSITIONX_DEPART_AVION);
+				MaFenetre.vBackgroundWindow.vaisseau.setyPos(Constantes.POSITIONY_DEPART_AVION);
+				GestionCollision.setCompteurGlobal(0);
+				GestionCollision.setVie(3);
+				GestionCollision.scoreReinit();
+				Bouclier.setNbreBouclier(4);
+				MaFenetre.vBackgroundWindow.repaint();
 				GestionCollision.scoreReinit();
 				MaFenetre.vBackgroundWindow.repaint();
 			}

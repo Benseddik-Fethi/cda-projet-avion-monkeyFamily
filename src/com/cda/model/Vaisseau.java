@@ -4,8 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Vaisseau extends Entite {
-    ImageIcon ii;
-    Image i;
+   
 
     public Vaisseau() {
         this.hauteur = Constantes.HAUTEUR_AVION;

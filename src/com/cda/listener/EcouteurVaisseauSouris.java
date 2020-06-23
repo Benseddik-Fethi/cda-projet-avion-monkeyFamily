@@ -18,7 +18,6 @@ public class EcouteurVaisseauSouris implements MouseListener, MouseMotionListene
         Point p = e.getPoint();
         TableauDeBord.vaisseau.setxPos(p.x);
         TableauDeBord.vaisseau.setyPos(p.y);
-//		traineeAvion();
         if (dragSouris) {
             MaFenetre.vBackgroundWindow.repaint();
         }
@@ -26,13 +25,13 @@ public class EcouteurVaisseauSouris implements MouseListener, MouseMotionListene
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        // TODO Auto-generated method stub
+
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+
 
     }
 
@@ -40,13 +39,11 @@ public class EcouteurVaisseauSouris implements MouseListener, MouseMotionListene
     public void mousePressed(MouseEvent e) {
         Point point = e.getPoint();
         sX = point.x; // si x en cours inférieur a sX changer image vers right.
-//		vVaisseau.setX(sX);
         sY = point.y;
-//		vVaisseau.setY(sY);
         dragSouris = true;
         TableauDeBord.vaisseau.deplacementVaisseauHorizontal();
         TableauDeBord.vaisseau.deplacementVaisseauVertical();
-//		traineeAvion();
+
     }
 
     @Override
@@ -56,22 +53,14 @@ public class EcouteurVaisseauSouris implements MouseListener, MouseMotionListene
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
+
 
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
 
     }
-//
-//	public void traineeAvion() {
-//		MaFenetre.vBackgroundWindow.traineeAvion.setTirMissile(true);
-//		MaFenetre.vBackgroundWindow.traineeAvion
-//				.setyPos((TableauDeBord.vaisseau.getyPos()) - Constantes.HAUTEUR_MISSILE_AVION);
-//		MaFenetre.vBackgroundWindow.tirSecondaireAvion
-//				.setxPos((TableauDeBord.vaisseau.getxPos()) + Constantes.LARGEUR_AVION);
-//	}
+
 
 }

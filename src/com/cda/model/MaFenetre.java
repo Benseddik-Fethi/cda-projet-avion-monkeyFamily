@@ -53,7 +53,7 @@ public class MaFenetre extends JFrame {
         this.cardLayout.show(this.contentPane, "FIN_PANEL");
     }
 
-    public void rejouer() {
+	public void rejouer() {
         this.cardLayout.show(this.contentPane, "PARTIE_PANEL");
         vBackgroundWindow.repaint();
         vBackgroundWindow.requestFocus(true);

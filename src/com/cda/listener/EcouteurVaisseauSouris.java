@@ -9,58 +9,54 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class EcouteurVaisseauSouris implements MouseListener, MouseMotionListener {
-    int sX = -1, sY = -1;
-    boolean dragSouris = false;
-    int curX = -1, curY = -1;
+	int sX = -1, sY = -1;
+	boolean dragSouris = false;
+	int curX = -1, curY = -1;
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        Point p = e.getPoint();
-        TableauDeBord.vaisseau.setxPos(p.x);
-        TableauDeBord.vaisseau.setyPos(p.y);
-        if (dragSouris) {
-            MaFenetre.vBackgroundWindow.repaint();
-        }
-    }
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		Point p = e.getPoint();
+		TableauDeBord.vaisseau.setxPos(p.x);
+		TableauDeBord.vaisseau.setyPos(p.y);
+		if (dragSouris) {
+			MaFenetre.vBackgroundWindow.repaint();
+		}
+	}
 
-    @Override
-    public void mouseMoved(MouseEvent e) {
+	@Override
+	public void mouseMoved(MouseEvent e) {
 
+	}
 
-    }
+	@Override
+	public void mouseClicked(MouseEvent e) {
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
+	}
 
+	@Override
+	public void mousePressed(MouseEvent e) {
+		Point point = e.getPoint();
+		sX = point.x; // si x en cours inférieur a sX changer image vers right.
+		sY = point.y;
+		dragSouris = true;
+		TableauDeBord.vaisseau.deplacementVaisseauHorizontal();
+		TableauDeBord.vaisseau.deplacementVaisseauVertical();
 
-    }
+	}
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-        Point point = e.getPoint();
-        sX = point.x; // si x en cours inférieur a sX changer image vers right.
-        sY = point.y;
-        dragSouris = true;
-        TableauDeBord.vaisseau.deplacementVaisseauHorizontal();
-        TableauDeBord.vaisseau.deplacementVaisseauVertical();
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		dragSouris = false;
+	}
 
-    }
+	@Override
+	public void mouseEntered(MouseEvent e) {
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        dragSouris = false;
-    }
+	}
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
+	@Override
+	public void mouseExited(MouseEvent e) {
 
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-
+	}
 
 }

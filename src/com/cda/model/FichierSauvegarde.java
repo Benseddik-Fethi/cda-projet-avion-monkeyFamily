@@ -41,7 +41,7 @@ public class FichierSauvegarde {
 
         try {
             lecteurAvecBuffer = new BufferedReader(new FileReader(vFichier));
-        } catch (FileNotFoundException var6) {
+        } catch (FileNotFoundException e) {
         }
 
         while (true) {
@@ -49,8 +49,8 @@ public class FichierSauvegarde {
                 if ((ligne = lecteurAvecBuffer.readLine()) == null) {
                     break;
                 }
-            } catch (IOException var7) {
-                var7.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
             String[] ligneSplit = ligne.split(" ");
@@ -62,8 +62,8 @@ public class FichierSauvegarde {
 
         try {
             lecteurAvecBuffer.close();
-        } catch (IOException var5) {
-            var5.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

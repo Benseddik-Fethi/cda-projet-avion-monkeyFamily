@@ -2,21 +2,14 @@ package com.cda.model;
 
 import com.cda.program.Program;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.LayoutManager;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.ImageObserver;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import java.util.Set;
 
 public class PanelScore extends JPanel {
     private final ImageIcon icoBandeFond;
@@ -104,7 +97,7 @@ public class PanelScore extends JPanel {
         Iterator iterator2 = set2.iterator();
 
         for (int i = 0; i < 10 && i < set2.size(); ++i) {
-            Entry me2 = (Map.Entry) iterator2.next();
+            Entry me2 = (Entry) iterator2.next();
             String result = me2.getKey() + " " + me2.getValue();
             JTextArea area = new JTextArea(result);
             area.setBounds(150, 195 + this.decallageScore, 450, 50);
